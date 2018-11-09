@@ -44,11 +44,15 @@ Author/Maintainer: @aMarCruz<br>
 ```ts
 import escapeRegexStr from '@jsbits/escape-regex-str'
 
-const regexStr = escapeRegexStr('Unicorn (white): $')
-const regex = new RegExp(regexStr)
+const sourceStr = 'Unicorn (white): $'
 
 // without escapeRegexStr, the test fails.
-console.log(regex.test('Unicorn (white): $1,000,000.00')) // ⇒ false
+const regex1 = new RegExp(sourceStr)
+console.log(regex1.test('Unicorn (white): $1.00')) // ⇒ false
+
+// with escapeRegexStr, it succeeds.
+const regex2 = new RegExp(escapeRegexStr(sourceStr))
+console.log(regex2.test('Unicorn (white): $1.00')) // ⇒ true
 ```
 
 ## Imports
