@@ -1,4 +1,6 @@
+// @ts-check
 
+/** Regex to strip the existing banner */
 const R_BANNER = /(\*\/\s+)['"]use strict['"];\s/
 
 /**

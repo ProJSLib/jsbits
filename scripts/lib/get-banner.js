@@ -1,3 +1,5 @@
+// @ts-check
+
 /** License ID */
 const LICENSE = require('../defaults').LICENSE
 

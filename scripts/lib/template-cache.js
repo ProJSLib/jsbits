@@ -1,3 +1,4 @@
+// @ts-check
 /*
   Simple cache for files in the 'templates' folder.
 */

@@ -1,3 +1,4 @@
+// @ts-check
 /* eslint-disable no-console */
 /**
  * Print a message to stdout (console.log).

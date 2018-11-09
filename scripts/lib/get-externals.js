@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * Get the external dependencies for the current module.
  *

@@ -1,7 +1,7 @@
+// @ts-check
 /*
   Create or update a package.json
 */
-// @ts-check
 const fse = require('fs-extra')
 const path = require('path')
 const jscc = require('jscc')

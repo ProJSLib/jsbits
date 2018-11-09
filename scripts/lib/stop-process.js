@@ -1,4 +1,6 @@
+// @ts-check
 /* eslint-disable no-console */
+
 /**
  * Print a message to stderr and stop the current process with an exit code.
  *
