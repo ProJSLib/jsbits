@@ -143,8 +143,8 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
 [travis-image]:   https://img.shields.io/travis/aMarCruz/jsbits.svg
 [travis-url]:     https://travis-ci.org/aMarCruz/jsbits
-[codebeat-image]: https://codebeat.co/badges/7e15dc9d-42a8-4ea2-8bae-a21c09490fbe
-[codebeat-url]:   https://codebeat.co/projects/github-com-amarcruz-jsbits-dev
+[codebeat-image]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
+[codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
 [codecov-image]:  https://codecov.io/gh/aMarCruz/jsbits/branch/dev/graph/badge.svg
 [codecov-url]:    https://codecov.io/gh/aMarCruz/jsbits
 
