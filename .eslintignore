@@ -1,0 +1,10 @@
+~bak
+**/.*
+**/*.md
+**/coverage/
+**/test/expected/
+**/test/fixtures/
+packages/**/*.js
+packages/**/*.d.ts
+.docs/
+.vscode/

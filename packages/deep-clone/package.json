@@ -1,0 +1,23 @@
+{
+  "name": "@jsbits/deep-clone",
+  "version": "1.0.0",
+  "description": "Performs a deep cloning of an object own properties, with loosy or exact behavior.",
+  "license": "BSD-2-Clause",
+  "main": "./index.js",
+  "module": "esm/index.js",
+  "es2015": "index.mjs",
+  "esnext": "index.mjs",
+  "browser": "umd/index.js",
+  "source": "index.ts",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=4.2"
+  },
+  "author": "@aMarCruz",
+  "bugs": "https://github.com/ProJSLib/jsbits/issues",
+  "homepage": "https://github.com/ProJSLib/jsbits",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProJSLib/jsbits.git"
+  }
+}

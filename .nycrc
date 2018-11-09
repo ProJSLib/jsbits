@@ -1,0 +1,16 @@
+{
+  "extension": [".ts", ".tsx"],
+  "reporter": ["text-summary", "lcov"],
+  "require": ["./test/test.env.js", "ts-node/register"],
+  "check-coverage": true,
+  "lines": 99,
+  "statements": 99,
+  "functions": 99,
+  "branches": 99,
+  "watermarks": {
+    "branches": [90, 99],
+    "functions": [90, 99],
+    "lines": [90, 99],
+    "statements": [90, 99]
+  }
+}

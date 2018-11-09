@@ -1,0 +1,29 @@
+### Date.prototype.addMonths
+
+If you prefer, you can inject the function into the `Date.prototype` by requiring 'proto' or by loading the IIFE from 'add-months/proto.js' in your browser:
+
+```ts
+require('@jsbits/add-months/proto')
+
+const date = new Date().addMonths(3)
+```
+
+### Note about DST
+
+For local dates, the time offset may change if the resulting date has DST activation different from the original.
+
+For example, if a GMT-0600 zone changes to GMT-0500 between May and October, the following will shift the time offset preserving the hour:
+
+```ts
+const origin = new Date('2018-01-20T16:00:00')  // ⇒ 2018-01-20 16:00 GMT-0600
+const result = addMonths(origin, 6)             // ⇒ 2018-07-20 16:00 GMT-0500
+```
+
+However, the UTC time which has no offset does change:
+
+```ts
+console.log(origin.toISOString())   // ⇒ 2018-01-20T22:00:00.000Z
+console.log(result.toISOString())   // ⇒ 2018-07-20T21:00:00.000Z
+```
+
+The same happens if you apply a `setMonth(6)` to that date, which is correct and generally expected, but keep it in mind if you handle UTC dates based on local dates.

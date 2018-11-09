@@ -1,0 +1,5 @@
+{
+  "name": "with-version",
+  "version": "0.0.1",
+  "description": "For testing getPackageVersion"
+}

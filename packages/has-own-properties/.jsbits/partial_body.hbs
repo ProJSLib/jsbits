@@ -1,0 +1,10 @@
+### Object.prototype.hasOwnProperties
+
+If you prefer, you can inject this function into the `Object.prototype` by requiring 'proto' or by loading the IIFE from 'has-own-properties/proto.js' in your browser:
+
+```ts
+require('@jsbits/has-own-properties/proto')
+
+const anObject = { foo: 'bar' }
+const hasProps = anObject.hasOwnProperties()
+```

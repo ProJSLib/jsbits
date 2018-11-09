@@ -1,0 +1,88 @@
+# {{options.values._PACKAGE}}
+
+[![npm Version][npm-image]][npm-url]
+[![License][license-image]](LICENSE)
+
+Part of the [JSBits][jsbits-url] suite.
+
+{{this.options.values._DESCRIPTION}}
+
+## Install
+
+```bash
+npm i {{options.values._PACKAGE}}
+# or
+yarn add {{options.values._PACKAGE}}
+```
+
+### Targets:
+
+{{listTargets options.values}}
+
+{{#if options.values._PARTIAL.partial_head}}
+{{>partial_head}}
+
+{{/if}}
+{{#functions}}
+
+{{>heading-indent}}{{>sig-name}} {{#if deprecated}}(deprecated){{/if}}
+
+{{{description}}}
+
+{{>params~}}
+{{>properties~}}
+{{>returns}}
+
+Since {{since~}}<br>
+Group: {{arrayJoin ../options.values._GROUPS~}}<br>
+{{authorAndMaintainer author ../options.values~}}<br>
+{{#if ../options.values._CONTRIBUTORS}}
+
+Contributors: {{personList ../options.values._CONTRIBUTORS}}
+{{/if}}
+
+{{>examples~}}
+
+{{>see~}}
+{{>todo~}}
+
+{{!-- logContext options~ --}}
+{{/functions}}
+
+{{#if options.values._EXAMPLE}}
+### Example
+
+```ts
+{{{options.values._EXAMPLE}~}}
+```
+{{/if}}
+
+{{#if options.values._PARTIAL.partial_body}}
+{{>partial_body}}
+
+{{/if}}
+## Imports
+
+All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible with:
+
+* ES5 browsers, through the [jQuery](https://jquery.com/) `$.jsbits` object or the global `jsbits`.
+* ESM Bundlers, like [webpack](http://webpack.github.io/) and [Rollup](https://rollupjs.org/).
+* [ES modules](http://2ality.com/2014/09/es6-modules-final.html) for modern browsers or NodeJS with the `--experimental-modules` flag.
+* [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules) modules of NodeJS, jspm, and others.
+* [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
+
+Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
+
+{{#if options.values._PARTIAL.partial_foot}}
+{{>partial_foot}}
+
+{{/if}}
+
+---
+&copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)
+
+[npm-image]:      https://img.shields.io/npm/v/{{options.values._PACKAGE}}.svg
+[npm-url]:        https://www.npmjs.com/package/{{options.values._PACKAGE}}
+[license-image]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
+[jsbits-url]:     {{options.values._HOMEPAGE}}
+[jsbits-formats]: {{options.values._HOMEPAGE}}#distribution-formats

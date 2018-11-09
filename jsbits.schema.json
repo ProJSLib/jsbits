@@ -1,0 +1,65 @@
+{
+  "title": "JSON schema for JSBits modules information",
+  "definitions": {
+    "person": {
+      "description": "A person who has been involved in creating or maintaining this package",
+      "type": [ "object", "string" ],
+      "required": [ "name" ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    }
+  },
+  "required": [
+    "_VERSION",
+    "_DESCRIPTION",
+    "_GROUPS"
+  ],
+  "properties": {
+    "_VERSION": {
+      "description": "Version must be parseable by node-semver, which is bundled with npm as a dependency.",
+      "type": "string"
+    },
+    "_DESCRIPTION": {
+      "description": "This helps people discover your package, as it's listed in 'npm search'.",
+      "type": "string"
+    },
+    "_GROUPS": {
+      "description": "A list of groups which this function belongs to.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "_AUTHOR": {
+      "description": "The people who creates this package.",
+      "$ref": "#/definitions/person"
+    },
+    "_MAINTAINER": {
+      "description": "The people who maintains this package (defaults to the author).",
+      "$ref": "#/definitions/person"
+    },
+    "_CONTRIBUTORS": {
+      "description": "A list of people who contributed to this package.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/person"
+      }
+    },
+    "_TARGET": {
+      "description": "Specify the environment in which this function can be executed (use \"*\" for all).",
+      "type": "string",
+      "enum": ["node", "browser", "*"]
+    }
+  }
+}

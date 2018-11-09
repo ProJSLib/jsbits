@@ -1,0 +1,63 @@
+### About getter and setters
+
+Cloning of getters and setters work as expected, they are duplicated as any other property. However, there' cases where cloning does not work.
+
+Observe this fragment:
+
+```ts
+const createObj = function () {
+  let _foo = 'bar' // in closure
+  return Object.defineProperty({}, 'foo', {
+    get () { return _foo },
+    set (value) { _foo = value },
+    enumerable: true,
+  })
+}
+
+// This creates an object with get/set using the var _foo in its closure
+const obj = createObj()
+const clone = deepClone(obj)
+
+// Looks like this works...
+console.log(clone !== obj)      // ⇒ true
+console.log(clone.foo)          // ⇒ 'bar'
+clone.foo = 'BAZ'
+console.log(clone.foo)          // ⇒ 'BAZ'
+console.log(obj.foo)            // ⇒ 'BAZ' ...ups!
+```
+
+This is obvious if you look at the code of deepClone, getters and setters are copied _the same as the functions_ so its closure is the same as the original object.
+
+To date, I haven't found any way to solve this issue ...anyone?
+
+A workaround is to keep a non-enumerable property in the object:
+
+```ts
+const createObj = function () {
+  // _foo as property
+  return Object.defineProperties({}, {
+    _foo: {
+      value: 'bar',
+      writable: true, // writable, but no enumerable
+    },
+    foo: {
+      get () { return this._foo },
+      set (value) { this._foo = value },
+      enumerable: true,
+    },
+  })
+}
+
+const obj = createObj()
+const clone = deepClone(obj)
+
+// Now this works
+console.log(clone !== obj)      // ⇒ true
+console.log(clone.foo)          // ⇒ 'bar'
+clone.foo = 'BAZ'
+console.log(clone.foo)          // ⇒ 'BAZ'
+console.log(obj.foo)            // ⇒ 'bar' :)
+
+// and...
+console.log(JSON.stringify(obj)) // ⇒ '{"foo":"bar"}' +1
+```

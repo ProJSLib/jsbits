@@ -1,0 +1,34 @@
+{
+  "name": "$_PACKAGE",
+  "version": "$_VERSION",
+  "description": "$_DESCRIPTION",
+  "license": "$_LICENSE",
+  "main": "./index.js",
+  "module": "esm/index.js",
+  "es2015": "index.mjs",
+  "esnext": "index.mjs",
+//#if _TARGET !== 'node'
+  "browser": "umd/index.js",
+//#endif
+  "source": "index.ts",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=$_NODE"
+  },
+  //#set _TEMP JSON.stringify(_AUTHOR)
+  "author": "$_AUTHOR",
+/*#if _MAINTAINER
+  //#set _TEMP JSON.stringify(_MAINTAINER)
+  "maintainers": [$_TEMP],
+//#endif */
+/*#if _CONTRIBUTORS
+  //#set _TEMP JSON.stringify(_CONTRIBUTORS)
+  "contributors": $_TEMP,
+//#endif */
+  "bugs": "$_HOMEPAGE/issues",
+  "homepage": "$_HOMEPAGE",
+  "repository": {
+    "type": "git",
+    "url": "$_HOMEPAGE.git"
+  }
+}

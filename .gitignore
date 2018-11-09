@@ -1,0 +1,32 @@
+# Common git and npm ignored folders and files
+cov-int
+coverage
+coverage.*
+lib-cov
+node_modules
+package-lock.json
+yarn.lock
+logs
+pids
+*.pid
+*.seed
+*.tgz
+**/*.bak
+**/*.lcov
+**/*.log
+.nyc_output
+.rpt2_cache
+
+# Transpilled files
+/packages/*/esm
+/packages/*/umd
+/packages/*/*.d.ts
+/packages/*/*.map
+/packages/*/*.js
+/packages/*/*.mjs
+
+# Share VSCode config, launcher, tasks setup, and JSLint config
+.vscode/**/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json

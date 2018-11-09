@@ -1,0 +1,19 @@
+version: "2"
+
+checks:
+  method-complexity:
+    enabled: true
+    config:
+      threshold: 8
+
+exclude_patterns:
+  - "config/"
+  - "cov-int/"
+  - "coverage/"
+  - "docs/"
+  - "not-yet/"
+  - "scripts/"
+  - "**/node_modules/"
+  - "**/spec/"
+  - "**/test/"
+  - "**/*.d.ts"

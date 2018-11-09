@@ -1,0 +1,17 @@
+.vscode
+~bak
+/docs
+/not-yet
+/coverage
+/scripts
+**/.nyc_output/
+**/.rpt2_cache/
+**/test/
+/.*
+/*.json
+*.tgz
+*.log
+*.bak
+*.lock
+package-lock.*
+!/.eslintrc.*

@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "resolveJsonModule": true,
+    "module": "es6",
+    "target": "es6"
+  },
+  "files": [
+    "dummy.ts",
+  ],
+  "include": [
+  ],
+}

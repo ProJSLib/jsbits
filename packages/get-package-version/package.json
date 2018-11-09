@@ -1,0 +1,22 @@
+{
+  "name": "@jsbits/get-package-version",
+  "version": "1.0.0",
+  "description": "Get the version of the package.json file found in the given directory or in one of its parents.",
+  "license": "BSD-2-Clause",
+  "main": "./index.js",
+  "module": "esm/index.js",
+  "es2015": "index.mjs",
+  "esnext": "index.mjs",
+  "source": "index.ts",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=4.2"
+  },
+  "author": "@aMarCruz",
+  "bugs": "https://github.com/ProJSLib/jsbits/issues",
+  "homepage": "https://github.com/ProJSLib/jsbits",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProJSLib/jsbits.git"
+  }
+}
