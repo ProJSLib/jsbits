@@ -137,13 +137,11 @@ Please see the [Distribution Formats][jsbits-formats] in the JSBits README to kn
 [npm-url]:        https://www.npmjs.com/package/@jsbits/add-months
 [travis-image]:   https://img.shields.io/travis/ProJSLib/jsbits.svg
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
-
 [codebeat-image]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
 [codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
 [climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
 [climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits
 [cccover-image]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
 [cccover-url]:    https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
-
 [jsbits-url]:     https://github.com/ProJSLib/jsbits
 [jsbits-formats]: https://github.com/ProJSLib/jsbits#distribution-formats
