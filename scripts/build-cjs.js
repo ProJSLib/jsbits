@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 // @ts-check
 /*
-
   Makes the ES6 modules, browser IIFEs, and wraped funcions.
-
 */
-const fse = require('fs-extra')
 const path = require('path')
-const PQueue = require('p-queue')
 const rollup = require('rollup').rollup
 const cleanup = require('rollup-plugin-cleanup')
 const nodeResolve = require('rollup-plugin-node-resolve')
@@ -18,8 +14,8 @@ const getBanner = require('./lib/get-banner')
 const getExternals = require('./lib/get-externals')
 const logOut = require('./lib/log-out')
 const stopProcess = require('./lib/stop-process')
+const queuePackages = require('./lib/queue-packages')
 
-const pkgsDir = require('./paths').packages
 const rootDir = require('./paths').root
 const CLEANUP_CONF = require('./defaults').CLEANUP_CONF
 
@@ -76,25 +72,7 @@ const rollupTask = (srcPath, pkgJson) => () => {
 
 // Cos we are changing the current directory, will cannot run the tasks
 // parallel, so we will use p-queue instance.
-const queue = new PQueue({ concurrency: 1 })
-
-/**
- * Read the 'packages' folder and run a task for each subfolder containing
- * a package.json
- */
-fse.readdirSync('./packages').forEach((entry) => {
-  const srcPath = path.join(pkgsDir, entry)
-  const srcJson = path.join(srcPath, 'package.json')
-
-  if (fse.pathExistsSync(srcJson)) {
-    const pkgJson = require(srcJson)
-
-    queue.add(rollupTask(srcPath, pkgJson))
-  }
-})
-
-// Catch eny error from the promises here.
-queue.onIdle()
+queuePackages(rollupTask).onIdle()
   .then(() => {
     logOut('Finished making CJS modules.')
     return 0
