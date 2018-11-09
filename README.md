@@ -4,7 +4,7 @@
 [![Travis Test][travis-image]][travis-url]
 [![Codebeat][codebeat-image]][codebeat-url]
 [![Code Climate][climate-image]][climate-url]
-[![Coverage][codecov-image]][codecov-url]
+[![Coverage][cccover-image]][cccover-url]
 
 Public library of professional high quality functions for TypeScript and JavaScript.
 
@@ -153,8 +153,8 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 <!-- Badges at bottom -->
 [climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
 [climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits
-[cccover-image]:  https://api.codeclimate.com/v1/badges/50d60a10ec7c9156b429/test_coverage
-[cccover-url]:    https://codeclimate.com/github/aMarCruz/jsbits/test_coverage
+[cccover-image]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
+[cccover-url]:    https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
 [commits-image]:  https://img.shields.io/github/commits-since/aMarCruz/jsbits/latest.svg
 [commits-url]:    https://github.com/aMarCruz/jsbits/commits/dev
 

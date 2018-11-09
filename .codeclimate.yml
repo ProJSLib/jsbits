@@ -6,14 +6,6 @@ checks:
     config:
       threshold: 8
 
-plugins:
-  eslint:
-    enabled: true
-    channel: eslint-5
-    config:
-      extensions:
-        - .ts
-
 exclude_patterns:
   - "config/"
   - "cov-int/"
