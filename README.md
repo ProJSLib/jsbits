@@ -1,8 +1,10 @@
 # JSBits (WIP)
 
 [![License][license-image]][license-url]
+[![Travis Test][travis-image]][travis-url]
 [![Codebeat][codebeat-image]][codebeat-url]
 [![Code Climate][climate-image]][climate-url]
+[![Coverage][codecov-image]][codecov-url]
 
 Public library of professional high quality functions for TypeScript and JavaScript.
 
@@ -141,12 +143,12 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 [license-url]:    https://github.com/aMarCruz/jsbits/blob/master/LICENSE
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/hdsef0p6q0oqr127?svg=true
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
-[travis-image]:   https://img.shields.io/travis/aMarCruz/jsbits.svg
-[travis-url]:     https://travis-ci.org/aMarCruz/jsbits
+[travis-image]:   https://img.shields.io/travis/ProJSLib/jsbits.svg
+[travis-url]:     https://travis-ci.org/ProJSLib/jsbits
 [codebeat-image]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
 [codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
-[codecov-image]:  https://codecov.io/gh/aMarCruz/jsbits/branch/dev/graph/badge.svg
-[codecov-url]:    https://codecov.io/gh/aMarCruz/jsbits
+[codecov-image]:  https://codecov.io/gh/ProJSLib/jsbits/branch/master/graph/badge.svg
+[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits
 
 <!-- Badges at bottom -->
 [climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
