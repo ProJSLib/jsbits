@@ -1,7 +1,11 @@
 # @jsbits/escape-regex-str
 
-[![npm Version][npm-image]][npm-url]
 [![License][license-image]](LICENSE)
+[![Travis Test][travis-image]][travis-url]
+[![Codebeat][codebeat-image]][codebeat-url]
+[![Code Climate][climate-image]][climate-url]
+[![Coverage][cccover-image]][cccover-url]
+[![npm Version][npm-image]][npm-url]
 
 Part of the [JSBits][jsbits-url] suite.
 
@@ -15,7 +19,7 @@ npm i @jsbits/escape-regex-str
 yarn add @jsbits/escape-regex-str
 ```
 
-### Targets:
+### Targets
 
 * ES5 compatible browser
 * NodeJS v4.2 or later
@@ -71,8 +75,18 @@ Please see the [Distribution Formats][jsbits-formats] in the JSBits README to kn
 ---
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)
 
+[license-image]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
 [npm-image]:      https://img.shields.io/npm/v/@jsbits/escape-regex-str.svg
 [npm-url]:        https://www.npmjs.com/package/@jsbits/escape-regex-str
-[license-image]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
+[travis-image]:   https://img.shields.io/travis/ProJSLib/jsbits.svg
+[travis-url]:     https://travis-ci.org/ProJSLib/jsbits
+
+[codebeat-image]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
+[codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
+[climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
+[climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits
+[cccover-image]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
+[cccover-url]:    https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
+
 [jsbits-url]:     https://github.com/ProJSLib/jsbits
 [jsbits-formats]: https://github.com/ProJSLib/jsbits#distribution-formats
