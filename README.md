@@ -149,8 +149,8 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 [codecov-url]:    https://codecov.io/gh/aMarCruz/jsbits
 
 <!-- Badges at bottom -->
-[climate-image]:  https://codeclimate.com/github/aMarCruz/jsbits/badges/gpa.svg
-[climate-url]:    https://codeclimate.com/github/aMarCruz/jsbits
+[climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
+[climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits
 [cccover-image]:  https://api.codeclimate.com/v1/badges/50d60a10ec7c9156b429/test_coverage
 [cccover-url]:    https://codeclimate.com/github/aMarCruz/jsbits/test_coverage
 [commits-image]:  https://img.shields.io/github/commits-since/aMarCruz/jsbits/latest.svg
