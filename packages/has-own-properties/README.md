@@ -21,9 +21,8 @@ yarn add @jsbits/has-own-properties
 
 ### Targets
 
-* ES5 compatible browser
-* NodeJS v4.2 or later
-
+- ES5 compatible browser
+- NodeJS v4.2 or later
 
 ## `hasOwnProperties(obj, [includeNonEnum])` ⇒ <code>boolean</code> 
 
@@ -35,18 +34,16 @@ Primitive types (number, string, etc) always returns `false`.
 If you want to include non-enumerables properties, pass `true` in the
 second parameter.
 
-
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | obj | <code>any</code> |  | Testing object |
-| [includeNonEnum] | <code>boolean</code> | <code>false</code> | Include non-enumerable properties? |
+| \[includeNonEnum] | <code>boolean</code> | <code>false</code> | Include non-enumerable properties? |
 
 **Returns**: <code>boolean</code> - `true` if the object has properties.  
 
 Since 1.0.0<br>
 Group: object<br>
 Author/Maintainer: @aMarCruz<br>
-
 
 ### Example
 
@@ -107,7 +104,6 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 * [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
-
 
 ---
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)

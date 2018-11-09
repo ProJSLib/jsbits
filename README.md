@@ -27,13 +27,11 @@ Adds or sustract X months to any JavaScript Date, local or UTC.
 
 Group: date &ndash; Author: @aMarCruz
 
-
 ### [deepClone](packages/deep-clone)
 
 Performs a deep cloning of an object own properties, with loosy or exact behavior.
 
 Group: object &ndash; Author: @aMarCruz
-
 
 ### [escapeRegexStr](packages/escape-regex-str)
 
@@ -41,14 +39,12 @@ Escapes special characters in a string, for matching substrings with a RegExp in
 
 Group: dev &ndash; Author: @aMarCruz
 
-
 ### [getPackageVersion](packages/get-package-version)
 
 _NodeJS only_<br>
 Get the version of the package.json file found in the given directory or in one of its parents.
 
 Group: dev &ndash; Author: @aMarCruz
-
 
 ### [hasOwnProperties](packages/has-own-properties)
 
@@ -62,18 +58,18 @@ Group: object &ndash; Author: @aMarCruz
 This is a list of the fields of package.json used by JSBits to facilitate the detection of the correct format for your toolchain and the _default_ format used by some bundlers, loaders, and other tools for which I have information:
 
 &nbsp;          | main     | [browser][1] | [module][2]  | es2015/esnext | $.jsbits/jsbits
---------------- | -------- | ------------ | ------------ |  ---------- | ---------------
-Filename        | index.js | umd/index.js | esm/index.js | index.mjs   | index.b.min.js
-ES version      | ES5      | ES5          | ES5          | ES6         | ES5
-Module format   | CJS      | UMD          | ESM          | ESM         | IIFE
-[node.js][3]    | ✔        | -            | -            | ✔           | -
-[Brunch][4]     | ✔        | -            | -            | -           | -
-[jspm][5]       | ✔        | -            | -            | -           | -
-[browserify][6] | -        | ✔            | -            | -           | -
-[Rollup][7]     | -        | -            | ✔            | -           | -
-[webpack][8]    | -        | ✔            | ✔            | -           | -
-[TypeScript][9] | ✔        | -            | -            | -           | -
-[jQuery][10]    | -        | ✔            | -            | -           | ✔
+--------------- | -------- | ------------ | ------------ | ------------- | ---------------
+Filename        | index.js | umd/index.js | esm/index.js | index.mjs     | index.b.min.js
+ES version      | ES5      | ES5          | ES5          | ES6           | ES5
+Module format   | CJS      | UMD          | ESM          | ESM           | IIFE
+[node.js][3]    | ✔        | -            | -            | ✔             | -
+[Brunch][4]     | ✔        | -            | -            | -             | -
+[jspm][5]       | ✔        | -            | -            | -             | -
+[browserify][6] | -        | ✔            | -            | -             | -
+[Rollup][7]     | -        | -            | ✔            | -             | -
+[webpack][8]    | -        | ✔            | ✔            | -             | -
+[TypeScript][9] | ✔        | -            | -            | -             | -
+[jQuery][10]    | -        | ✔            | -            | -             | ✔
 
 In one way or another, most modern bundlers let you configure the field used to resolve the import &ndash;this includes webpack, jspm, browserify, and Rollup&ndash;, but even without this support, you can direct your tool to the desired format using its filename.
 
@@ -99,19 +95,6 @@ This UMD version pointed by the "browser" field works with AMD and CJS module sy
 
 The file `index.b.js` has no AND/CJS support.
 
-
-<!-- refs -->
-[1]: https://github.com/defunctzombie/package-browser-field-spec
-[2]: https://github.com/rollup/rollup/wiki/pkg.module
-[3]: https://nodejs.org/
-[4]: https://brunch.io/
-[5]: https://jspm.org/
-[6]: http://browserify.org/
-[7]: https://rollupjs.org/
-[8]: webpack.js.org/
-[9]: typescriptlang.org/
-[10]: https://jquery.com/
-
 ## TODO
 
 In addition to increasing the number of functions...
@@ -130,7 +113,6 @@ I'm a full-stack developer with more than 20 year of experience and I try to sha
 Of course, feedback, PRs, and stars are also welcome :)
 
 Thanks for your support!
-
 
 ## License
 
@@ -162,3 +144,15 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 [bmc-image]:      https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png
 [bmc-url]:        https://www.buymeacoffee.com/aMarCruz
 [kofi-url]:       https://ko-fi.com/C0C7LF7I
+
+<!-- refs -->
+[1]: https://github.com/defunctzombie/package-browser-field-spec
+[2]: https://github.com/rollup/rollup/wiki/pkg.module
+[3]: https://nodejs.org/
+[4]: https://brunch.io/
+[5]: https://jspm.org/
+[6]: http://browserify.org/
+[7]: https://rollupjs.org/
+[8]: webpack.js.org/
+[9]: typescriptlang.org/
+[10]: https://jquery.com/

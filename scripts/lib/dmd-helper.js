@@ -63,10 +63,10 @@ exports.listTargets = (values) => {
   const targets = []
 
   if (values._TARGET !== 'node') {
-    targets.push('* ES5 compatible browser')
+    targets.push('- ES5 compatible browser')
   }
   if (values._TARGET !== 'browser') {
-    targets.push(`* NodeJS v${values._NODE} or later`)
+    targets.push(`- NodeJS v${values._NODE} or later`)
   }
 
   return targets.join('\n')

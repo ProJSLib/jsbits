@@ -21,9 +21,8 @@ yarn add @jsbits/add-months
 
 ### Targets
 
-* ES5 compatible browser
-* NodeJS v4.2 or later
-
+- ES5 compatible browser
+- NodeJS v4.2 or later
 
 ## `addMonths(startdate, count, [asUTC])` ⇒ <code>Date</code> 
 
@@ -44,19 +43,17 @@ necessary to differentiate UTC dates from locals to avoid errors due to the
 
 This function does not change the original date.
 
-
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | startdate | <code>Date</code> \| <code>string</code> \| <code>number</code> |  | A value parseable as a JavaScript Date |
 | count | <code>number</code> |  | Number of months to add or substract |
-| [asUTC] | <code>boolean</code> | <code>false</code> | If `true`, handle the date as UTC |
+| \[asUTC] | <code>boolean</code> | <code>false</code> | If `true`, handle the date as UTC |
 
 **Returns**: <code>Date</code> - A new, adjusted Date instance.  
 
 Since 1.0.0<br>
 Group: date<br>
 Author/Maintainer: @aMarCruz<br>
-
 
 ### Example
 
@@ -131,7 +128,6 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 * [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
-
 
 ---
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)

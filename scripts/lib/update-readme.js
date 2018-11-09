@@ -18,6 +18,7 @@ const TEXT = require('../defaults').TEXT
 const getPartials = (srcPath) => [
   path.join(path.resolve(srcPath, '.jsbits'), '*.hbs'),
   path.join(templates, 'examples.hbs'),
+  path.join(templates, 'param-table-name.hbs'),
 ]
 
 /**

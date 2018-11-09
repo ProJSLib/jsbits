@@ -22,17 +22,15 @@ yarn add {{options.values._PACKAGE}}
 ### Targets
 
 {{listTargets options.values}}
-
 {{#if options.values._PARTIAL.partial_head}}
-{{>partial_head}}
 
+{{>partial_head}}
 {{/if}}
 {{#functions}}
 
 {{>heading-indent}}{{>sig-name}} {{#if deprecated}}(deprecated){{/if}}
 
 {{{description}}}
-
 {{>params~}}
 {{>properties~}}
 {{>returns}}
@@ -41,15 +39,11 @@ Since {{since~}}<br>
 Group: {{arrayJoin ../options.values._GROUPS~}}<br>
 {{authorAndMaintainer author ../options.values~}}<br>
 {{#if ../options.values._CONTRIBUTORS}}
-
 Contributors: {{personList ../options.values._CONTRIBUTORS}}
 {{/if}}
-
 {{>examples~}}
-
 {{>see~}}
 {{>todo~}}
-
 {{!-- logContext options~ --}}
 {{/functions}}
 
@@ -76,10 +70,9 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 * [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
-
 {{#if options.values._PARTIAL.partial_foot}}
-{{>partial_foot}}
 
+{{>partial_foot}}
 {{/if}}
 
 ---

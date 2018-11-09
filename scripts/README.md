@@ -24,7 +24,6 @@ Depends on package.json
 
 Make the remnant variants: UMD, ESM, ES6, and the `index.b.min.js` file for browsers.
 
-
 ## TODO
 
 - [ ] Script to check files, mainly for the '.jsbits.json' file.

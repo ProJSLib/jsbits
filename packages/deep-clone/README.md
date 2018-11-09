@@ -21,9 +21,8 @@ yarn add @jsbits/deep-clone
 
 ### Targets
 
-* ES5 compatible browser
-* NodeJS v4.2 or later
-
+- ES5 compatible browser
+- NodeJS v4.2 or later
 
 ## `deepClone(value, [exact])` ⇒ <code>T</code> 
 
@@ -44,18 +43,16 @@ some JS own Objects), nor objects with recursive references.
 
 _**NOTE:** Functions, getters and setters are copied by reference._
 
-
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>T</code> |  | Value to clone, mostly an object or array. |
-| [exact] | <code>boolean</code> | <code>false</code> | If `true`, duplicate the attributes of the property descriptors |
+| \[exact] | <code>boolean</code> | <code>false</code> | If `true`, duplicate the attributes of the property descriptors |
 
 **Returns**: <code>T</code> - The cloned object or value.  
 
 Since 1.0.0<br>
 Group: object<br>
 Author/Maintainer: @aMarCruz<br>
-
 
 ### Example
 
@@ -145,7 +142,6 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 * [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
-
 
 ---
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)

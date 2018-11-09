@@ -7,10 +7,10 @@ I want to make contributing to this project as easy and transparent as possible.
 ## Requeriments
 
 * A single file with no more than 250 lines of code plus comments.
-* Written in TypeScript v3 with no hacks (`@ts-ignore`)__*__.
+* Written in TypeScript v3 with no hacks (`@ts-ignore`)**\***.
 * Self docummented with [JSDoc](http://usejsdoc.org/) v3.
 * Self-containded, without external dependencies, except those of NodeJS.
-* Fully tested, 100% coverage with no hacks (`istanbul ignore`)__*__.
+* Fully tested, 100% coverage with no hacks (`istanbul ignore`)**\***.
 * Pass with "A" the [Codebeat](https://codebeat.co) and [CodeClimate](https://codeclimate.com) tests.
 * Equal or better performance, or more reliable, than the equivalents in other packages.
 * Compilable in strict mode as CommonJS and ES6 modules.

@@ -71,7 +71,7 @@ ${target}${values._DESCRIPTION}
 
 Group: ${groups} &ndash; Author: ${values._AUTHOR || D.AUTHOR_NAME}
 `
-  }).join('\n')
+  }).join('')
 }
 
 /**

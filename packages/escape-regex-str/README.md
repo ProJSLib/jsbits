@@ -21,16 +21,14 @@ yarn add @jsbits/escape-regex-str
 
 ### Targets
 
-* ES5 compatible browser
-* NodeJS v4.2 or later
-
+- ES5 compatible browser
+- NodeJS v4.2 or later
 
 ## `escapeRegexStr(str)` ⇒ <code>string</code> 
 
 Escapes special characters in a given string in preparation to be used as
 argument of the JS `RegExp` constructor, useful when you want to match the
 given string as a literal substring.
-
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -41,7 +39,6 @@ given string as a literal substring.
 Since 1.0.0<br>
 Group: dev<br>
 Author/Maintainer: @aMarCruz<br>
-
 
 ### Example
 
@@ -70,7 +67,6 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 * [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
-
 
 ---
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)

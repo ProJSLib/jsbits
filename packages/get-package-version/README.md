@@ -21,8 +21,7 @@ yarn add @jsbits/get-package-version
 
 ### Targets
 
-* NodeJS v4.2 or later
-
+- NodeJS v4.2 or later
 
 ## `getPackageVersion([pkgPath])` ⇒ <code>string</code> 
 
@@ -33,17 +32,15 @@ directory or in one of its parents.
 - The provided path can be relative to the current working directory.
 - Packages with a missing or empty `version` property are ignored.
 
-
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [pkgPath] | <code>string</code> | <code>&quot;.&quot;</code> | Initial directory to search, defaults to `process.cwd()`. |
+| \[pkgPath] | <code>string</code> | <code>&quot;.&quot;</code> | Initial directory to search, defaults to `process.cwd()`. |
 
 **Returns**: <code>string</code> - The package version, or an empty string if it could not be found.  
 
 Since 1.0.0<br>
 Group: dev<br>
 Author/Maintainer: @aMarCruz<br>
-
 
 ### Example
 
@@ -64,7 +61,6 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 * [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
-
 
 ---
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)
