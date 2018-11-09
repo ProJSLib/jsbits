@@ -1,0 +1,6 @@
+*.bak
+*.log
+*.tgz
+.rpt2_cache
+/test/
+/tmp/

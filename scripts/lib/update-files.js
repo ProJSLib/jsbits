@@ -58,6 +58,7 @@ const licenseFromRoot = (destPath, fileName) => {
 const updateFiles = (pkgPath, options) => {
   return Promise.all([
     ensureIsUpdated(pkgPath, '.npmignore'),
+    ensureIsUpdated(pkgPath, '.gitignore'),
     ensureIsUpdated(pkgPath, 'CHANGELOG.md', options),
     licenseFromRoot(pkgPath, 'LICENSE'),
   ])
