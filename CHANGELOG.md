@@ -15,6 +15,8 @@
 - add-months: proto.js injects the setters `addMonths` and `addUTCMonths`.
   This goes more according to how the rest of the `Date.prototype` methods work. Because the 1.0 is a version without diffusion, the change is made in the minor version.
 
+- Test for Date.prototype.addMonths now works w/the new specs.
+
 ### Fixed
 
 - Wrong export in typings, now CJS build is done with TS and generates proto.

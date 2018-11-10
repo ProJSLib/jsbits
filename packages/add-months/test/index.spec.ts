@@ -1,3 +1,5 @@
+/// <reference path="../proto.d.ts" />
+
 import expect from 'expect.js'
 import addMonths from '..'
 import infoDates from './info-dates'
@@ -6,9 +8,12 @@ const utc = <T extends number> (
   y: T, m: T, d: T, hr: T, min: T, sec: T, ms: T
 ) => new Date(Date.UTC(y, m - 1, d, hr | 0, min | 0, sec | 0, ms | 0))
 
+/**
+ * Creates a local date
+ */
 const dt = (s: string) => {
   if (s[0] === '^') {
-    return utc.apply(null, s.slice(1).split(','))
+    return utc.apply(null, s.slice(1).split(',')) as Date
   }
 
   if ('0123456789'.indexOf(s[0]) >= 0) {
@@ -22,6 +27,9 @@ const dt = (s: string) => {
   return new Date(s)
 }
 
+/**
+ * Creates an UTC date
+ */
 const ut = (s: string) => {
   if ('0123456789'.indexOf(s[0]) < 0) {
     return dt(s)
@@ -352,30 +360,23 @@ describe('addMonths', function () {
 
 describe('Date.prototype.addMonths', function () {
 
-  interface DateWithAddMonths extends Date {
-    addMonths(count: number | string | null, asUTC?: boolean): Date;
-  }
-
   require('../proto')
 
-  it('always returns a new instance of the date.', function () {
-    const date = new Date() as DateWithAddMonths
-    const test = new Date(+date)
-    const dnan = new Date('@') as DateWithAddMonths // Invalid Date
-    let result: Date
+  it('works with the Date instance, as a setter.', function () {
+    const date = new Date()
+    const dref = date
+    // silly test :)
+    date.setMonth(0)
+    expect(date).to.be(dref)
+  })
 
-    result = date.addMonths(0)
-    expect(result).not.to.be(date)
-    expect(result).to.eql(test)
-    result = date.addMonths(NaN)
-    expect(result).not.to.be(date)
-    expect(result).to.eql(+test)
-    result = date.addMonths(null)
-    expect(result).not.to.be(date)
-    expect(result).to.eql(+test)
-    result = dnan.addMonths(0)
-    expect(result).not.to.be(dnan)
-    expect(+result + '').to.be('NaN')
+  it('returns the Unix time for valid dates.', function () {
+    const date = new Date()
+
+    const result1 = date.addMonths(0)
+    expect(result1).to.be(+date)
+    const result2 = date.addUTCMonths(0)
+    expect(result2).to.be(+date)
   })
 
   it('must increment X months with a positive integer', function () {
@@ -383,8 +384,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1])
-      expect(result).to.eql(dt(info[2]))
+      const date = dt(info[0])
+      date.addMonths(info[1])
+      expect(date).to.eql(dt(info[2]))
     }
   })
 
@@ -393,8 +395,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1], true)
-      expect(result.toJSON()).to.be(dt(info[2]).toJSON())
+      const date = ut(info[0])
+      date.addUTCMonths(info[1])
+      expect(date.toJSON()).to.be(ut(info[2]).toJSON())
     }
   })
 
@@ -403,8 +406,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1])
-      expect(result).to.eql(dt(info[2]))
+      const date = dt(info[0])
+      date.addMonths(info[1])
+      expect(date).to.eql(dt(info[2]))
     }
   })
 
@@ -413,8 +417,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1], true)
-      expect(result.toJSON()).to.be(dt(info[2]).toJSON())
+      const date = ut(info[0])
+      date.addUTCMonths(info[1])
+      expect(date.toJSON()).to.be(ut(info[2]).toJSON())
     }
   })
 
@@ -423,8 +428,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1])
-      expect(result).to.eql(dt(info[2]))
+      const date = dt(info[0])
+      date.addMonths(info[1])
+      expect(date).to.eql(dt(info[2]))
     }
   })
 
@@ -433,8 +439,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = ut(info[0]).addMonths(info[1], true)
-      expect(result.toJSON()).to.be(ut(info[2]).toJSON())
+      const date = ut(info[0])
+      date.addUTCMonths(info[1], true)
+      expect(date.toJSON()).to.be(ut(info[2]).toJSON())
     }
   })
 
@@ -443,8 +450,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1])
-      expect(result).to.eql(dt(info[2]))
+      const date = dt(info[0])
+      date.addMonths(info[1])
+      expect(date).to.eql(dt(info[2]))
     }
   })
 
@@ -453,8 +461,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1], true)
-      expect(result.toJSON()).to.be(dt(info[2]).toJSON())
+      const date = ut(info[0])
+      date.addUTCMonths(info[1])
+      expect(date.toJSON()).to.be(ut(info[2]).toJSON())
     }
   })
 
@@ -463,8 +472,9 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const result = dt(info[0]).addMonths(info[1])
-      expect(result).to.eql(dt(info[2]))
+      const date = dt(info[0])
+      date.addMonths(info[1])
+      expect(date).to.eql(dt(info[2]))
     }
   })
 
@@ -473,17 +483,35 @@ describe('Date.prototype.addMonths', function () {
 
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
-      const testDt = ut(info[0]) as DateWithAddMonths
-      const result = testDt.addMonths(info[1], true)
-      expect(result.toJSON()).to.be(ut(info[2]).toJSON())
+      const date = ut(info[0])
+      date.addUTCMonths(info[1])
+      expect(date.toJSON()).to.be(ut(info[2]).toJSON())
     }
   })
 
-  it('if startdate is not a Date, string, or number, returns a new invalid Date', function () {
-    const dt = new Date() as any
-    expect(+dt.addMonths.call({} as any, 0) + '').to.eql('NaN')
-    expect(+dt.addMonths.call(true as any, 0) + '').to.eql('NaN')
-    expect(+dt.addMonths.call(false as any, 0) + '').to.eql('NaN')
+  it('must return NaN for invalid dates (value remains NaN).', function () {
+    const date = new Date(NaN)
+
+    expect(date.addMonths(0) + '').to.be('NaN')
+    expect(+date + '').to.be('NaN')
+  })
+
+  it('must throw w/TypeError if the date is not an instance of Date', function () {
+    const dt = new Date()
+
+    expect(() => {
+      dt.addMonths.call({}, 0)
+    }).to.throwError(TypeError)
+    expect(() => {
+      dt.addUTCMonths.call({}, 0)
+    }).to.throwError(TypeError)
+
+    expect(() => {
+      dt.addMonths.call(true, 0)
+    }).to.throwError(TypeError)
+    expect(() => {
+      dt.addUTCMonths.call(false, 0)
+    }).to.throwError(TypeError)
   })
 
 })
