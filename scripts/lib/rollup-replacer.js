@@ -4,7 +4,7 @@
 */
 const MagicString = require('magic-string')
 
-const RE_TS_EXP = /^export = $/m
+const RE_TS_EXP = /^export = /m
 const RE_OFFSET = 'export = '.length
 
 /**
@@ -52,6 +52,8 @@ const replaceExport = (code, map) => {
 /**
  * Read the ".d.ts" files from "srcPath", replace their "export default" with
  * "export =" and write them to the "destFolder" subdirectory.
+ *
+ * @param {object} [options] -
  */
 const replacer = function _replacer (options) {
 
@@ -64,11 +66,10 @@ const replacer = function _replacer (options) {
   return {
     name: 'replacer',
 
-    /** @param {string} id - filename */
-    //load (id) {
-    //  return filter(id) ? replacer(id, sourcemap) : undefined
-    //},
-
+    /**
+     * @param {string} code source
+     * @param {string} id filename
+     */
     transform (code, id) {
       return filter(id) ? replaceExport(code, sourcemap) : undefined
     },

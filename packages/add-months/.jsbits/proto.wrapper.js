@@ -16,7 +16,7 @@ $_PLACEHOLDER
    */
   var _addMonths = function (_this, count, asUTC) {
 
-    if (_this && _this.setTime) {
+    if (_this instanceof Date) {
       var date = $_NAME(_this, count, asUTC)
       return _this.setTime(+date)
     }

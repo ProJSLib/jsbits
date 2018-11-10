@@ -11,6 +11,9 @@
       "output": "proto.js",
       "wrapper": ".jsbits/proto.wrapper.js",
       "typings": ".jsbits/proto.d.ts",
+      "replace": {
+        "@regex:\\s+if \\(startdate == null \\|\\| typeof startdate == 'boolean'\\)[^}]+}\\n": ""
+      },
       "method": "cleanup"
     }
   ]

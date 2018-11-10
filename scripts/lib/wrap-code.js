@@ -29,6 +29,7 @@ const UGLIFY_OPTS = {
 /** Default options for the cleanup plugin */
 const CLEANUP_OPTS = {
   sourcemap: false,
+  comments: ['some', 'eslint', 'istanbul'],
 }
 
 /**
@@ -77,6 +78,9 @@ const compact = (code, method) => {
 }
 
 
+/** Does not escape search strings starting with this */
+const REGEX_ID = '@regex:'
+
 /**
  * Makes any defined replacements on the source code.
  *
@@ -88,7 +92,11 @@ const anyReplace = (code, info) => {
 
   if (reps) {
     Object.keys(reps).forEach((src) => {
-      const sr = escapeRegexStr(src)
+      // keep regex
+      const sr = src.startsWith(REGEX_ID)
+        ? src.slice(REGEX_ID.length)
+        : escapeRegexStr(src)
+
       code = code.replace(RegExp(sr, 'g'), reps[src])
     })
   }
