@@ -16,6 +16,14 @@ const D = require('./defaults')
 const _done = () => true
 
 /**
+ * Replaces the path of a file with a new one.
+ *
+ * @param {string} fname Filename
+ * @param {string} fpath New path
+ */
+const forcePath = (fname, fpath) => path.resolve(fpath, path.basename(fname))
+
+/**
  * Info about a wrapper in the array _WRAPPERS of jsbits.json
  *
  * Paths are relative to the package.
@@ -24,10 +32,35 @@ const _done = () => true
  * @prop {string} input Source filename, mostly the ES5 export (index.js)
  * @prop {string} output Destination filename
  * @prop {string} wrapper File with the wrapper where to insert the source
+ * @prop {string} typings File to also copy to the dest path
  * @prop {string} [placeholder="_PLACEHOLDER"] jscc varname to replace w/the source
  * @prop {string} [method="minify"] Compactation method: 'cleanup' or 'minify'
  * @prop {string} [export=""] Replace the "module.export=" with this string
  */
+
+/**
+ * Copies the resulting file and its associated "d.ts", if it exists.
+ *
+ * @param {string} outPath Path where to write the code
+ * @param {string} code Processed code.
+ * @param {WrapperInfo} info Info of this wrapper
+ */
+const writeFiles = (outPath, code, info) => {
+  const outFile = path.resolve(outPath, info.output)
+  const promise = fse.writeFile(outFile, code, D.TEXT)
+
+  if (info.typings) {
+    const dtsFile = path.resolve(outPath, info.typings)
+
+    return promise.then(() => {
+      // @ts-ignore Error in typings of fs-extra
+      return fse.copyFile(dtsFile, forcePath(dtsFile, outPath))
+    })
+  }
+
+  return promise
+}
+
 /**
  * Returns a "task" that will call Rollup in the given folder.
  *
@@ -44,18 +77,16 @@ const makeWrapper = (srcPath, jsInfo) => {
     // All the paths are relative to the current package
     const srcFile = path.resolve(srcPath, info.input)
     const wrapper = path.resolve(srcPath, info.wrapper)
-    const outFile = path.resolve(srcPath, info.output)
+
+    // Include name in shalow copy of info
+    info = Object.assign({ _NAME }, jsInfo, info)
 
     return Promise.all([
       fse.readFile(srcFile, D.TEXT),
       fse.readFile(wrapper, D.TEXT),
     ])
-      .then((files) => wrapCode(
-        removeBanner(files[0]),
-        files[1],
-        Object.assign({ _NAME }, jsInfo, info)
-      ))
-      .then((code) => fse.writeFile(outFile, code, D.TEXT))
+      .then((text) => wrapCode(removeBanner(text[0]), text[1], info))
+      .then((code) => writeFiles(srcPath, code, info))
   })
 
   return Promise.all(ops).then(_done)

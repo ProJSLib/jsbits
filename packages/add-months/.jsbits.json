@@ -10,6 +10,7 @@
       "input": "index.js",
       "output": "proto.js",
       "wrapper": ".jsbits/proto.wrapper.js",
+      "typings": ".jsbits/proto.d.ts",
       "method": "cleanup"
     }
   ]

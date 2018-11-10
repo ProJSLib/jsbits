@@ -102,7 +102,7 @@ The return value of both methods is the number of milliseconds between 1 January
 This example shows the behavior of both methods using the same date instance:
 
 ```ts
-// inject setMonths methods using ESM syntax
+// this is using ESM syntax, but you can use require()
 import '@jsbits/add-months/proto'
 
 // helpers

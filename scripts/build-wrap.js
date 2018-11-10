@@ -1,6 +1,6 @@
 // @ts-check
 /*
-  Cleanup the output of the CJS variant and makes the wraped funcions.
+  Makes the wraped funcions (i.e. proto.js)
 */
 const makeWrapper = require('./make-wrapper')
 const logOut = require('./lib/log-out')

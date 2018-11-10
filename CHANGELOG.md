@@ -6,6 +6,7 @@
 
 - Add .gitignore to subrepos, just to comply with best practices.
 - Badges to Readme in the subrepos
+- Typings to the prototype methods, if required.
 
 ### Changed
 

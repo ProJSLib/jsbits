@@ -1,6 +1,6 @@
 {
   "name": "@jsbits/has-own-properties",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Determinates if an object has own properties.",
   "license": "BSD-2-Clause",
   "main": "./index.js",
