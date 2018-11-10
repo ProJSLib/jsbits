@@ -31,8 +31,10 @@ negative, the date occurring `count` months before `startdate`.
 
 - If startdate is not a Date, string, or number that can be converted to a
    valid date, returns a new Date instance with an invalid date.
+
 - If count is evaluated as zero, returns a new Date instance with the
    the same value as startdate.
+
 - If there is an overflow in the day, the date is adjusted to the last
    valid day of the expected month.
 
@@ -121,11 +123,11 @@ The same happens if you apply a `setMonth(6)` to that date, which is correct and
 
 All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible with:
 
-* ES5 browsers, through the [jQuery](https://jquery.com/) `$.jsbits` object or the global `jsbits`.
-* ESM Bundlers, like [webpack](http://webpack.github.io/) and [Rollup](https://rollupjs.org/).
-* [ES modules](http://2ality.com/2014/09/es6-modules-final.html) for modern browsers or NodeJS with the `--experimental-modules` flag.
-* [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules) modules of NodeJS, jspm, and others.
-* [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
+- ES5 browsers, through the [jQuery](https://jquery.com/) `$.jsbits` object or the global `jsbits`.
+- ESM Bundlers, like [webpack](http://webpack.github.io/) and [Rollup](https://rollupjs.org/).
+- [ES modules](http://2ality.com/2014/09/es6-modules-final.html) for modern browsers or NodeJS with the `--experimental-modules` flag.
+- [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules) modules of NodeJS, jspm, and others.
+- [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
 

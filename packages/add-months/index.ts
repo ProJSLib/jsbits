@@ -61,8 +61,10 @@ const addMonthsUTC = (date: Date, count: number) => {
  *
  * - If startdate is not a Date, string, or number that can be converted to a
  *    valid date, returns a new Date instance with an invalid date.
+ *
  * - If count is evaluated as zero, returns a new Date instance with the
  *    the same value as startdate.
+ *
  * - If there is an overflow in the day, the date is adjusted to the last
  *    valid day of the expected month.
  *

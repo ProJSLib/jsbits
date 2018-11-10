@@ -123,22 +123,14 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 <!-- Badges amd Refs -->
 [license-image]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
 [license-url]:    https://github.com/aMarCruz/jsbits/blob/master/LICENSE
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/hdsef0p6q0oqr127?svg=true
-[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
 [travis-image]:   https://img.shields.io/travis/ProJSLib/jsbits.svg
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
 [codebeat-image]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
 [codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
-[codecov-image]:  https://codecov.io/gh/ProJSLib/jsbits/branch/master/graph/badge.svg
-[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits
 [climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
 [climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits
 [cccover-image]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
 [cccover-url]:    https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
-[commits-image]:  https://img.shields.io/github/commits-since/aMarCruz/jsbits/latest.svg
-[commits-url]:    https://github.com/aMarCruz/jsbits/commits/dev
-[bmc-image]:      https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png
-[bmc-url]:        https://www.buymeacoffee.com/aMarCruz
 [kofi-url]:       https://ko-fi.com/C0C7LF7I
 [1]: https://github.com/defunctzombie/package-browser-field-spec
 [2]: https://github.com/rollup/rollup/wiki/pkg.module
