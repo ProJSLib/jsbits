@@ -15,6 +15,10 @@ const D = require('./defaults')
 
 const _done = () => true
 
+const COPY_OPTS = {
+  preserveTimestamps: true,
+}
+
 /**
  * Replaces the path of a file with a new one.
  *
@@ -53,8 +57,7 @@ const writeFiles = (outPath, code, info) => {
     const dtsFile = path.resolve(outPath, info.typings)
 
     return promise.then(() => {
-      // @ts-ignore Error in typings of fs-extra
-      return fse.copyFile(dtsFile, forcePath(dtsFile, outPath))
+      return fse.copy(dtsFile, forcePath(dtsFile, outPath), COPY_OPTS)
     })
   }
 
