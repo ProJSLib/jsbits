@@ -1,25 +1,45 @@
-/**
- * addMonths for the Date.prototype v$_VERSION
- * @license $_LICENSE
- */
 /*
-  Augments the Date.prototype with a new function `addMonths` that
-  adds or subtract X months and returns the date without changing
-  the source date.
+  Date.prototype addMonths and addUTCMonths v$_VERSION
+  @license $_LICENSE
 */
 (function (DateProto) {
 /*#if 1
 $_PLACEHOLDER
 //#else make linters happy */
-  const addMonths = (x) => x
+  const $_NAME = (x) => x
   //#endif
 
-  Object.defineProperty(DateProto, 'addMonths', {
-    value: function (count, asTUC) {
-      return addMonths(this, count, asTUC)
+  /**
+   * @param {Date} _this Date instance, may be null, NaN, etc
+   * @param {number} count months to add
+   * @param {boolean} asUTC utc date?
+   */
+  var _addMonths = function (_this, count, asUTC) {
+
+    if (_this && _this.setTime) {
+      var date = $_NAME(_this, count, asUTC)
+      return _this.setTime(+date)
+    }
+
+    throw new TypeError('Method Date.prototype.add' +
+      (asUTC ? 'UTC' : '') + 'Months called on incompatible receiver ' + _this)
+  }
+
+  Object.defineProperties(DateProto, {
+    addMonths: {
+      value: function (count) {
+        return _addMonths(this, count, false)
+      },
+      configurable: true,
+      writable: true,
     },
-    configurable: true,
-    writable: true,
+    addUTCMonths: {
+      value: function (count) {
+        return _addMonths(this, count, true)
+      },
+      configurable: true,
+      writable: true,
+    },
   })
 
 })(Date.prototype);

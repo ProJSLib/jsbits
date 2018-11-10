@@ -1,11 +1,33 @@
 ### Date.prototype.addMonths
 
-If you prefer, you can inject the function into the `Date.prototype` by requiring 'proto' or by loading the IIFE from 'add-months/proto.js' in your browser:
+If you prefer, you can inject this function into the `Date.prototype` by requiring 'proto' or by loading the IIFE from 'add-months/proto.js' in your browser.
+
+In Date.prototype the function is exposed in separate methods: `addMonths` for local dates, and `addUTCMonths` for UTC dates, so the `asUTC` flag is not required.
+
+Also, its behavior changes to that of a setter. That is, the value of the date on which these methods operate _is changed_.
+
+The return value of both methods is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date.
+
+This example shows the behavior of both methods using the same date instance:
 
 ```ts
-require('@jsbits/add-months/proto')
+// this is using ESM syntax, but you can use require()
+import '@jsbits/add-months/proto'
 
-const date = new Date().addMonths(3)
+// helpers
+const showLoc = (dt) => console.log('' + dt)
+const showUTC = (dt) => console.log(dt.toJSON())
+const showRes = (dt) => console.log(dt)
+
+const date = new Date(2018, 0, 30, 20, 0, 0)
+
+showLoc(date)                   // => Tue Jan 30 2018 20:00:00 GMT-0600 (CST)
+showRes(date.addMonths(1))      // => 1519869600000
+showLoc(date)                   // => Wed Feb 28 2018 20:00:00 GMT-0600 (CST)
+
+showUTC(date)                   // => 2018-03-01T02:00:00.000Z
+showRes(date.addUTCMonths(1))   // => 1522548000000
+showUTC(date)                   // => 2018-04-01T02:00:00.000Z
 ```
 
 ### Note about DST

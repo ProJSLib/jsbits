@@ -8,6 +8,8 @@ const cleanup = require('rollup-plugin-cleanup')
 const jscc = require('jscc')
 const uglify = require('uglify-es')
 
+// at this time, CJS must
+const escapeRegexStr = require('../../packages/escape-regex-str')
 const replaceExport = require('./replace-export')
 const D = require('../defaults')
 
@@ -86,7 +88,8 @@ const anyReplace = (code, info) => {
 
   if (reps) {
     Object.keys(reps).forEach((src) => {
-      code = code.replace(RegExp(src), reps[src])
+      const sr = escapeRegexStr(src)
+      code = code.replace(RegExp(sr, 'g'), reps[src])
     })
   }
 

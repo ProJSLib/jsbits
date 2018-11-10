@@ -1,5 +1,5 @@
 /*
-  hasOwnProperties for the Object.prototype v$_VERSION
+  Object.prototype.$_NAME v$_VERSION
   @license $_LICENSE
 */
 (function (ObjectProto) {
@@ -10,9 +10,7 @@ $_PLACEHOLDER
   //#endif
 
   Object.defineProperty(ObjectProto, '$_NAME', {
-    value: function (includeNonEnumerables) {
-      return $_NAME(this, includeNonEnumerables)
-    },
+    value: $_NAME,
     configurable: true,
     writable: true,
   })
