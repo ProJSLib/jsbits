@@ -56,4 +56,4 @@ const getPackageVersion = (pkgPath?: string) => {
 }
 
 // Export here so that TS places the JSDdoc in the correct position.
-export default getPackageVersion
+export = getPackageVersion

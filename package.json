@@ -28,8 +28,8 @@
     "ttest": "nyc mocha packages/*/test/*.spec.ts",
     "lint": "eslint --report-unused-disable-directives scripts/*.js packages/*/index.ts packages/*/test/*.ts",
     "clean": "rimraf './packages/*/*.+(js|mjs|map|d.ts)' './packages/*/+(esm|umd)' ./packages/*/.rpt2_cache",
+    "build:cjs": "tsc && node ./scripts/build-wrap.js",
     "build:pkg": "node ./scripts/build-assets.js",
-    "build:cjs": "node ./scripts/build-cjs.js",
     "build:esm": "node ./scripts/build-rest.js",
     "build": "yarn lint && yarn build:cjs && yarn build:pkg && yarn build:esm"
   },

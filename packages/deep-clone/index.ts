@@ -125,4 +125,4 @@ const exactClone = function <T> (obj: T): T {
 const deepClone = <T> (value: T, exact?: boolean) => (exact ? exactClone(value) : looseClone(value))
 
 // Export here so that TS places the JSDdoc in the correct position.
-export default deepClone
+export = deepClone

@@ -11,7 +11,6 @@ const queuePackages = require('./lib/queue-packages')
 
 const makeBrowser = require('./make-browser')
 const makeModule  = require('./make-module')
-const makeWrapper = require('./make-wrapper')
 
 /**
  * Returns a "task" that will call Rollup in the given folder.
@@ -26,7 +25,6 @@ const rollupTask = (srcPath, pkgJson) => () => {
 
   return makeModule(srcPath, pkgJson)
     .then(() => !!pkgJson.browser && makeBrowser(srcPath, info, pkgJson))
-    .then(() => !!info._WRAPPERS && makeWrapper(srcPath, info))
 }
 
 // Cos we are changing the current directory, will cannot run the tasks
@@ -34,7 +32,7 @@ const rollupTask = (srcPath, pkgJson) => () => {
 
 // Cos we are changing the current directory, will cannot run the tasks
 // parallel, so we will use p-queue instance.
-queuePackages(rollupTask).onIdle()
+queuePackages(rollupTask, 'package.json').onIdle()
   .then(() => {
     logOut('Finished making ESM and Browser modules.')
     return 0

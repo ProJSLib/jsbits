@@ -16,4 +16,4 @@ const RE_ESCAPED = /(?=[[\](){}^$.?*+|\\])/g
 const escapeRegexStr = (str: string | null) => (str ? str.replace(RE_ESCAPED, '\\') : '')
 
 // Export here so that TS places the JSDdoc in the correct position.
-export default escapeRegexStr
+export = escapeRegexStr

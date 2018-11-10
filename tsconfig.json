@@ -4,7 +4,7 @@
     "declaration": true,
     "declarationMap": true,
     "stripInternal": true,
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "lf",
     "noEmitOnError": true,

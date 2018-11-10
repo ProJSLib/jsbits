@@ -32,7 +32,7 @@ const _done = () => true
  * Returns a "task" that will call Rollup in the given folder.
  *
  * @param {string} srcPath Path where the source files lives
- * @param {object} jsInfo Object from jsbits with the info of the wrappers
+ * @param {object} jsInfo Object from jsbits.json with the info of the wrappers
  * @returns {Promise<boolean>} Success
  */
 const makeWrapper = (srcPath, jsInfo) => {

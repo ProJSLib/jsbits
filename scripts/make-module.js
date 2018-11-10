@@ -9,12 +9,17 @@ const path = require('path')
 const rollup = require('rollup').rollup
 const nodeResolve = require('rollup-plugin-node-resolve')
 const cleanup = require('rollup-plugin-cleanup')
+const replacer = require('./lib/rollup-replacer')
 /** @type {any} */
 const typescript = require('rollup-plugin-typescript2')
 const getBanner = require('./lib/get-banner')
 const getExternals = require('./lib/get-externals')
 
 const CLEANUP_CONF = require('./defaults').CLEANUP_CONF
+const REPLACE_CONF = {
+  sourcemap: true,
+}
+
 const tsconfig = path.join(__dirname, 'tsconfig.json')
 
 /**
@@ -33,6 +38,7 @@ const makeBundle = (outFile, pkgJson, rptsConf) => {
     external: getExternals(pkgJson),
     plugins: [
       nodeResolve(),
+      replacer(REPLACE_CONF),
       typescript(rptsConf),
       cleanup(CLEANUP_CONF),
     ],

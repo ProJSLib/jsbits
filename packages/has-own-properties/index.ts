@@ -30,4 +30,4 @@ const hasOwnProperties = <T> (obj: T, includeNonEnum?: boolean) => {
   return false
 }
 
-export default hasOwnProperties
+export = hasOwnProperties

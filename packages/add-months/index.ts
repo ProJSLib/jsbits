@@ -104,4 +104,4 @@ const addMonths = (startdate: Date | string | number, count: number, asUTC?: boo
   return asUTC ? addMonthsUTC(date, count) : addMonthsLoc(date, count)
 }
 
-export default addMonths
+export = addMonths
