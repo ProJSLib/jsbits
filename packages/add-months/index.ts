@@ -81,7 +81,7 @@ const addMonthsUTC = (date: Date, count: number) => {
  * @returns {Date} A new, adjusted Date instance.
  * @since 1.0.0
  */
-const addMonths = (startdate: Date | string | number, count: number, asUTC?: boolean) => {
+const addMonths = function _addMonths (startdate: Date | string | number, count: number, asUTC?: boolean) {
 
   // For null, undefined, or booleans, return an invalid date.
   if (startdate == null || typeof startdate == 'boolean') {

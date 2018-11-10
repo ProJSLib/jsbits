@@ -35,7 +35,7 @@ const extractVersion = (pkgPath: string) => {
  * @returns {string} The package version, or an empty string if it could not be found.
  * @since 1.0.0
  */
-const getPackageVersion = (pkgPath?: string) => {
+const getPackageVersion = function _getPackageVersion (pkgPath?: string) {
 
   // Start with the current working directory, with normalized slashes
   pkgPath = (pkgPath ? path.resolve(pkgPath) :  process.cwd()).replace(/\\/g, '/')

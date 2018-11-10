@@ -15,7 +15,7 @@ const propertyIsEnumerable = Object.prototype.propertyIsEnumerable
  * @returns {boolean} `true` if the object has properties.
  * @since 1.0.0
  */
-const hasOwnProperties = <T> (obj: T, includeNonEnum?: boolean) => {
+const hasOwnProperties = function _hasOwnProperties<T> (obj: T, includeNonEnum?: boolean) {
 
   if (obj && typeof obj == 'object') {
     const props = Object.getOwnPropertyNames(obj)

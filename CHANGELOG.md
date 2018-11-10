@@ -7,6 +7,10 @@
 - Add .gitignore to subrepos, just to comply with best practices.
 - Badges to Readme in the subrepos
 
+### Changed
+
+- Now the exports are named functions (useful for debugging).
+
 ### Fixed
 
 - Wrong export in typings, now CJS build is done with TS and generates proto.
