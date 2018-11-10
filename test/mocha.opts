@@ -2,7 +2,7 @@
 # Options for mocha
 #
 #--reporter progress
-#--require ./test.env.js
-#--require ts-node
+--require test/test.env.js
+--require ts-node/register
 --check-leaks
 --watch-extensions ts

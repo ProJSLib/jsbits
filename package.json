@@ -24,8 +24,6 @@
   "scripts": {
     "test": "nyc mocha packages/*/test/*.spec.ts",
     "pretest": "yarn build:cjs",
-    "coverage": "nyc report -r=lcov",
-    "ttest": "nyc mocha packages/*/test/*.spec.ts",
     "lint": "eslint --report-unused-disable-directives scripts/*.js packages/*/index.ts packages/*/test/*.ts",
     "clean": "rimraf './packages/*/*.+(js|mjs|map|d.ts)' './packages/*/+(esm|umd)' ./packages/*/.rpt2_cache",
     "build:cjs": "tsc && node ./scripts/build-wrap.js",

@@ -1,7 +1,6 @@
 {
   "extension": [".ts", ".tsx"],
   "reporter": ["text-summary", "lcov"],
-  "require": ["./test/test.env.js", "ts-node/register"],
   "check-coverage": true,
   "lines": 99,
   "statements": 99,

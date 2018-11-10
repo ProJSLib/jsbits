@@ -1,10 +1,8 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "checkJs": false,
-    "declaration": false,
-    "declarationMap": false,
     "esModuleInterop": true,
     "module": "commonjs",
     "pretty": false,

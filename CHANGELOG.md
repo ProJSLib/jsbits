@@ -12,6 +12,7 @@
 ### Changed
 
 - Now the exports are named functions (useful for debugging).
+
 - add-months: proto.js injects the setters `addMonths` and `addUTCMonths`.
 
   This goes more according to how the rest of the `Date.prototype` methods work. Because the 1.0 is a version without diffusion, the change is made in the minor version.
@@ -26,7 +27,10 @@
   Also, the tests failed after a "clean" when not finding proto.js; now they are generated during the CJS build.
 
 - escape-regex-str: Bad written example, showing incorrect result.
+
 - Issues with markdown linter.
+
+- Coverage reports working.
 
 ## \[1.0.0] - 2018-11-09
 

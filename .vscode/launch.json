@@ -8,11 +8,11 @@
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "stopOnEntry": false,
       "args": [
-        "--require", "${workspaceRoot}/test/test.env.js",
+        "--require", "test/test.env.js",
         "--require", "ts-node/register",
         "--no-timeouts",
         "--colors", "--recursive",
-        "${workspaceRoot}/packages/*/test/*.spec.ts",
+        "packages/*/test/*.spec.ts",
       ],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": "npm: pretest",
@@ -36,7 +36,7 @@
       "args": [
         "--no-timeouts",
         "--colors", "--recursive",
-        "${workspaceRoot}/scripts/test/*.spec.js",
+        "scripts/test/*.spec.js",
       ],
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": null,
