@@ -53,6 +53,7 @@ export = (function () {
   }
 
   // for browsers without support for non-common dates (PhantomJS)
+  // istanbul ignore next
   if (isNaN(+new Date(10200, 11, 31))) {
     infoDates.incX.pop()
     infoDates.decX.pop()

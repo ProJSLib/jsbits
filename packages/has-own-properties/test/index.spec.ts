@@ -55,15 +55,18 @@ describe('hasOwnProperties must...', function () {
   })
 
   it('return false for classes with only getters and prototype methods', function () {
-    class Klass {
+    // eslint-disable-next-line new-parens
+    const klass = new class {
       foo () {
-        return 0
+        return 1
       }
       get bar () {
-        return 0
+        return 1
       }
     }
-    expect(hasOwnProperties(new Klass())).to.be(false)
+    expect(hasOwnProperties(klass)).to.be(false)
+    expect(klass.foo()).to.be(1)
+    expect(klass.bar).to.be(1)
   })
 
   it('return true for class instances with private properties/methods', function () {

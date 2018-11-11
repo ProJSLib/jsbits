@@ -240,7 +240,7 @@ describe('addMonths', function () {
         const res = addMonths(start, i)
         const exp = new Date(+start)
         exp.setMonth(i)     // get the change from plain JS
-        if (+res !== +exp) {
+        if (+res !== +exp || i === 1) {
           expect('' + res).to.be('' + exp)
         }
       }
@@ -256,7 +256,7 @@ describe('addMonths', function () {
         const res = addMonths(start, i, true)
         const exp = new Date(+start)
         exp.setUTCMonth(i)     // get the change from plain JS
-        if (+res !== +exp) {
+        if (+res !== +exp || i === 1) {
           expect('' + res).to.be('' + exp)
         }
       }
