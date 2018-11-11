@@ -1,5 +1,5 @@
-import expect from 'expect.js'
-import escapeRegexStr from '..'
+import expect = require('expect.js')
+import escapeRegexStr = require('..')
 
 describe('escapeRegexStr', function () {
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-new-wrappers */
-import expect from 'expect.js'
-import hasOwnProperties from '..'
+import expect = require('expect.js')
+import hasOwnProperties = require('..')
 
 describe('hasOwnProperties must...', function () {
 

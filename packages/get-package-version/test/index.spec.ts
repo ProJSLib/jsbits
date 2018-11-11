@@ -1,6 +1,6 @@
 import * as path from 'path'
-import expect from 'expect.js'
-import getPackageVersion from '..'
+import expect = require('expect.js')
+import getPackageVersion = require('..')
 
 import testDir = require('./test-dir')
 

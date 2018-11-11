@@ -1,6 +1,6 @@
 /* eslint-disable no-new-wrappers */
-import expect from 'expect.js'
-import deepClone from '..'
+import expect = require('expect.js')
+import deepClone = require('..')
 
 const is = function (x: any, y: any) {
   if (x === y) {

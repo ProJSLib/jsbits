@@ -1,8 +1,8 @@
 /// <reference path="../proto.d.ts" />
 
-import expect from 'expect.js'
-import addMonths from '..'
-import infoDates from './info-dates'
+import expect = require('expect.js')
+import addMonths = require('..')
+import infoDates = require('./info-dates')
 
 const _utc = <T extends number> (dt: T[]) => new Date(
   Date.UTC(dt[0], dt[1] - 1, dt[2], dt[3] | 0, dt[4] | 0, dt[5] | 0, dt[6] | 0))
