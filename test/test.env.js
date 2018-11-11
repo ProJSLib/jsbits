@@ -9,5 +9,5 @@
 
   Based on https://github.com/mochajs/mocha/issues/185
 */
-process.env.TS_NODE_PROJECT = __dirname + '/tsconfig.json'
+process.env.TS_NODE_PROJECT = 'test/tsconfig.json'
 process.env.NODE_ENV = 'test'

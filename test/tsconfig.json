@@ -4,10 +4,11 @@
     "allowJs": false,
     "checkJs": false,
     "esModuleInterop": true,
-    "module": "commonjs",
     "pretty": false,
-    "target": "es5",
   },
+  "include": [
+    "../packages/**/*.ts",
+  ],
   "exclude": [
     "node_modules",
   ],

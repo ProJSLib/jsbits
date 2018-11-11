@@ -2,7 +2,7 @@ import * as path from 'path'
 import expect from 'expect.js'
 import getPackageVersion from '..'
 
-import testDir from './test-dir'
+import testDir = require('./test-dir')
 
 describe('getPackageVersion', function () {
 
