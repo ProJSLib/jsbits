@@ -17,6 +17,7 @@ ifeq ($(CURBUILD),$(REQBUILD))
 	@ codecov -f ./coverage/lcov.info
 	@ ./cc-test-reporter after-build --exit-code $(TRAVIS_TEST_RESULT)
 	@ cat ./coverage/lcov.info | codacy-coverage -p . --language typescript
+	@ cat ./coverage/lcov.info | codacy-coverage -p . --language javascript
 	@ echo The report was sent.
 else
 	@ echo The coverage report will be sent in $(REQBUILD)
