@@ -10,6 +10,10 @@
 Part of the [JSBits][jsbits-url] suite.
 
 {{this.options.values._DESCRIPTION}}
+{{#if options.values._PARTIAL.partial_head}}
+
+{{>partial_head}}
+{{/if}}
 
 ## Install
 
@@ -22,10 +26,6 @@ yarn add {{options.values._PACKAGE}}
 ### Targets
 
 {{listTargets options.values}}
-{{#if options.values._PARTIAL.partial_head}}
-
-{{>partial_head}}
-{{/if}}
 {{#functions}}
 
 {{>heading-indent}}{{>sig-name}} {{#if deprecated}}(deprecated){{/if}}

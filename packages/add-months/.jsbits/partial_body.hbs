@@ -6,7 +6,9 @@ In Date.prototype the function is exposed in separate methods: `addMonths` for l
 
 Also, its behavior changes to that of a setter. That is, the value of the date on which these methods operate _is changed_.
 
-The return value of both methods is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date.
+Although you can use `Date.prototype.addMonth.call()`, its use with a type different than Date generates a TypeError.
+
+The return value of both methods is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date, or `NaN` if the date is invalid.
 
 This example shows the behavior of both methods using the same date instance:
 

@@ -19,6 +19,10 @@
 
 - Test for Date.prototype.addMonths now works w/the new specs.
 
+- add-months: Only works with Date and number types.
+
+  The behavior of the Date constructor with a string parameter is inconsistent, ven in node.js (v6 _always_ treat full ISO without timezone as UTC).
+
 ### Fixed
 
 - Wrong export in typings, now CJS build is done with TS and generates proto.
@@ -31,6 +35,8 @@
 - Issues with markdown linter.
 
 - Coverage reports working.
+
+- Examples of add-months
 
 ## \[1.0.0] - 2018-11-09
 

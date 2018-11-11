@@ -12,7 +12,10 @@
       "wrapper": ".jsbits/proto.wrapper.js",
       "typings": ".jsbits/proto.d.ts",
       "replace": {
-        "@regex:\\s+if \\(startdate == null \\|\\| typeof startdate == 'boolean'\\)[^}]+}\\n": ""
+        "var _toString = Object.prototype.toString;\n": "",
+        "@regex:var toDate = function \\([^}]+};\\n": "",
+        "function _addMonths(": "function (",
+        "= toDate(startdate)": "= new Date(+startdate)"
       },
       "method": "cleanup"
     }

@@ -54,6 +54,22 @@ const addMonthsUTC = (date: Date, count: number) => {
   return date
 }
 
+/** Shortcut */
+const _toString = Object.prototype.toString
+
+/**
+ * Convert a number or Date object to a Date, for other types, returns
+ * an invalid date (i.e. NaN).
+ *
+ * @param {*} src Date or number
+ * @return {Date} Parsed date
+ * @private
+ */
+const toDate = (src: any) => {
+  const type = _toString.call(src)
+
+  return new Date(type === '[object Date]' || type === '[object Number]' ? +src : NaN)
+}
 
 /**
  * Returns a date occurring `count` months after `startdate` or, if `count` is
@@ -75,22 +91,17 @@ const addMonthsUTC = (date: Date, count: number) => {
  *
  * This function does not change the original date.
  *
- * @param {Date|string|number} startdate A value parseable as a JavaScript Date
+ * @param {Date|number} startdate A value parseable as a JavaScript Date
  * @param {number} count Number of months to add or substract
  * @param {boolean} [asUTC=false] If `true`, handle the date as UTC
  * @returns {Date} A new, adjusted Date instance.
  * @since 1.0.0
  */
-const addMonths = function _addMonths (startdate: Date | string | number, count: number, asUTC?: boolean) {
-
-  // For null, undefined, or booleans, return an invalid date.
-  if (startdate == null || typeof startdate == 'boolean') {
-    return new Date(NaN)
-  }
+const addMonths = function _addMonths (startdate: Date | number, count: number, asUTC?: boolean) {
 
   // Create a new `Date` instance.
   // Wrong types return NaN dates without throwing exceptions.
-  const date = new Date(startdate as number)
+  const date = toDate(startdate)
 
   // Corce `count` with 'ToInt32'
   count |= 0

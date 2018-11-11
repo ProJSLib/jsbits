@@ -10,8 +10,8 @@
       "wrapper": ".jsbits/proto.wrapper.js",
       "typings": ".jsbits/proto.d.ts",
       "replace": {
-        "\\bObject.prototype.": "ObjectProto.",
-        "_hasOwnProperties(obj, includeNonEnum) {": "_hasOwnProperties(includeNonEnum) {\n    var obj = this;"
+        "Object.prototype.": "ObjectProto.",
+        "@regex:function \\w+\\((\\w+), (\\w+)\\) {": "function ($2) {\n    var $1 = this;"
         },
       "method": "cleanup"
     }

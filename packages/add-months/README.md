@@ -11,6 +11,25 @@ Part of the [JSBits][jsbits-url] suite.
 
 Adds or sustract X months to any JavaScript Date, local or UTC.
 
+## WARNING
+
+v1.1.0 has **_breaking changes_**.
+
+- Now, `addMonths` only works with values type Date and number, with other types it returns an invalid date.
+- The API of the `Date.prototype.addMonth` method has been changed to make it more consistent with the other methods of the `Date` object.
+
+For this time, due to the fact that v1.0.0 did not have enough diffusion, the major version remained unchanged.
+
+By the way: Avoid creating dates with strings, it is inconsistent.
+
+From [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) at MDN:
+
+> Note: parsing of date strings with the `Date` constructor (and `Date.parse`, they are equivalent) is strongly discouraged due to browser differences and inconsistencies. Support for [RFC 2822](http://tools.ietf.org/html/rfc2822#page-14) format strings is by convention only. Support for [ISO 8601](http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15) formats differs in that date-only strings (e.g. "1970-01-01") are treated as UTC, not local.
+
+Even node 6 has issues with this. _Do not use it_ except with the full UTC ISO-8601 format (ending with 'Z').
+
+\* See the helper on the [example](#example) for a workaround.
+
 ## Install
 
 ```bash
@@ -47,7 +66,7 @@ This function does not change the original date.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| startdate | <code>Date</code> \| <code>string</code> \| <code>number</code> |  | A value parseable as a JavaScript Date |
+| startdate | <code>Date</code> \| <code>number</code> |  | A value parseable as a JavaScript Date |
 | count | <code>number</code> |  | Number of months to add or substract |
 | \[asUTC] | <code>boolean</code> | <code>false</code> | If `true`, handle the date as UTC |
 
@@ -62,29 +81,31 @@ Author/Maintainer: @aMarCruz<br>
 ```ts
 import addMonths from '@jsbits/add-months'
 
+// Helper for creating a local date based on a string
+const toDate = (ds) => {
+  const dt = ds.split(/[-T: ]/)
+  return new Date(dt[0], dt[1] - 1, dt[2], ~~dt[3], ~~dt[4], ~~dt[5])
+}
+
 // can increment above one year
-addMonths(new Date('2017-01-08'), 15)  // ⇒ 2018-04-08 00:00:00
+addMonths(toDate('2017-01-08'), 15)  // ⇒ 2018-04-08 06:00:00
 
 // decrement works
-addMonths(new Date('2017-01-01'), -1)  // ⇒ 2016-12-01 00:00:00
+addMonths(toDate('2017-01-01'), -1)  // ⇒ 2016-12-01 06:00:00
 
 // avoids day overflow
-addMonths(new Date('2017-01-31'), 1)  // ⇒ 2017-02-28 00:00:00
+addMonths(toDate('2017-01-31'), 1)  // ⇒ 2017-02-28 06:00:00
 
 // can handle leap years
-addMonths(new Date('2016-01-31'), 1)  // ⇒ 2016-02-29 00:00:00
-
-// adjust the result to honors the Daylight Saving Time.
-// (assuming Juny is has DST -1)
-addMonths(new Date('2015-01-01T05:00:00'), 5)  // ⇒ 2015-06-01 04:00:00
+addMonths(toDate('2016-01-31'), 1)  // ⇒ 2016-02-29 06:00:00
 
 // with the third parameter, date is handled as UTC
 addMonths(new Date('2015-01-01T05:00:00Z'), 1, true)  // ⇒ 2015-02-01 05:00:00Z
 
-// handle string as input (numbers as well)
-addMonths('2016-01-31', 1)  // ⇒ 2016-03-01 00:00:00
+// it accepts numericals parameters
+addMonths(1541898143424, 1)  // ⇒ 2018-12-11 01:02:23
 
-// returns an Invalid Date (i.e. NaN) if the input is falsy
+// returns an Invalid Date (i.e. NaN) for other types,
 // to avoid undesired conversions to the current date.
 addMonths(false, 1)  // ⇒ NaN
 ```
@@ -97,7 +118,9 @@ In Date.prototype the function is exposed in separate methods: `addMonths` for l
 
 Also, its behavior changes to that of a setter. That is, the value of the date on which these methods operate _is changed_.
 
-The return value of both methods is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date.
+Although you can use `Date.prototype.addMonth.call()`, its use with a type different than Date generates a TypeError.
+
+The return value of both methods is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date, or `NaN` if the date is invalid.
 
 This example shows the behavior of both methods using the same date instance:
 

@@ -14,7 +14,7 @@ $_PLACEHOLDER
    * @param {number} count months to add
    * @param {boolean} asUTC utc date?
    */
-  var _addMonths = function (_this, count, asUTC) {
+  var _addMonthsP = function (_this, count, asUTC) {
 
     if (_this instanceof Date) {
       var date = $_NAME(_this, count, asUTC)
@@ -28,14 +28,14 @@ $_PLACEHOLDER
   Object.defineProperties(DateProto, {
     addMonths: {
       value: function (count) {
-        return _addMonths(this, count, false)
+        return _addMonthsP(this, count, false)
       },
       configurable: true,
       writable: true,
     },
     addUTCMonths: {
       value: function (count) {
-        return _addMonths(this, count, true)
+        return _addMonthsP(this, count, true)
       },
       configurable: true,
       writable: true,
