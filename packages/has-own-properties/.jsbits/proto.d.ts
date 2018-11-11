@@ -1,5 +1,5 @@
 /// <reference no-default-lib="true"/>
-/// <reference lib="es5" />
+/// <reference lib="es2015" />
 
 // Extends the Date interface
 interface Object {

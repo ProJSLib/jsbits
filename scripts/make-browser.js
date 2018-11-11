@@ -28,7 +28,6 @@ const JSLIB_GLOBAL = '(root.$ || root.jQuery || {}).jsbits || root.jsbits || (ro
  */
 const umdWrapper = (pkgJson, objName) => `
 ${getBanner(pkgJson, 'UMD')}
-/* eslint-disable */
 ;(function(root, factory) {
   if (typeof define == 'function' && define.amd) {
     define([], factory)

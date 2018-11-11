@@ -24,7 +24,7 @@
   "scripts": {
     "test": "nyc mocha packages/*/test/*.spec.ts",
     "pretest": "yarn lint && yarn build:cjs",
-    "lint": "eslint --quiet --report-unused-disable-directives scripts/*.js packages/**/*.js packages/**/*.ts",
+    "lint": "eslint --quiet --report-unused-disable-directives --ext js,ts scripts packages",
     "clean": "rimraf './packages/*/*.+(js|mjs|map|d.ts)' './packages/*/+(esm|umd)' ./packages/*/.rpt2_cache",
     "build:cjs": "tsc && node ./scripts/build-wrap.js",
     "build:pkg": "node ./scripts/build-assets.js",
