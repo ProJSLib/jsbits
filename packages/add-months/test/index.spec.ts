@@ -4,47 +4,46 @@ import expect from 'expect.js'
 import addMonths from '..'
 import infoDates from './info-dates'
 
-const utc = <T extends number> (
-  y: T, m: T, d: T, hr: T, min: T, sec: T, ms: T
-) => new Date(Date.UTC(y, m - 1, d, hr | 0, min | 0, sec | 0, ms | 0))
+const _utc = <T extends number> (dt: T[]) => new Date(
+  Date.UTC(dt[0], dt[1] - 1, dt[2], dt[3] | 0, dt[4] | 0, dt[5] | 0, dt[6] | 0))
 
 /**
- * Creates a local date
+ * Helper to create a local date with a string.
+ *
+ * It, allows to get a local date with only the date part (yyyy-mm-dd).
+ *
+ * Also, it normalizes the behavior of the Date ctor, since some versions
+ * takes (against the specs) a full date string with no timezone as UTC.
  */
-const dt = (s: string) => {
-  if (s[0] === '^') {
-    return utc.apply(null, s.slice(1).split(',')) as Date
+const dt = (str: string) => {
+
+  if (str[0] === '^') { // special cases in info-dates.ts
+    return _utc(str.slice(1).split(',') as any)
   }
 
-  if ('0123456789'.indexOf(s[0]) >= 0) {
-    //s += ' 00:00:00'
-    const p = s.split(/[T ]/)
-    const a = p[0].split('-').concat(p[1] && p[1].split(':') || [])
-    // @ts-ignore
+  // if s starts with a digit, we have a JSON format
+  if ('0123456789'.indexOf(str[0]) >= 0) {
+    // split all parts
+    const a = str.split(/[-T: ]/) as any
+    // coerces to number
     return new Date(a[0], a[1] - 1, a[2], a[3] | 0, a[4] | 0, a[5] | 0, a[6] | 0)
   }
 
-  return new Date(s)
+  // not a JSON format (ex: 'Jan 7 2017 23:59:59 GMT-0500')
+  return new Date(str)
 }
 
 /**
  * Creates an UTC date
  */
 const ut = (s: string) => {
+
+  // first, check the format
   if ('0123456789'.indexOf(s[0]) < 0) {
-    return dt(s)
+    return dt(s) // not json date
   }
 
-  if (s.length <= 10) {
-    s += ' 00:00:00'
-  }
-
-  const p = s.split(/[T ]/)
-  const date = p[0].split('-')
-  const time = p[1] && p[1].split(':') || []
-
-  // @ts-ignore
-  return utc(date[0], date[1], date[2], time[0], time[1], time[2], time[3])
+  return _utc(s.split(/[-T: ]/) as any)
 }
 
 describe('addMonths', function () {
@@ -111,21 +110,26 @@ describe('addMonths', function () {
     expect(+addMonths(false as any, 0) + '').to.be('NaN')
   })
 
-  it('if date is NaN, or the result is NaN, returns a new invalid Date', function () {
-    expect(+addMonths('X', 0) + '').to.be('NaN')
+  it('if date is NaN, or results in NaN, returns a new invalid Date', function () {
+    expect(+addMonths('X' as any, 0) + '').to.be('NaN')
     expect(+addMonths(NaN, 0) + '').to.be('NaN')
     expect(+addMonths(Infinity, 0) + '').to.be('NaN')
     expect(+addMonths(-Infinity, 0) + '').to.be('NaN')
   })
 
-  it('if date can be converted to valid date, use it', function () {
+  it('if date is a number, convert it to a Date first', function () {
     const dnum = 1234567890
-    const dstr = '2015-02-01T00:00:00Z'
-    const date = new Date()
+    const date = new Date(dnum)
 
-    expect(addMonths(dnum, 0)).to.eql(new Date(dnum))
-    expect(addMonths(dstr, 0)).to.eql(new Date(dstr))
-    expect(addMonths(date, 0)).to.eql(date)
+    expect(addMonths(dnum, 0)).to.eql(new Date(+date))
+  })
+
+  it('if date is not a Date or a number, return an invalid date', function () {
+    const dstr = '2015-02-01T00:00:00Z'
+
+    expect(+addMonths(false as any, 0) + '').to.eql('NaN')
+    expect(+addMonths(dstr as any, 0) + '').to.eql('NaN')
+    expect(+addMonths(null as any, 0) + '').to.eql('NaN')
   })
 
   it('must increment X months with a positive integer', function () {
@@ -263,46 +267,43 @@ describe('addMonths', function () {
   it('test of the example', function () {
     /* eslint-disable indent */
     //@_EXAMPLE_BEGIN
-    // Helper to get a local date with a short string, as the date alone
-    // is taken as UTC by the Date ctor.
-    const date = (ds: string) => new Date(ds + 'T00:00:00')
 
     // can increment above one year
-    expect(addMonths(date('2017-01-08'), 15))
-             .to.eql(date('2018-04-08'))
+    expect(addMonths(dt('2017-01-08'), 15))
+             .to.eql(dt('2018-04-08'))
 
     // decrement works
-    expect(addMonths(date('2017-01-01'), -1))
-             .to.eql(date('2016-12-01'))
+    expect(addMonths(dt('2017-01-01'), -1))
+             .to.eql(dt('2016-12-01'))
 
     // avoids day overflow
-    expect(addMonths(date('2017-01-31'), 1))
-             .to.eql(date('2017-02-28'))
+    expect(addMonths(dt('2017-01-31'), 1))
+             .to.eql(dt('2017-02-28'))
 
     // can handle leap years
-    expect(addMonths(date('2016-01-31'), 1))
-             .to.eql(date('2016-02-29'))
+    expect(addMonths(dt('2016-01-31'), 1))
+             .to.eql(dt('2016-02-29'))
 
     // adjust the result to honors the Daylight Saving Time.
     // (assuming Juny is has DST -1)
-    expect(addMonths(new Date('2015-01-01T05:00:00'), 5))
-             .to.eql(new Date('2015-06-01T05:00:00'))
+    expect(addMonths(dt('2015-01-01T05:00:00'), 5))
+             .to.eql(dt('2015-06-01T05:00:00'))
 
     // with the third parameter, can handle UTC dates
-    expect(addMonths(new Date('2015-01-01T05:00:00Z'), 5, true).toJSON())
-              .to.be(new Date('2015-06-01T05:00:00Z').toJSON())
+    expect(addMonths(ut('2015-01-01T05:00:00Z'), 5, true).toJSON())
+              .to.be(ut('2015-06-01T05:00:00Z').toJSON())
 
     // returns new instances, even if the result has the same value
-    expect(addMonths(date('2016-01-31'), 0))
-          .not.to.be(date('2016-01-31'))
+    expect(addMonths(dt('2016-01-31'), 0))
+          .not.to.be(dt('2016-01-31'))
 
     // handle string as input (numbers as well)
-    expect(addMonths('2018-12-31T05:00:00', 2))
-    .to.eql(new Date('2019-02-28T05:00:00'))
+    expect(addMonths(1541898143424, 0))
+    .to.eql(new Date(1541898143424))
 
     // returns an Invalid Date (i.e. NaN) if the input is falsy
     // to avoid undesired conversions to the current date.
-    expect(+addMonths('', 2) + '').to.be('NaN')
+    expect(+addMonths('' as any, 2) + '').to.be('NaN')
 
     // the same for booleans, although the Date ctor coerces booleans
     // to 0 or 1 (Note the "as any", TS disallow this values).
@@ -326,21 +327,9 @@ describe('addMonths', function () {
 
       for (let i = 0; i < test.length; i++) {
         const info = test[i]
-        const date = new Date(info[0])
+        const date = dt(info[0])
         const result = addMonths(date, info[1])
-        expect(result).to.eql(new Date(info[2]))
-      }
-    })
-
-    it('with the GMT+0200 timezone (CEST)', function () {
-      const TZ = 'GMT+0200'
-      const test = stackOverflow
-
-      for (let i = 0; i < test.length; i++) {
-        const info = test[i]
-        const date = new Date(info[0] + TZ)
-        const result = addMonths(date, info[1])
-        expect(result.toJSON()).to.be(new Date(info[2] + TZ).toJSON())
+        expect(result).to.eql(dt(info[2]))
       }
     })
 
@@ -440,7 +429,7 @@ describe('Date.prototype.addMonths', function () {
     for (let i = 0; i < test.length; i++) {
       const info = test[i]
       const date = ut(info[0])
-      date.addUTCMonths(info[1], true)
+      date.addUTCMonths(info[1])
       expect(date.toJSON()).to.be(ut(info[2]).toJSON())
     }
   })

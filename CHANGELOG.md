@@ -36,7 +36,7 @@
 
 - Coverage reports working.
 
-- Examples of add-months
+- Test and examples of add-months
 
 ## \[1.0.0] - 2018-11-09
 
