@@ -1,6 +1,16 @@
 {
   "extension": [".ts", ".tsx"],
   "reporter": ["text-summary", "lcov"],
+  "exclude": [
+    ".vscode/**",
+    "coverage/**",
+    "scripts/**",
+    "test/**",
+    "test{,-*}.js",
+    "**/*.spec.js",
+    "**/__tests__/**",
+    "**/node_modules/**"
+  ],
   "check-coverage": true,
   "lines": 99,
   "statements": 99,
