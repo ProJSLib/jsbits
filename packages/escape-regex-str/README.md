@@ -1,11 +1,10 @@
 # @jsbits/escape-regex-str
 
-[![License][license-image]](LICENSE)
-[![Travis Test][travis-image]][travis-url]
-[![Codebeat][codebeat-image]][codebeat-url]
-[![Code Climate][climate-image]][climate-url]
-[![Coverage][cccover-image]][cccover-url]
-[![npm Version][npm-image]][npm-url]
+[![License][license-badge]](LICENSE)
+[![Travis Test][travis-badge]][travis-url]
+[![Codebeat][codebeat-badge]][codebeat-url]
+[![Coverage][codecov-badge]][codecov-url]
+[![npm Version][npm-badge]][npm-url]
 
 Part of the [JSBits][jsbits-url] suite.
 
@@ -69,18 +68,29 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
 
 ---
+[![Codacy][codacy-badge]][codacy-url]
+[![Codacy coverage][codacyc-badge]][codacyc-url]
+[![Code Climate][climate-badge]][climate-url]
+[![Code Climate coverage][climatec-badge]][climatec-url]
+
 &copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)
 
-[license-image]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
-[npm-image]:      https://img.shields.io/npm/v/@jsbits/escape-regex-str.svg
+[license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
+[npm-badge]:      https://img.shields.io/npm/v/@jsbits/escape-regex-str.svg
 [npm-url]:        https://www.npmjs.com/package/@jsbits/escape-regex-str
-[travis-image]:   https://img.shields.io/travis/ProJSLib/jsbits.svg
+[travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
-[codebeat-image]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
+[codebeat-badge]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
 [codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
-[climate-image]:  https://codeclimate.com/github/ProJSLib/jsbits/badges/gpa.svg
-[climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits
-[cccover-image]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
-[cccover-url]:    https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
+[codacy-badge]:   https://api.codacy.com/project/badge/Grade/0d842f1b749340ec90277fb3b2da4e86
+[codacy-url]:     https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProJSLib/jsbits&amp;utm_campaign=Badge_Grade
+[codacyc-badge]:  https://api.codacy.com/project/badge/Coverage/0d842f1b749340ec90277fb3b2da4e86
+[codacyc-url]:    https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&utm_medium=referral&utm_content=ProJSLib/jsbits&utm_campaign=Badge_Coverage
+[codecov-badge]:  https://codecov.io/gh/ProJSLib/jsbits/branch/master/graph/badge.svg
+[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits
+[climate-badge]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/maintainability
+[climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits/maintainability
+[climatec-badge]: https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
+[climatec-url]:   https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
 [jsbits-url]:     https://github.com/ProJSLib/jsbits
 [jsbits-formats]: https://github.com/ProJSLib/jsbits#distribution-formats
