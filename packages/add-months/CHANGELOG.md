@@ -28,7 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 - Tests now works w/the new specs.
 - Coverage report.
 
-**NOTE:**
+_**NOTE:**_
 
 The API of this version changed but, due to the few downloads and short time of life of v1.0.0, the major version number remained (against our own policy). See new specs in the [README](README.md#dateprototypeaddmonths)).
 
