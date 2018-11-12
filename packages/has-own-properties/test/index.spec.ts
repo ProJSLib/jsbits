@@ -1,3 +1,4 @@
+/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
 /// <reference path="../proto.d.ts" />
 
 /* eslint-disable no-new-wrappers */

@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
 /// <reference path="../proto.d.ts" />
 
 import expect = require('expect.js')

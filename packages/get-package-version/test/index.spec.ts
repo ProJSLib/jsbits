@@ -1,3 +1,5 @@
+/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
+
 import path = require('path')
 import expect = require('expect.js')
 import getPackageVersion = require('..')

@@ -41,7 +41,7 @@ module.exports = {
     'comma-dangle': [ON, 'always-multiline'],
     'comma-spacing': ON,
     'comma-style': ON,
-    'complexity': [ON, 13],   // default is 20
+    'complexity': [ON, 8],   // default is 20
     'computed-property-spacing': ON,
     'consistent-return': ON,
     'consistent-this': [ON, '_self'],
@@ -59,9 +59,13 @@ module.exports = {
     'key-spacing': [ON, { mode: 'minimum' }],
     'keyword-spacing': ON,
     'linebreak-style': [ON, 'unix'],
-    'max-depth': ON,
-    'max-len': [1, 120, 4, { ignoreUrls: YES, ignorePattern: '=\\s+/.+/' }],
-    'max-nested-callbacks': [ON, 5],  // default is 10
+    'max-depth': [ON, 3],
+    'max-len': [1, 120, 4, { ignoreUrls: YES, ignoreRegExpLiterals: YES }],
+    'max-lines-per-function': [ON, { max: 25, skipBlankLines: YES, skipComments: YES }],
+    'max-lines': ON,
+    'max-nested-callbacks': [ON, 3],  // default is 10
+    'max-params': [ON, 3],
+    'max-statements': [ON, 12],
     'new-parens': ON,
     'no-alert': ON,
     'no-array-constructor': ON,

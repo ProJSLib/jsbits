@@ -9,6 +9,7 @@
 ### Changed
 
 - Per subrepo CHANGELOG
+- More strict ESLint rules.
 
 From this version, changes that affect the generated code will also be recorded in the Changelog of the affected subrepos.
 

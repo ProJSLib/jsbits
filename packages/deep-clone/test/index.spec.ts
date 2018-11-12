@@ -1,4 +1,6 @@
+/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
 /* eslint-disable no-new-wrappers */
+
 import expect = require('expect.js')
 import deepClone = require('..')
 
