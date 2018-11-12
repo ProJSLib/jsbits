@@ -61,7 +61,7 @@ This is a list of the fields of package.json used by JSBits to facilitate the de
 Filename        | index.js | umd/index.js | esm/index.js | index.mjs     | index.b.min.js
 ES version      | ES5      | ES5          | ES5          | ES6           | ES5
 Module format   | CJS      | UMD          | ESM          | ESM           | IIFE
-[node.js][3]    | ✔        | -            | -            | ✔             | -
+[node.js][3]\*  | ✔        | -            | -            | ✔             | -
 [Brunch][4]     | ✔        | -            | -            | -             | -
 [jspm][5]       | ✔        | -            | -            | -             | -
 [browserify][6] | -        | ✔            | -            | -             | -
@@ -70,9 +70,9 @@ Module format   | CJS      | UMD          | ESM          | ESM           | IIFE
 [TypeScript][9] | ✔        | -            | -            | -             | -
 [jQuery][10]    | -        | ✔            | -            | -             | ✔
 
-In one way or another, most modern bundlers let you configure the field used to resolve the import &ndash;this includes webpack, jspm, browserify, and Rollup&ndash;, but even without this support, you can direct your tool to the desired format using its filename.
+In one way or another, most modern bundlers let you configure the field used to resolve imports &ndash;this includes webpack, jspm, browserify, and Rollup&ndash;, but even without this support, you can direct your tool to the desired format using its folder and/or extension.
 
-Surprisingly, one such tool is TypeScript, which always uses the "main" field, at least until v3.1.x, so you are using ESM imports you need enable `esModuleInterop` in your tsconfig.json _or_ import the function by its filename, like this:
+Surprisingly, one such tool is TypeScript, which always uses the "main" field, at least until v3.1.x, so if you are using ESM imports you need enable `esModuleInterop` in your tsconfig.json _or_ import the function by its filename, like this:
 
 ```ts
 import addMonths from '@jsbits/add-months/esm'         // ES5 variant
@@ -83,9 +83,11 @@ The `import = require()` syntax does not have this restriction. In any case, typ
 
 BTW, the last `import` in the example is also used by node.js with [ES Modules](https://nodejs.org/dist/latest/docs/api/esm.html) support.
 
+\* The file imported by node depends on the use of the `--experimental-modules` flag.
+
 ### About the jsbits object
 
-This UMD version pointed by the "browser" field works with AMD and CJS module systems but, if no one is detected, adds the function to the global namespace `jsbits` (i.e. an object of `window`), either in `jQuery.jsbits` if this already exists, or in `jsbits` alone. The following example allows load @jsbits functions in `$.jsbits`:
+This UMD version pointed by the "browser" field works with AMD and CJS module systems but, if no one is detected, it adds the function to the global namespace `jsbits` (i.e. an object of `window`), either in `jQuery.jsbits` if this already exists, or in `jsbits` alone. The following example allows load @jsbits functions in `$.jsbits`:
 
 ```html
 <script>$.jsbits = {};</script>
