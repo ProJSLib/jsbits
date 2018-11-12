@@ -11,6 +11,10 @@ const toDate = (ds) => {
 }
 
 // can increment above one year
+//#if 0 // for linters
+let $_PARAM1 = ''
+let $_PARAM2 = 0
+//#endif
 //#set _PARAM1 = '2017-01-08'
 //#set _PARAM2 = 15
 //#set _RESULT _EXEC(_PARAM1, _PARAM2)

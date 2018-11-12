@@ -61,6 +61,9 @@ const looseClone = function<T> (obj: T): T {
   return clone
 }
 
+// Spliting the next function to gain codebeat points will make it slower,
+// so it's better disable the affecting rules.
+// codebeat:disable[ABC,BLOCK_NESTING]
 /**
  * This is slow, but useful for exact duplication.
  *
@@ -86,17 +89,19 @@ const exactClone = function <T> (obj: T): T {
 
     // Avoid assignment if the prop is readonly and the clone already has it
     if (desc.writable || !_hasOwnProperty.call(clone, prop)) {
-      // value is undefined for setter/getter
+
+      // NOTE: `value` must be excluded for setter/getter
       if (desc.value !== undefined) {
         desc.value = exactClone((obj as any)[prop])
       }
+
       Object.defineProperty(clone, prop, desc)
     }
   }
 
   return clone
 }
-
+// codebeat:enable[ABC,BLOCK_NESTING]
 
 /**
  * Performs a deep cloning of an object own properties, preserving its

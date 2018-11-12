@@ -1,5 +1,21 @@
 # Changelog for @jsbits
 
+## \[Unreleased]
+
+### Added
+
+- Codebeat exclussions.
+
+### Changed
+
+- Per subrepo CHANGELOG
+
+From this version, changes that affect the generated code will also be recorded in the Changelog of the affected subrepos.
+
+### Fixed
+
+- Issues with codebeat linters.
+
 ## \[1.1.0] 2018-11-12
 
 ### Added

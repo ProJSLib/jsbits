@@ -32,6 +32,21 @@ const ensureIsUpdated = (destPath, fileName, options) => {
 }
 
 /**
+ * Make sure that a CHANGELOG exists in the destination directory.
+ * (we must keep existing changes bu subrepo).
+ *
+ * @param {string} destPath Dest folder
+ * @param {string} fileName Dest filename
+ */
+const ensureChangelog = (destPath, fileName) => {
+  const dest = path.join(destPath, fileName)
+
+  return fse.pathExistsSync(dest)
+    ? Promise.resolve()
+    : fse.writeFile(dest, readTmpl(fileName), TEXT)
+}
+
+/**
  * Updates the given file, readed from the jsbits root folder.
  *
  * @param {string} destPath Dest folder
@@ -53,13 +68,12 @@ const licenseFromRoot = (destPath, fileName) => {
  * Check the files in the target folder `pkgPath`
  *
  * @param {string} pkgPath Target folder
- * @param {object} options Jscc options
  */
-const updateFiles = (pkgPath, options) => {
+const updateFiles = (pkgPath) => {
   return Promise.all([
     ensureIsUpdated(pkgPath, '.npmignore'),
     ensureIsUpdated(pkgPath, '.gitignore'),
-    ensureIsUpdated(pkgPath, 'CHANGELOG.md', options),
+    ensureChangelog(pkgPath, 'CHANGELOG.md'),
     licenseFromRoot(pkgPath, 'LICENSE'),
   ])
 }

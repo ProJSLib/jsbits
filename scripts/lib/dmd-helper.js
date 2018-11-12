@@ -11,10 +11,10 @@
  */
 const personName = (person) => {
   if (person) {
-    if (typeof person == 'string') {
+    if (typeof person === 'string') {
       return person
     }
-    if (typeof person == 'object' && person.name) {
+    if (typeof person === 'object' && person.name) {
       const email = person.email ? ` <${person.email}>` : ''
       const url = person.url ? ` (${person.url})` : ''
       return `${person.name}${email}${url}`

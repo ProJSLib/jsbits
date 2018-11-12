@@ -1,3 +1,29 @@
 # Changelog for @jsbits/has-own-properties
 
-See the [changelog of JSLib](https://github.com/ProJSLib/jsbits/blob/master/CHANGELOG.md)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## \[Unreleased]
+
+### Fixed
+
+- Issues with codebeat linters.
+
+## \[1.0.1] - 2018-11-12
+
+### Added
+
+- Badges in the Readme.
+- Test for `Object.prototype.hasOwnProperty`
+
+### Changed
+
+- Makes `Object.prototype.hasOwnProperty` more efficient.
+
+### Fixed
+
+- Wrong `export default` in typings, the correct one is `export =`.
+- Coverage report.
+
+## \[1.0.0] - 2018-11-09
+
+Initial release.
