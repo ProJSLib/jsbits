@@ -90,9 +90,10 @@ $_NAME() // ⇒ $_RESULT
  */
 const test = (fpath, funcName) => {
   const str =
-`
-import expect from 'expect.js'
-import ${funcName} from '..'
+`/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
+
+import expect = require('expect.js')
+import ${funcName} = require('..')
 
 describe('${funcName}', function () {
 
@@ -117,10 +118,10 @@ const main = (fpath, funcName) => {
  *
  * @since ${getPkgVer()}
  */
-const ${funcName} = () => {
+const ${funcName} = function _${funcName} () {
 }
 
-export default ${funcName}
+export = ${funcName}
 `
   fse.writeFileSync(path.join(fpath, 'index.ts'), str)
 }
