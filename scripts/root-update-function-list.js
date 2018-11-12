@@ -69,7 +69,7 @@ const markdownList = () => {
 
 ${target}${values._DESCRIPTION}
 
-Group: ${groups} &ndash; Author: ${values._AUTHOR || D.AUTHOR_NAME}
+v${values._VERSION} &ndash; Group: ${groups} &ndash; Author: ${values._AUTHOR || D.AUTHOR_NAME}
 `
   }).join('')
 }

@@ -1,6 +1,6 @@
 {
   "name": "@jsbits/deep-clone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Performs a deep cloning of an object own properties, with loosy or exact behavior.",
   "license": "BSD-2-Clause",
   "main": "./index.js",

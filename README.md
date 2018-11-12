@@ -24,32 +24,32 @@ _**NOTE:** This work is in its infancy, I will be adding more functions and bett
 
 Adds or sustract X months to any JavaScript Date, local or UTC.
 
-Group: date &ndash; Author: @aMarCruz
+v1.1.0 &ndash; Group: date &ndash; Author: @aMarCruz
 
 ### [deepClone](packages/deep-clone)
 
 Performs a deep cloning of an object own properties, with loosy or exact behavior.
 
-Group: object &ndash; Author: @aMarCruz
+v1.0.1 &ndash; Group: object &ndash; Author: @aMarCruz
 
 ### [escapeRegexStr](packages/escape-regex-str)
 
 Escapes special characters in a string, for matching substrings with a RegExp instance.
 
-Group: dev &ndash; Author: @aMarCruz
+v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
 ### [getPackageVersion](packages/get-package-version)
 
 _NodeJS only_<br>
 Get the version of the package.json file found in the given directory or in one of its parents.
 
-Group: dev &ndash; Author: @aMarCruz
+v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
 ### [hasOwnProperties](packages/has-own-properties)
 
 Determinates if an object has own properties.
 
-Group: object &ndash; Author: @aMarCruz
+v1.0.1 &ndash; Group: object &ndash; Author: @aMarCruz
 <!--END_FUNCTION_LIST-->
 
 ## Distribution Formats
