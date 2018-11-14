@@ -27,7 +27,7 @@ const mergePackage = (tmpl, src) => {
     }
   })
 
-  return JSON.stringify(dest, null, 2)
+  return JSON.stringify(dest, null, 2) + '\n'
 }
 
 /**
