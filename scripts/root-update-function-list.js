@@ -65,7 +65,7 @@ const markdownList = () => {
     const groups = values._GROUPS && values._GROUPS.length ? values._GROUPS.join(', ') : '(none)'
 
     return `
-### [${camelize(folder)}](packages/${folder})
+### [${camelize(folder)}](packages/${folder}/README.md)
 
 ${target}${values._DESCRIPTION}
 

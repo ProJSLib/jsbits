@@ -10,6 +10,7 @@
 
 - Per subrepo CHANGELOG
 - More strict ESLint rules.
+- Links to functions in the main Readme go to subrepo Readme.
 
 From this version, changes that affect the generated code will also be recorded in the Changelog of the affected subrepos.
 

@@ -20,32 +20,32 @@ _**NOTE:** This work is in its infancy, I will be adding more functions and bett
 ## Functions
 
 <!--BEGIN_FUNCTION_LIST-->
-### [addMonths](packages/add-months)
+### [addMonths](packages/add-months/README.md)
 
 Adds or sustract X months to any JavaScript Date, local or UTC.
 
 v1.1.0 &ndash; Group: date &ndash; Author: @aMarCruz
 
-### [deepClone](packages/deep-clone)
+### [deepClone](packages/deep-clone/README.md)
 
 Performs a deep cloning of an object own properties, with loosy or exact behavior.
 
 v1.0.1 &ndash; Group: object &ndash; Author: @aMarCruz
 
-### [escapeRegexStr](packages/escape-regex-str)
+### [escapeRegexStr](packages/escape-regex-str/README.md)
 
 Escapes special characters in a string, for matching substrings with a RegExp instance.
 
 v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
-### [getPackageVersion](packages/get-package-version)
+### [getPackageVersion](packages/get-package-version/README.md)
 
 _NodeJS only_<br>
 Get the version of the package.json file found in the given directory or in one of its parents.
 
 v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
-### [hasOwnProperties](packages/has-own-properties)
+### [hasOwnProperties](packages/has-own-properties/README.md)
 
 Determinates if an object has own properties.
 
