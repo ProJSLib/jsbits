@@ -10,12 +10,12 @@ const propertyIsEnumerable = Object.prototype.propertyIsEnumerable
  * If you want to include non-enumerables properties, pass `true` in the
  * second parameter.
  *
- * @param {any} obj Testing object
+ * @param {*} obj Testing object
  * @param {boolean} [includeNonEnum=false] Include non-enumerable properties?
  * @returns {boolean} `true` if the object has properties.
  * @since 1.0.0
  */
-const hasOwnProperties = function _hasOwnProperties<T> (obj: T, includeNonEnum?: boolean) {
+const hasOwnProperties = function _hasOwnProperties (obj: any, includeNonEnum?: boolean) {
 
   if (obj && typeof obj == 'object') {
     const props = Object.getOwnPropertyNames(obj)

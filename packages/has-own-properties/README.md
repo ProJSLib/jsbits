@@ -35,7 +35,7 @@ second parameter.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| obj | <code>any</code> |  | Testing object |
+| obj | <code>\*</code> |  | Testing object |
 | \[includeNonEnum] | <code>boolean</code> | <code>false</code> | Include non-enumerable properties? |
 
 **Returns**: <code>boolean</code> - `true` if the object has properties.  
