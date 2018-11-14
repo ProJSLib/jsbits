@@ -19,5 +19,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ProJSLib/jsbits.git"
-  }
+  },
+  "keywords": [
+    "es6",
+    "javascript",
+    "typescript",
+    "object",
+    "properties",
+    "detect"
+  ]
 }
