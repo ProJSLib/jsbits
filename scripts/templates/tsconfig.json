@@ -18,14 +18,14 @@
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "es5",
+    "target": "es5"
   },
   "files": [
-    "index.ts",
+    "index.ts"
   ],
   "exclude": [
     ".jsbits",
     "node_modules",
     "test"
-  ],
+  ]
 }

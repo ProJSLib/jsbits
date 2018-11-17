@@ -1,5 +1,11 @@
 # Changelog for @jsbits
 
+## \[Unreleased]
+
+### Fixed
+
+- Remove trailing comma in tsconfigs, to make happy json linter.
+
 ## \[1.1.1] - 2018-11-16
 
 ### Added
