@@ -1,0 +1,7 @@
+#
+# Options for mocha
+#
+--reporter progress
+--require ts-node/register
+--check-leaks
+--watch-extensions ts

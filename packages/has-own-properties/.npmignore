@@ -4,5 +4,5 @@
 .gitrepo
 .jsbits*
 .rpt2_cache
-/test/
-/tmp/
+test/
+yarn.lock

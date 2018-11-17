@@ -25,6 +25,8 @@ pids
 /packages/*/*.js
 /packages/*/*.mjs
 
+!.eslintrc.js
+
 # Share VSCode config, launcher, tasks setup, and JSLint config
 .vscode/**/*
 !.vscode/launch.json

@@ -19,5 +19,19 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ProJSLib/jsbits.git"
+  },
+  "scripts": {
+    "start": "tsc -w & mocha -w -r test/*.ts",
+    "lint": "eslint --ext js .",
+    "pretest": "tsc",
+    "test": "mocha test/index.spec.ts"
+  },
+  "devDependencies": {
+    "@types/expect.js": "^0.3.29",
+    "@types/mocha": "^5.2.5",
+    "expect.js": "^0.3.1",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
   }
 }

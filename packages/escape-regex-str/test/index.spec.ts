@@ -1,4 +1,3 @@
-/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
 
 import expect = require('expect.js')
 import escapeRegexStr = require('..')

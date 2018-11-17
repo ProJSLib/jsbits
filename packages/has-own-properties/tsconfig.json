@@ -20,11 +20,11 @@
     "stripInternal": true,
     "target": "es5",
   },
-  "include": [
-    "./packages/*/index.ts",
+  "files": [
+    "index.ts",
   ],
   "exclude": [
-    ".jsbits.json",
+    ".jsbits",
     "node_modules",
     "test"
   ],

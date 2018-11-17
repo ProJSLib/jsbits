@@ -18,7 +18,7 @@ const tmplPath = require('../paths').templates
  * NOTE: The replacement of the first dot is for _gitignore/_npmignore.
  * @param {string} fname Absolute or relative path.
  */
-const _resolve = (fname) => path.resolve(tmplPath, fname.replace(/^\.(npm|git)/, '_$1'))
+const _resolve = (fname) => path.resolve(tmplPath, fname.replace(/^\./, '_'))
 
 /**
  * The cache with absolute filenames in the keys, to allow files with

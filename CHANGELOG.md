@@ -1,14 +1,17 @@
 # Changelog for @jsbits
 
-## \[Unreleased]
+## \[1.1.1] - 2018-11-16
 
 ### Added
 
-- Codebeat exclussions.
+- Codebeat exclussions for some scripts.
+- Yarn workspaces, to allow per subrepo testing.
+
+Changes on templates and additional files on suprepos allows granular development and testing.
 
 ### Changed
 
-- Per subrepo CHANGELOG
+- Per subrepo Changelog.
 - More strict ESLint rules.
 - Links to functions in the main Readme go to subrepo Readme.
 

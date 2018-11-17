@@ -169,15 +169,15 @@ module.exports = {
   overrides: [
     {
       files: ['**/test/'],
-      env: {
-        mocha: YES,
-      },
-      rules: {
-        'no-console': OFF,
-        'no-debugger': OFF,
-        'prefer-template': OFF,
-        'max-len': OFF,
-      }
+      //env: {
+      //  mocha: YES,
+      //},
+      //rules: {
+      //  'no-console': OFF,
+      //  'no-debugger': OFF,
+      //  'prefer-template': OFF,
+      //  'max-len': OFF,
+      //}
     },
     {
       files: ['packages/*/*.d.ts'],

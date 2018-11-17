@@ -89,9 +89,7 @@ $_NAME() // ⇒ $_RESULT
  * @param {string} funcName -
  */
 const test = (fpath, funcName) => {
-  const str =
-`/* eslint max-lines-per-function:[2,999], max-statements:[2,99] */
-
+  const str =`
 import expect = require('expect.js')
 import ${funcName} = require('..')
 

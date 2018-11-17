@@ -73,6 +73,9 @@ const updateFiles = (pkgPath) => {
   return Promise.all([
     ensureIsUpdated(pkgPath, '.npmignore'),
     ensureIsUpdated(pkgPath, '.gitignore'),
+    ensureIsUpdated(pkgPath, '.eslintrc.js'),
+    ensureIsUpdated(pkgPath, 'tsconfig.json'),
+    ensureIsUpdated(pkgPath, 'test/mocha.opts'),
     ensureChangelog(pkgPath, 'CHANGELOG.md'),
     licenseFromRoot(pkgPath, 'LICENSE'),
   ])
