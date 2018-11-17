@@ -1,21 +1,27 @@
 # JSBits (WIP)
 
+Public library of professional high quality functions for JavaScript and TypeScript.
+
 [![License][license-badge]][license-url]
 [![Travis Test][travis-badge]][travis-url]
 [![Codebeat][codebeat-badge]][codebeat-url]
 [![Coverage][codecov-badge]][codecov-url]
 
-Public library of professional high quality functions for TypeScript and JavaScript.
+The functions of JSBits are written in TypeScript 3 and meet stringent quality requirements.
 
-Each function that I (you) add to this library, must be generic, robust and high performance, 100% tested, and comply with strict requirements of quality.
+They were designed to be efficient and robust, work in _strict mode_ and are tested with 100% coverage.
+
+Most of the functions are pure, isomorphic, and do not have external dependencies, except for a few that, due to their purpose, only run on node.js and use its native library.
 
 ## Installation
 
 This is a... mini-monorepo?... whatever.
 
-This is a centralized repository that standardizes the development and testing of JSBits. To use, each function must be installed from its own npm package (scope @jsbits), so that you get exactly what you need, without garbage or longer download times.
+This is a centralized repository that standardizes the development and testing of JSBits. To use, each function must be installed from its own npm package or directly in the browser, so you get exactly what you need, without garbage or longer download times.
 
-_**NOTE:** This work is in its infancy, I will be adding more functions and better support for browsers over the time._
+The section [Distribution formats](#distribution-formats) details the support for several bundlers and the README of each function contains its requirements and download options.
+
+_**NOTE:** This work is in its infancy, I will be adding more functions as my time allows._
 
 ## Functions
 
@@ -87,14 +93,16 @@ BTW, the last `import` in the example is also used by node.js with [ES Modules](
 
 ### About the jsbits object
 
-This UMD version pointed by the "browser" field works with AMD and CJS module systems but, if no one is detected, it adds the function to the global namespace `jsbits` (i.e. an object of `window`), either in `jQuery.jsbits` if this already exists, or in `jsbits` alone. The following example allows load @jsbits functions in `$.jsbits`:
+This UMD version pointed by the "browser" field works with AMD and CJS module systems but, if no one is detected, it adds the function in the `jQuery.jsbits` namespace, if this already exists, or in the global `jsbits` object (i.e. `window.jsbits`).
+
+If you dont need AMD/CJS support, you can load the functions from its index.b.min.js file.
+
+The following example allows loading @jsbits functions in jQuery:
 
 ```html
 <script>$.jsbits = {};</script>
 <script src="add-months/index.b.min.js"></script>
 ```
-
-The file `index.b.js` has no AND/CJS support.
 
 ## TODO
 
