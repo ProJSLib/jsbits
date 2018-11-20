@@ -40,7 +40,7 @@ describe('deepClone', function () {
     expect(clone).to.eql(value)
   })
 
-  it('works with Objets with no prototype (Object.create(null))', function () {
+  it('works with objects with no prototype (Object.create(null))', function () {
     const value = Object.create(null) as any
     value._str = 's'
     value._num = 1
@@ -49,6 +49,20 @@ describe('deepClone', function () {
     expect(clone.prototype).to.be(undefined)
     expect(clone).not.to.be(value)
     expect(clone).to.eql(value)
+  })
+
+  it('must clone nested objects with no prototype', function () {
+    const value = { obj: Object.create(null) } as any
+    value.obj._str = 's'
+    value.obj._num = 1
+    const clone = deepClone(value)
+
+    expect(clone.obj.prototype).to.be(undefined)
+    expect(clone).not.to.be(value)
+    expect(clone.obj).not.to.be(value.obj)
+    expect(clone).to.eql(value)
+    expect(clone.obj).to.have.property('_str', 's')
+    expect(clone.obj).to.have.property('_num', 1)
   })
 
   it('works with JS String objects (loosy mode)', function () {
