@@ -1,5 +1,4 @@
 {
-  "files.insertFinalNewline": false,
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.validate": [

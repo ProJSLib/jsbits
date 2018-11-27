@@ -1,5 +1,6 @@
 const OFF = 0
 const WARN = 1
+const ERROR = 2
 const ON = 2
 const YES = true
 const USE = false
@@ -31,18 +32,18 @@ module.exports = {
   ],
 
   rules: {
-    'array-bracket-spacing': [ON, 'never'],
+    'array-bracket-spacing': ERROR,
     'array-callback-return': ON,
     'arrow-parens': ON,
     'arrow-spacing': ON,
     'block-scoped-var': ON,
-    'block-spacing': ON,
+    'block-spacing': ERROR,
     'brace-style': [ON, '1tbs'],
     'comma-dangle': [ON, 'always-multiline'],
-    'comma-spacing': ON,
-    'comma-style': ON,
+    'comma-spacing': ERROR,
+    'comma-style': [ON, 'last'],
     'complexity': [ON, 8],   // default is 20
-    'computed-property-spacing': ON,
+    'computed-property-spacing': ERROR,
     'consistent-return': ON,
     'consistent-this': [ON, '_self'],
     'curly': ON,
@@ -50,10 +51,10 @@ module.exports = {
     'dot-notation': WARN,
     'eol-last': ON,
     'eqeqeq': [ON, 'smart'],
-    'func-call-spacing': ON,
+    'func-call-spacing': ERROR,
     'guard-for-in': WARN,
     'handle-callback-err': [ON, '^err(or)?$'],
-    'implicit-arrow-linebreak': ON,
+    'implicit-arrow-linebreak': ERROR,
     'indent': [ON, 2, { flatTernaryExpressions: YES, SwitchCase: 1 }],
     'jsx-quotes': [ON, 'prefer-double'],
     'key-spacing': [ON, { mode: 'minimum' }],
@@ -62,7 +63,7 @@ module.exports = {
     'max-depth': [ON, 3],
     'max-len': [1, 120, 4, { ignoreUrls: YES, ignoreRegExpLiterals: YES }],
     'max-lines-per-function': [ON, { max: 25, skipBlankLines: YES, skipComments: YES }],
-    'max-lines': ON,
+    'max-lines': [ON, { max: 250, skipBlankLines: YES, skipComments: YES }],
     'max-nested-callbacks': [ON, 3],  // default is 10
     'max-params': [ON, 3],
     'max-statements': [ON, 12],
@@ -111,7 +112,7 @@ module.exports = {
     'no-unneeded-ternary': ON,
     'no-unused-expressions': WARN,
     'no-unused-vars': OFF,        // handled by TS
-    'no-use-before-define': [ON, { functions: USE, variables: USE }],
+    'no-use-before-define': [ON, 'nofunc'],
     'no-useless-call': ON,
     'no-useless-computed-key': ON,
     'no-useless-rename': ON,
@@ -121,9 +122,9 @@ module.exports = {
     'no-whitespace-before-property': ON,
     'no-with': ON,
     'object-curly-spacing': [ON, 'always'],
-    'object-shorthand': ON,
+    'object-shorthand': WARN,
     'one-var-declaration-per-line': ON,
-    'operator-linebreak': ON,
+    'operator-linebreak': ERROR,
     'prefer-const': [ON, { destructuring: 'all' }],
     'prefer-numeric-literals': ON,
     'prefer-promise-reject-errors': ON,
@@ -132,20 +133,20 @@ module.exports = {
     'radix': ON,
     'require-await': ON,
     'require-yield': ON,
-    'report-unused-disable-directives': YES,
-    'rest-spread-spacing': ON,
-    'semi-spacing': ON,
+    'rest-spread-spacing': ERROR,
+    'semi-spacing': ERROR,
     'semi': [ON, 'never'],
-    'space-before-blocks': ON,
+    'space-before-blocks': ERROR,
     'space-before-function-paren': [ON, 'always'],
-    'space-in-parens': ON,
-    'space-unary-ops': ON,
+    'space-in-parens': ERROR,
+    'space-infix-ops': ERROR,
+    'space-unary-ops': ERROR,
     'switch-colon-spacing': [ON, { after: YES }],
-    'template-curly-spacing': ON,
+    'template-curly-spacing': ERROR,
     'unicode-bom': [ON, 'never'],
     'wrap-iife': [ON, 'inside'],
     'yield-star-spacing': ON,
-    'yoda': [ON, 'never'],
+    'yoda': ERROR,
 
     // Promise ---------------------------------------------------------------
     'promise/always-return': ON,
@@ -169,15 +170,9 @@ module.exports = {
   overrides: [
     {
       files: ['**/test/'],
-      //env: {
-      //  mocha: YES,
-      //},
-      //rules: {
-      //  'no-console': OFF,
-      //  'no-debugger': OFF,
-      //  'prefer-template': OFF,
-      //  'max-len': OFF,
-      //}
+      env: {
+        mocha: YES,
+      },
     },
     {
       files: ['packages/*/*.d.ts'],

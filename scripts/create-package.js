@@ -89,7 +89,7 @@ $_NAME() // ⇒ $_RESULT
  * @param {string} funcName -
  */
 const test = (fpath, funcName) => {
-  const str =`
+  const str = `
 import expect = require('expect.js')
 import ${funcName} = require('..')
 

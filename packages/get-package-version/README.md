@@ -22,7 +22,7 @@ yarn add @jsbits/get-package-version
 
 - NodeJS v4.2 or later
 
-## `getPackageVersion([pkgPath])` ⇒ `string...` 
+## `getPackageVersion([pkgPath])` ⇒ `string` 
 
 Returns the version of the first package.json file found in the given
 directory or in one of its parents.
@@ -33,9 +33,9 @@ directory or in one of its parents.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| \[pkgPath] | `string...` | `&quot;.&quot;` | Initial directory to search, defaults to `process.cwd()`. |
+| \[pkgPath] | `string` | `&quot;.&quot;` | Initial directory to search, defaults to `process.cwd()`. |
 
-**Returns**: `string...` - The package version, or an empty string if it could not be found.  
+**Returns**: `string` - The package version, or an empty string if it could not be found.  
 
 Since 1.0.0<br>
 Group: dev<br>
