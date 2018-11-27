@@ -15,6 +15,12 @@ describe('Object.prototype.hasOwnProperties must return...', function () {
     expect({ foo: 'bar' }.hasOwnProperties()).to.be(true)
   })
 
+  it('false if has no own properties, even if the ancestor has', function () {
+    const obj1 = { foo: 'a' }
+    const obj2 = Object.create(obj1)
+    expect(obj2.hasOwnProperties()).to.be(false)
+  })
+
   it('false w/o `includeNonEnum` if the object does not have enumerable props', function () {
     const obj = Object.defineProperty({}, 'foo', { value: 'bar' })
     expect(obj.hasOwnProperties()).to.be(false)
@@ -50,7 +56,7 @@ describe('Object.prototype.hasOwnProperties must return...', function () {
     expect(new Date(NaN).hasOwnProperties()).to.be(false)
   })
 
-  it('false for RegExp objects', function () {
+  it('false for RegExp objects, even with flags', function () {
     expect(/./.hasOwnProperties()).to.be(false)
     expect(new RegExp('.', 'g').hasOwnProperties()).to.be(false)
   })
@@ -61,6 +67,20 @@ describe('Object.prototype.hasOwnProperties must return...', function () {
 
   it('false for array with zero elements', function () {
     expect([].hasOwnProperties()).to.be(false)
+  })
+
+  it('te correct value for objects with own props and no prototype', function () {
+    const obj = Object.create(null)
+
+    expect(Object.prototype.hasOwnProperties.call(obj)).to.be(false)
+
+    Object.defineProperty(obj, 'foo', { value: 1 })
+    expect(Object.prototype.hasOwnProperties.call(obj)).to.be(false)
+    expect(Object.prototype.hasOwnProperties.call(obj, true)).to.be(true)
+
+    Object.defineProperty(obj, 'bar', { value: 2, enumerable: true })
+    expect(Object.prototype.hasOwnProperties.call(obj)).to.be(true)
+    expect(Object.prototype.hasOwnProperties.call(obj, true)).to.be(true)
   })
 
 })
