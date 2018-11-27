@@ -16,8 +16,8 @@ const D = require('./defaults')
 
 const TEXT = D.TEXT
 
-const L_BLOCK = '<!--BEGIN_FUNCTION_LIST-->'
-const R_BLOCK = '<!--END_FUNCTION_LIST-->'
+const L_BLOCK = '<!--BEGIN_FUNCTION_LIST-->\n'
+const R_BLOCK = '\n<!--END_FUNCTION_LIST-->'
 
 /**
  * Loop over the "packages" directory and collect data of each subfolder
@@ -56,13 +56,12 @@ const markdownList = () => {
     Adds or sustract X months to any JavaScript Date, local or UTC.
 
     Group: date - Author: aMarCruz
- */
-
+  */
   return Object.keys(data).map((folder) => {
     const values = data[folder]
-    const target = values._TARGET === 'node' ? '_NodeJS only_<br>\n'
-      : values._TARGET === 'browser' ? '_Browsers only_<br>\n' : ''
-    const groups = values._GROUPS && values._GROUPS.length ? values._GROUPS.join(', ') : '(none)'
+    const target = values._TARGET === 'node' ? '_NodeJS only_.\n\n'
+      : values._TARGET === 'browser' ? '_Browsers only_.\n\n' : ''
+    const groups = values._GROUPS && values._GROUPS.join(', ') || '(none)'
 
     return `
 ### [${camelize(folder)}](packages/${folder}/README.md)
