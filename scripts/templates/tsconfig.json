@@ -3,7 +3,6 @@
     "alwaysStrict": true,
     "declaration": true,
     "declarationMap": true,
-    "lib": ["es2015"],
     "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "lf",

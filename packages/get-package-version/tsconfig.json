@@ -3,7 +3,6 @@
     "alwaysStrict": true,
     "declaration": true,
     "declarationMap": true,
-    "lib": ["es2015"],
     "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "lf",
@@ -18,14 +17,14 @@
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "es5",
+    "target": "es5"
   },
   "files": [
-    "index.ts",
+    "index.ts"
   ],
   "exclude": [
     ".jsbits",
     "node_modules",
     "test"
-  ],
+  ]
 }
