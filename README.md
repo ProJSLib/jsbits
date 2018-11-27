@@ -26,6 +26,7 @@ _**NOTE:** This work is in its infancy, I will be adding more functions as my ti
 ## Functions
 
 <!--BEGIN_FUNCTION_LIST-->
+
 ### [addMonths](packages/add-months/README.md)
 
 Adds or sustract X months to any JavaScript Date, local or UTC.
@@ -46,16 +47,18 @@ v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
 ### [getPackageVersion](packages/get-package-version/README.md)
 
-_NodeJS only_<br>
+_NodeJS only_.
+
 Get the version of the package.json file found in the given directory or in one of its parents.
 
 v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
 ### [hasOwnProperties](packages/has-own-properties/README.md)
 
-Determinates if an object has own properties.
+Determines whether an object has own properties, including (optionally) non-enumerable ones.
 
 v1.0.1 &ndash; Group: object &ndash; Author: @aMarCruz
+
 <!--END_FUNCTION_LIST-->
 
 ## Distribution Formats
@@ -117,7 +120,9 @@ In addition to increasing the number of functions...
 
 I'm a full-stack developer with more than 20 year of experience and I try to share most of my work for free and help others, but this takes a significant amount of time and effort so, if you like my work, please consider...
 
+<!-- markdownlint-disable MD033 -->
 [<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]
+<!-- markdownlint-enable MD033 -->
 
 Of course, feedback, PRs, and stars are also welcome 🙃
 
