@@ -10,6 +10,10 @@
 
 - Remove trailing comma in tsconfigs, to make happy json linter.
 
+### Removed
+
+- The script "start" of package.json, it has issues with ts-node and mocha definitions.
+
 ## \[1.1.1] - 2018-11-16
 
 ### Added

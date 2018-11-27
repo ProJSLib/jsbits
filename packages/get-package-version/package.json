@@ -20,7 +20,6 @@
     "url": "https://github.com/ProJSLib/jsbits.git"
   },
   "scripts": {
-    "start": "tsc -w & mocha -w -r test/*.ts",
     "lint": "eslint --ext js .",
     "pretest": "tsc",
     "test": "mocha test/index.spec.ts"
