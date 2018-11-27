@@ -1,33 +1,46 @@
-
-const propertyIsEnumerable = Object.prototype.propertyIsEnumerable
+const ObjectProto = Object.prototype
+const _hasOwnProperty = ObjectProto.hasOwnProperty
 
 /**
- * Determinates if an object has _own_ properties, including `Symbol` and
- * (optionally) the non-enumerable properties.
+ * Determines whether an object has _own_ properties, including (optionally)
+ * non-enumerable ones.
  *
- * Primitive types (number, string, etc) always returns `false`.
+ * This function is especially useful in plain objects, to check if they are
+ * "empty".
  *
- * If you want to include non-enumerables properties, pass `true` in the
- * second parameter.
+ * The test includes getters, setters and `Symbol` types, in the environments
+ * that support them.
  *
- * @param {*} obj Testing object
+ * If you want to check also non-enumerables properties, pass `true` in the
+ * additional parameter.
+ *
+ * _**NOTE:** Testing primitive types is allowed, but these always return
+ * `false`, even the non-empty strings._
+ *
+ * @param {any} obj Testing object or value
  * @param {boolean} [includeNonEnum=false] Include non-enumerable properties?
- * @returns {boolean} `true` if the object has properties.
+ * @returns {boolean} `true` if the object has own properties.
  * @since 1.0.0
  */
+// codebeat:disable[BLOCK_NESTING]
 const hasOwnProperties = function _hasOwnProperties (obj: any, includeNonEnum?: boolean) {
 
-  if (obj && typeof obj == 'object') {
-    const props = Object.getOwnPropertyNames(obj)
+  if (obj && typeof obj === 'object') {
 
-    for (let i = 0; i < props.length; i++) {
-      if (includeNonEnum || propertyIsEnumerable.call(obj, props[i])) {
+    if (includeNonEnum) {
+      return Object.getOwnPropertyNames(obj).length > 0
+    }
+
+    for (const prop in obj) {
+      if (_hasOwnProperty.call(obj, prop)) {
         return true
       }
     }
+
   }
 
   return false
 }
+// codebeat:enable[BLOCK_NESTING]
 
 export = hasOwnProperties

@@ -8,7 +8,7 @@
 
 Part of the [JSBits][jsbits-url] suite.
 
-Determinates if an object has own properties.
+Determines whether an object has own properties, including (optionally) non-enumerable ones.
 
 ## Install
 
@@ -25,20 +25,27 @@ yarn add @jsbits/has-own-properties
 
 ## `hasOwnProperties(obj, [includeNonEnum])` ⇒ <code>boolean</code> 
 
-Determinates if an object has _own_ properties, including `Symbol` and
-(optionally) the non-enumerable properties.
+Determines whether an object has _own_ properties, including (optionally)
+non-enumerable ones.
 
-Primitive types (number, string, etc) always returns `false`.
+This function is especially useful in plain objects, to check if they are
+"empty".
 
-If you want to include non-enumerables properties, pass `true` in the
-second parameter.
+The test includes getters, setters and `Symbol` types, in the environments
+that support them.
+
+If you want to check also non-enumerables properties, pass `true` in the
+additional parameter.
+
+_**NOTE:** Testing primitive types is allowed, but these always return
+`false`, even the non-empty strings._
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| obj | <code>\*</code> |  | Testing object |
+| obj | <code>any</code> |  | Testing object or value |
 | \[includeNonEnum] | <code>boolean</code> | <code>false</code> | Include non-enumerable properties? |
 
-**Returns**: <code>boolean</code> - `true` if the object has properties.  
+**Returns**: <code>boolean</code> - `true` if the object has own properties.  
 
 Since 1.0.0<br>
 Group: object<br>

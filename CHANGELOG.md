@@ -30,6 +30,7 @@ From this version, changes that affect the generated code will also be recorded 
 ### Fixed
 
 - Issues with codebeat linters.
+- Fix script for function list creation, to avoid markdown lint warnings.
 
 ## \[1.1.0] 2018-11-12
 
