@@ -2,6 +2,10 @@
 
 ## \[Unreleased]
 
+### Added
+
+- Add markdownlint rules in .markdownlint.json
+
 ### Fixed
 
 - Remove trailing comma in tsconfigs, to make happy json linter.
