@@ -42,7 +42,7 @@ yarn add @jsbits/add-months
 - ES5 compatible browser
 - NodeJS v4.2 or later
 
-## `addMonths(startdate, count, [asUTC])` ⇒ <code>Date</code> 
+## `addMonths(startdate, count, [asUTC])` ⇒ `Date...` 
 
 Returns a date occurring `count` months after `startdate` or, if `count` is
 negative, the date occurring `count` months before `startdate`.
@@ -65,11 +65,11 @@ This function does not change the original date.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| startdate | <code>Date</code> \| <code>number</code> |  | A value parseable as a JavaScript Date |
-| count | <code>number</code> |  | Number of months to add or substract |
-| \[asUTC] | <code>boolean</code> | <code>false</code> | If `true`, handle the date as UTC |
+| startdate | `Date...` \| `number...` |  | A value parseable as a JavaScript Date |
+| count | `number...` |  | Number of months to add or substract |
+| \[asUTC] | `boolean...` | `false` | If `true`, handle the date as UTC |
 
-**Returns**: <code>Date</code> - A new, adjusted Date instance.  
+**Returns**: `Date...` - A new, adjusted Date instance.  
 
 Since 1.0.0<br>
 Group: date<br>

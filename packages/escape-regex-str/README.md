@@ -23,7 +23,7 @@ yarn add @jsbits/escape-regex-str
 - ES5 compatible browser
 - NodeJS v4.2 or later
 
-## `escapeRegexStr(str)` ⇒ <code>string</code> 
+## `escapeRegexStr(str)` ⇒ `string...` 
 
 Escapes special characters in a given string in preparation to be used as
 argument of the JS `RegExp` constructor, useful when you want to match the
@@ -31,9 +31,9 @@ given string as a literal substring.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| str | <code>string</code> | A string. |
+| str | `string...` | A string. |
 
-**Returns**: <code>string</code> - The escaped string.  
+**Returns**: `string...` - The escaped string.  
 
 Since 1.0.0<br>
 Group: dev<br>

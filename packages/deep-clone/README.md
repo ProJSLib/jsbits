@@ -23,7 +23,7 @@ yarn add @jsbits/deep-clone
 - ES5 compatible browser
 - NodeJS v4.2 or later
 
-## `deepClone(value, [exact])` ⇒ <code>T</code> 
+## `deepClone(value, [exact])` ⇒ `T...` 
 
 Performs a deep cloning of an object own properties, preserving its
 prototype.
@@ -45,10 +45,10 @@ some JS own Objects), nor objects with recursive references.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>T</code> |  | Value to clone, mostly an object or array. |
-| \[exact] | <code>boolean</code> | <code>false</code> | If `true`, duplicate the attributes of the property descriptors |
+| value | `T...` |  | Value to clone, mostly an object or array. |
+| \[exact] | `boolean...` | `false` | If `true`, duplicate the attributes of the property descriptors |
 
-**Returns**: <code>T</code> - The cloned object or value.  
+**Returns**: `T...` - The cloned object or value.  
 
 Since 1.0.0<br>
 Group: object<br>

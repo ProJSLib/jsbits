@@ -23,7 +23,7 @@ yarn add @jsbits/has-own-properties
 - ES5 compatible browser
 - NodeJS v4.2 or later
 
-## `hasOwnProperties(obj, [includeNonEnum])` ⇒ <code>boolean</code> 
+## `hasOwnProperties(obj, [includeNonEnum])` ⇒ `boolean...` 
 
 Determines whether an object has _own_ properties, including (optionally)
 non-enumerable ones.
@@ -42,10 +42,10 @@ _**NOTE:** Testing primitive types is allowed, but these always return
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| obj | <code>any</code> |  | Testing object or value |
-| \[includeNonEnum] | <code>boolean</code> | <code>false</code> | Include non-enumerable properties? |
+| obj | `any...` |  | Testing object or value |
+| \[includeNonEnum] | `boolean...` | `false` | Include non-enumerable properties? |
 
-**Returns**: <code>boolean</code> - `true` if the object has own properties.  
+**Returns**: `boolean...` - `true` if the object has own properties.  
 
 Since 1.0.0<br>
 Group: object<br>
