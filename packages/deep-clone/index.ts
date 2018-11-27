@@ -61,9 +61,6 @@ const looseClone = function<T> (obj: T): T {
   return clone
 }
 
-// Spliting the next function to gain codebeat points will make it slower,
-// so it's better disable the affecting rules.
-// codebeat:disable[ABC,BLOCK_NESTING]
 /**
  * This is slow, but useful for exact duplication.
  *
@@ -72,6 +69,7 @@ const looseClone = function<T> (obj: T): T {
  * @returns {T} The clone.
  * @private
  */
+// codebeat:disable[ABC,BLOCK_NESTING]
 const exactClone = function <T> (obj: T): T {
 
   // Test for null, undefined, primitive, NaN, Symbol, or function value
@@ -107,19 +105,20 @@ const exactClone = function <T> (obj: T): T {
  * Performs a deep cloning of an object own properties, preserving its
  * prototype.
  *
- * By default, `cloneObject` works in "loosy mode" where it clones only
- * the _enumerable_ properties; any other attribute of this properties
- * is removed.
+ * By default `cloneObject` works in "loosy mode", where it clones only
+ * the _enumerable_ properties. Any other properties are ignored.
  *
- * To enable the "exact mode" and clone all the properties, including its
- * attributes (enumerable, configurable, writable), pass `true` in the
- * second parameter.
+ * To enable the "exact mode" and clone all the properties, pass `true`
+ * in the second parameter.
  *
- * Try to limit the usage of this function to POJOs, this function does not
+ * Both modes retain all the attributes of the copied properties (enumerable,
+ * configurable, writable) and correctly transfer the `get` and/or `set`
+ * methods, although these, like the properties with function-type values,
+ * _are copied by reference_.
+ *
+ * Try to limit the usage of this function to POJOs, as this function does not
  * work for objects with constructor that requires parameters (other than
  * some JS own Objects), nor objects with recursive references.
- *
- * _**NOTE:** Functions, getters and setters are copied by reference._
  *
  * @template T
  * @param {T} value Value to clone, mostly an object or array.
