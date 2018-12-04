@@ -4,6 +4,9 @@
 import expect = require('expect.js')
 import hasOwnProperties = require('..')
 
+// istanbul ignore next: Until we can test IE11
+const ifSym = typeof Symbol === 'function' ? it : it.skip
+
 describe('hasOwnProperties must return...', function () {
 
   it('false if the object has no properties', function () {
@@ -119,6 +122,18 @@ describe('hasOwnProperties must return...', function () {
     expect(hasOwnProperties(obj)).to.be(true)
   })
 
+  ifSym('true if has only symbol property names', function () {
+    const obj = { [Symbol()]: 'a' }
+    expect(obj.hasOwnProperties()).to.be(true)
+  })
+
+  ifSym('false with one non-enumerable symbol property name', function () {
+    const obj = Object.defineProperty({}, Symbol(), {
+      value: 'a',
+    })
+    expect(obj.hasOwnProperties()).to.be(false)
+  })
+
 })
 
 describe('hasOwnProperties with `includeNonEnum` flag must return...', function () {
@@ -205,6 +220,13 @@ describe('hasOwnProperties with `includeNonEnum` flag must return...', function 
 
     Object.defineProperty(obj, 'foo', { value: 1 })
     expect(hasOwnProperties(obj, true)).to.be(true)
+  })
+
+  ifSym('true with `includeNonEnum` and one non-enumerable symbol property name', function () {
+    const obj = Object.defineProperty({}, Symbol(), {
+      value: 'a',
+    })
+    expect(obj.hasOwnProperties(true)).to.be(true)
   })
 
 })

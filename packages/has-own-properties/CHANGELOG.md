@@ -12,8 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Changed
 
 - Separate logic, to enhance performance.
-- Include symbol property names, in addition to symbol values.
 - Enhance prerformance.
+- Include Symbol as property names and test.
 
 ### Fixed
 

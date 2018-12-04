@@ -5,6 +5,8 @@ import $_NAME from '$_PACKAGE'
 $_NAME({}) // ⇒ $_RESULT
 //#set _RESULT _F({ foo: 'bar' })
 $_NAME({ foo: 'bar' }) // ⇒ $_RESULT
+//#set _RESULT _F({ [Symbol()]: 'bar' })
+$_NAME({ [Symbol()]: 'bar' }) // ⇒ $_RESULT
 //#set _RESULT _F(null)
 $_NAME(null) // ⇒ $_RESULT
 
@@ -22,8 +24,8 @@ $_NAME(obj) // ⇒ $_RESULT
 //#set _RESULT _F(_O, true)
 $_NAME(obj, true) // ⇒ $_RESULT
 
-//#set _O = { foo: Symbol() }
-const sym = { foo: Symbol() }
+//#set _O = Object.defineProperty({}, Symbol(), { value: 'bar' })
+const sym = Object.defineProperty({}, Symbol(), { value: 'bar' })
 //#set _RESULT _F(_O)
 $_NAME(sym) // ⇒ $_RESULT
 //#set _RESULT _F(_O, true)
@@ -46,6 +48,7 @@ $_NAME(new Date()) // ⇒ $_RESULT
 //#set _RESULT _F(new Date(), true)
 $_NAME(new Date(), true) // ⇒ $_RESULT
 
+// With primitive values
 //#set _RESULT _F(true)
 $_NAME(true) // ⇒ $_RESULT
 //#set _RESULT _F('foo')
@@ -54,3 +57,5 @@ $_NAME('foo') // ⇒ $_RESULT
 $_NAME(1) // ⇒ $_RESULT
 //#set _RESULT _F(NaN)
 $_NAME(NaN) // ⇒ $_RESULT
+//#set _RESULT _F(Symbol())
+$_NAME(Symbol()) // ⇒ $_RESULT

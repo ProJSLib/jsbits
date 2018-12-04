@@ -55,7 +55,7 @@ v1.0.1 &ndash; Group: dev &ndash; Author: @aMarCruz
 
 ### [hasOwnProperties](packages/has-own-properties/README.md)
 
-Determines whether an object has own properties, including (optionally) non-enumerable ones.
+Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.
 
 v1.0.1 &ndash; Group: object &ndash; Author: @aMarCruz
 

@@ -8,7 +8,7 @@
 
 Part of the [JSBits][jsbits-url] suite.
 
-Determines whether an object has own properties, including (optionally) non-enumerable ones.
+Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.
 
 ## Install
 
@@ -25,16 +25,17 @@ yarn add @jsbits/has-own-properties
 
 ## `hasOwnProperties(obj, [includeNonEnum])` ⇒ `boolean` 
 
-Determines whether an object has _own_ properties, including (optionally)
-non-enumerable ones.
+Determines whether an object has _own_ properties or Symbol names, including (optionally)
+the non-enumerable ones.
 
 This function is especially useful in plain objects, to check if they are
 "empty".
 
-The test includes getters, setters and `Symbol` types, in the environments
-that support them.
+The test includes getters, setters and `Symbol` types names and values, in
+the environments that support them.
 
-If you want to check also non-enumerables properties, pass `true` in the
+By default, this function checks only enumerable properties and symbols, if
+you want to check also the non-enumerables ones, pass `true` in the
 additional parameter.
 
 _**NOTE:** Testing primitive types is allowed, but these always return
@@ -58,6 +59,7 @@ import hasOwnProperties from '@jsbits/has-own-properties'
 
 hasOwnProperties({}) // ⇒ false
 hasOwnProperties({ foo: 'bar' }) // ⇒ true
+hasOwnProperties({ [Symbol()]: 'bar' }) // ⇒ true
 hasOwnProperties(null) // ⇒ false
 
 hasOwnProperties([]) // ⇒ false
@@ -68,8 +70,8 @@ const obj = Object.defineProperty({}, 'foo', { value: 'bar' })
 hasOwnProperties(obj) // ⇒ false
 hasOwnProperties(obj, true) // ⇒ true
 
-const sym = { foo: Symbol() }
-hasOwnProperties(sym) // ⇒ true
+const sym = Object.defineProperty({}, Symbol(), { value: 'bar' })
+hasOwnProperties(sym) // ⇒ false
 hasOwnProperties(sym, true) // ⇒ true
 
 hasOwnProperties(new String('')) // ⇒ false
@@ -82,10 +84,12 @@ hasOwnProperties(new RegExp('.', 'g'), true) // ⇒ true
 hasOwnProperties(new Date()) // ⇒ false
 hasOwnProperties(new Date(), true) // ⇒ false
 
+// With primitive values
 hasOwnProperties(true) // ⇒ false
 hasOwnProperties('foo') // ⇒ false
 hasOwnProperties(1) // ⇒ false
 hasOwnProperties(NaN) // ⇒ false
+hasOwnProperties(Symbol()) // ⇒ false
 ```
 
 ### Object.prototype.hasOwnProperties

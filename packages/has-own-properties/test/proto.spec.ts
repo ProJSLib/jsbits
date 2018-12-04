@@ -69,7 +69,7 @@ describe('Object.prototype.hasOwnProperties must return...', function () {
     expect([].hasOwnProperties()).to.be(false)
   })
 
-  it('te correct value for objects with own props and no prototype', function () {
+  it('a correct value for objects with own props and no prototype', function () {
     const obj = Object.create(null)
 
     expect(Object.prototype.hasOwnProperties.call(obj)).to.be(false)
@@ -81,6 +81,35 @@ describe('Object.prototype.hasOwnProperties must return...', function () {
     Object.defineProperty(obj, 'bar', { value: 2, enumerable: true })
     expect(Object.prototype.hasOwnProperties.call(obj)).to.be(true)
     expect(Object.prototype.hasOwnProperties.call(obj, true)).to.be(true)
+  })
+
+  // istanbul ignore next: Until we can test IE11
+  const ifSym = typeof Symbol === 'function' ? it : it.skip
+
+  ifSym('true if has only symbol property names', function () {
+    const obj = { [Symbol()]: 'a' }
+    expect(obj.hasOwnProperties()).to.be(true)
+  })
+
+  ifSym('true with `includeNonEnum` and one non-enumerable symbol property name', function () {
+    const obj = Object.defineProperty({}, Symbol(), {
+      value: 'a',
+    })
+    expect(obj.hasOwnProperties(true)).to.be(true)
+  })
+
+  ifSym('false w/o `includeNonEnum` and one non-enumerable symbol property name', function () {
+    const obj = Object.defineProperty({}, Symbol(), {
+      value: 'a',
+    })
+    expect(obj.hasOwnProperties()).to.be(false)
+  })
+
+  ifSym('false w/o support for symbols and object w/no props', function () {
+    const obj = Object.defineProperty({}, Symbol(), {
+      value: 'a',
+    })
+    expect(obj.hasOwnProperties()).to.be(false)
   })
 
 })

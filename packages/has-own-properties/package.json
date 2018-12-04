@@ -1,7 +1,7 @@
 {
   "name": "@jsbits/has-own-properties",
   "version": "1.0.1",
-  "description": "Determines whether an object has own properties, including (optionally) non-enumerable ones.",
+  "description": "Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.",
   "license": "BSD-2-Clause",
   "main": "./index.js",
   "module": "esm/index.js",
@@ -28,7 +28,6 @@
   "devDependencies": {
     "@types/expect.js": "^0.3.29",
     "@types/mocha": "^5.2.5",
-    "benchmark": "^2.1.4",
     "expect.js": "^0.3.1",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
