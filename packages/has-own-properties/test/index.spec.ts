@@ -1,5 +1,4 @@
 /* eslint-disable no-new-wrappers */
-/// <reference path="../proto.d.ts" />
 
 import expect = require('expect.js')
 import hasOwnProperties = require('..')
@@ -124,14 +123,14 @@ describe('hasOwnProperties must return...', function () {
 
   ifSym('true if has only symbol property names', function () {
     const obj = { [Symbol()]: 'a' }
-    expect(obj.hasOwnProperties()).to.be(true)
+    expect(hasOwnProperties(obj)).to.be(true)
   })
 
   ifSym('false with one non-enumerable symbol property name', function () {
     const obj = Object.defineProperty({}, Symbol(), {
       value: 'a',
     })
-    expect(obj.hasOwnProperties()).to.be(false)
+    expect(hasOwnProperties(obj)).to.be(false)
   })
 
 })
@@ -226,7 +225,7 @@ describe('hasOwnProperties with `includeNonEnum` flag must return...', function 
     const obj = Object.defineProperty({}, Symbol(), {
       value: 'a',
     })
-    expect(obj.hasOwnProperties(true)).to.be(true)
+    expect(hasOwnProperties(obj, true)).to.be(true)
   })
 
 })
