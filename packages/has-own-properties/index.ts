@@ -31,12 +31,7 @@ const hasOwnProperties = function _hasOwnProperties (obj: any, includeNonEnum?: 
       return Object.getOwnPropertyNames(obj).length > 0
     }
 
-    for (const prop in obj) {
-      if (_hasOwnProperty.call(obj, prop)) {
-        return true
-      }
-    }
-
+    return Object.keys(obj).length > 0
   }
 
   return false

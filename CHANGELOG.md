@@ -5,6 +5,7 @@
 ### Added
 
 - Add markdownlint rules in .markdownlint.json
+- benchmark package, to test performance.
 
 ### Fixed
 
