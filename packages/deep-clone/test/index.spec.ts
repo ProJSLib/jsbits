@@ -1,6 +1,14 @@
 /* eslint-disable no-new-wrappers */
+/// <reference lib="es2015.symbol" />
+
 import expect = require('expect.js')
 import deepClone = require('..')
+
+const itif = function (condition: any, msg: string, fn: () => any) {
+  (condition ? it : it.skip)(msg, fn)
+}
+
+const hasSymbol = typeof Symbol === 'function'
 
 const is = function (x: any, y: any) {
   if (x === y) {
@@ -65,21 +73,10 @@ describe('deepClone', function () {
     expect(clone.obj).to.have.property('_num', 1)
   })
 
-  it('works with JS String objects (loosy mode)', function () {
+  it('works with JS String objects', function () {
     const value = new String('ok')
     ;(value as any)._foo = 'foo'
     const clone = deepClone(value)
-
-    expect(clone).to.be.an(String)
-    expect(clone).not.to.be(value)
-    expect(clone + '').to.equal(value + '')
-    expect((clone as any)._foo).to.be((value as any)._foo)
-  })
-
-  it('works with JS String objects (exact mode)', function () {
-    const value = new String('ok')
-    ;(value as any)._foo = 'foo'
-    const clone = deepClone(value, true)
 
     expect(clone).to.be.an(String)
     expect(clone).not.to.be(value)
@@ -121,7 +118,7 @@ describe('deepClone', function () {
     expect((clone as any)._foo).to.be((value as any)._foo)
   })
 
-  it('works with JS RegExp objects (loosy mode)', function () {
+  it('works with JS RegExp objects', function () {
     const value = /\s+/gi
     const clone = deepClone(value)
 
@@ -130,15 +127,24 @@ describe('deepClone', function () {
     expect('' + clone).to.be('' + value)
   })
 
-  it('works with JS RegExp objects (exact mode)', function () {
-    const value = /\s+/gi
-    value.lastIndex = 5
-    const clone = deepClone(value, true)
+  itif(hasSymbol, 'must clone Symbol() property names', function () {
+    const symbl = Symbol()
+    const value = { [symbl]: 'a' }
+    const clone = deepClone(value)
 
-    expect(clone).to.be.an(RegExp)
+    expect(clone).to.be.an(Object)
     expect(clone).not.to.be(value)
-    expect('' + clone).to.be('' + value)
-    expect(clone.lastIndex).to.be(value.lastIndex)
+    expect(clone).to.have.property(symbl as any)
+  })
+
+  itif(hasSymbol, 'must clone Symbol() property values', function () {
+    const symbl = Symbol()
+    const value = { a: symbl }
+    const clone = deepClone(value)
+
+    expect(clone).to.be.an(Object)
+    expect(clone).not.to.be(value)
+    expect(clone.a).to.be(symbl)
   })
 
   it('works with Arrays', function () {
@@ -150,6 +156,16 @@ describe('deepClone', function () {
     expect(clone).not.to.be(value)
     expect(stringify(clone)).to.be(stringify(value))
     expect(clone.length).to.be(value.length)
+  })
+
+  it('must clone objects of array elements', function () {
+    const value = [{ foo: 'a' }, { bar: 1 }, { baz: { x: 2 } }]
+    const clone = deepClone(value)
+
+    expect(clone).to.be.an(Array)
+    expect(clone).not.to.be(value)
+    expect(clone.length).to.be(value.length)
+    expect(stringify(clone)).to.be(stringify(value))
   })
 
   it('in loosy mode, only the enumerable properties are duplicated', function () {
@@ -281,4 +297,125 @@ describe('deepClone', function () {
     expect(clone).to.eql(objct)
     expect(clone.baz instanceof Date && clone.baz !== objct.baz).to.be(true)
   })
+})
+
+describe('deepClone with the `exact` flag must...', function () {
+  //
+  const defPropRo = (o: any, p: string | symbol | number,
+    value: any) => Object.defineProperty(o, p, { value })
+
+  const defPropWr = (o: any, p: string | symbol | number,
+    value: any) => Object.defineProperty(o, p, { value, writable: true })
+
+  it('clone JS String objects', function () {
+    const value = new String('ok')
+    defPropRo(value, '_foo', 'foo')
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(String)
+    expect(clone).not.to.be(value)
+    expect(clone + '').to.equal(value + '')
+    expect((clone as any)._foo).to.be((value as any)._foo)
+  })
+
+  it('clone JS Number objects', function () {
+    const value = new Number(123)
+    defPropRo(value, '_foo', 'foo')
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(Number)
+    expect(clone).not.to.be(value)
+    expect(clone.valueOf()).to.be(value.valueOf())
+    expect((clone as any)._foo).to.be((value as any)._foo)
+  })
+
+  it('clone JS Number in properties', function () {
+    const value = defPropWr({}, '_foo', new Number(123))
+    defPropRo(value._foo, 'foo', 'foo')
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(Object)
+    expect(clone).not.to.be(value)
+    expect(clone._foo).to.be.an(Number)
+    expect(clone._foo).not.to.be(value._foo)
+    expect(clone._foo.valueOf()).to.be(value._foo.valueOf())
+    expect(clone._foo.foo).to.be(value._foo.foo)
+  })
+
+  it('clone JS Date properties', function () {
+    const value = defPropRo({}, 'dt', new Date())
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.a(Object)
+    expect(clone).not.to.be(value)
+    expect(clone.dt).to.be.a(Date)
+    expect(clone.dt).not.to.be(value.dt)
+    expect(clone.dt).to.eql(value.dt)
+  })
+
+  it('clone JS RegExp objects', function () {
+    const value = /\s+/gi
+    value.lastIndex = 5
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(RegExp)
+    expect(clone).not.to.be(value)
+    expect('' + clone).to.be('' + value)
+    expect(clone.lastIndex).to.be(value.lastIndex)
+  })
+
+  it('clone JS RegExp properties', function () {
+    const value = defPropWr({}, 're', /\s+/gi)
+    value.re.lastIndex = 5
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(Object)
+    expect(clone.re).to.be.an(RegExp)
+    expect(clone).not.to.be(value)
+    expect(clone.re).not.to.be(value.re)
+    expect(clone.re.lastIndex).to.be(5)
+    expect(Object.getOwnPropertyNames(clone) + '').to.equal('re')
+  })
+
+  itif(hasSymbol, 'clone non-enum Symbol() property names', function () {
+    const symbl = Symbol()
+    const value = defPropRo({}, symbl, 'a')
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(Object)
+    expect(clone).not.to.be(value)
+    expect(clone).to.have.property(symbl as any, 'a')
+  })
+
+  itif(hasSymbol, 'clone non-enum Symbol() property values', function () {
+    const symbl = Symbol()
+    const value = defPropRo({}, 'a', symbl)
+    const clone = deepClone(value, true)
+
+    expect(clone).to.be.an(Object)
+    expect(clone).not.to.be(value)
+    expect(clone).to.have.property('a', symbl)
+  })
+
+  it('clone non-enumerable getter and setters.', function () {
+    const value = (function () {
+      let _foo = 'bar'
+      return Object.defineProperty({}, 'foo', {
+        get () {
+          return _foo
+        },
+        set (newValue) {
+          _foo = newValue
+        },
+      })
+    })()
+    const clone = deepClone(value, true)
+
+    expect(clone).not.to.be(value)
+    expect(clone.foo).to.be('bar')
+    clone.foo = 'BAZ'
+    expect(clone.foo).to.be('BAZ')
+    expect(JSON.stringify(value)).to.be('{}')
+  })
+
 })

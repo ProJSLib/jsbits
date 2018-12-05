@@ -171,7 +171,6 @@ describe('hasOwnProperties with `includeNonEnum` flag must return...', function 
   })
 
   it('true for RegExp objects (has a `length` and an array)', function () {
-    debugger // eslint-disable-line
     expect(hasOwnProperties(/./, true)).to.be(true)
     expect(hasOwnProperties(new RegExp('.', 'g'), true)).to.be(true)
   })

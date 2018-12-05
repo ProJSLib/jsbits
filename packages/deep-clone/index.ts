@@ -1,3 +1,4 @@
+/// <reference lib="es2015.core" />
 /*
   Want support for recursive objects?
   See https://github.com/dankogai/js-object-clone/blob/master/object-clone.js
@@ -5,6 +6,63 @@
 const _OP = Object.prototype
 const _toString = _OP.toString
 const _hasOwnProperty = _OP.hasOwnProperty
+
+/**
+ * Get the enumerable property and symbol names of an object.
+ *
+ * @param {Function} _keys The object
+ * @returns {Function} Extractor
+ */
+const getEnumKeys = (function () {
+
+  const _getSymbols = Object.getOwnPropertySymbols
+  const _keys = Object.keys
+  // istanbul ignore next: Until we can test IE11
+  if (!_getSymbols) {
+    return _keys
+  }
+
+  // Avoid creating multiple anonymous functions
+  const _isEnum = _OP.propertyIsEnumerable
+  const _filter = function (this: {}, sym: Symbol) {
+    return _isEnum.call(this, sym)
+  }
+
+  return (obj: {}) => {
+    const objkeys = _keys(obj) as Array<string | symbol>
+    const symbols = _getSymbols(obj)
+
+    return symbols.length
+      ? objkeys.concat(symbols.filter(_filter, obj))
+      : objkeys
+  }
+})()
+
+/**
+ * Get the all the properties and symbol names of an object, including the
+ * non-enumerable ones.
+ *
+ * @param {Function} _keys The object
+ * @returns {Function} Extractor
+ */
+const getAllKeys = (function () {
+
+  const _getSymbols = Object.getOwnPropertySymbols
+  const _keys = Object.getOwnPropertyNames
+  // istanbul ignore next: Until we can test IE11
+  if (!_getSymbols) {
+    return _keys
+  }
+
+  return (obj: {}) => {
+    const objkeys = _keys(obj) as Array<string | symbol>
+    const symbols = _getSymbols(obj)
+
+    return symbols.length
+      ? objkeys.concat(symbols)
+      : objkeys
+  }
+})()
 
 /**
  * Creates a new object intance of the given type.
@@ -31,75 +89,60 @@ const createObject = <T extends Object> (obj: T): T & { [k: string]: any } => {
   return Object.create(Object.getPrototypeOf(obj))
 }
 
+const cloneFac = function (getKeys: typeof getAllKeys) {
+
+  // codebeat:disable[ABC,BLOCK_NESTING]
+  const _clone = function _clone<T> (obj: T): T {
+
+    // Filter out null, undefined, NaN, primitive values, and functions
+    if (obj !== Object(obj) || typeof obj == 'function') {
+      return obj
+    }
+
+    // Get a new object of the same type and the properties of the source
+    const clone = createObject(obj)
+    const props = getKeys(obj)
+
+    for (let i = 0; i < props.length; i++) {
+      const prop = props[i]
+      const desc = Object.getOwnPropertyDescriptor(obj, prop)!
+
+      if (desc.writable || !_hasOwnProperty.call(clone, prop)) {
+
+        // NOTE: `value` must be excluded for setter/getter
+        if (desc.value !== undefined) {
+          desc.value = _clone((obj as any)[prop])
+        }
+
+        Object.defineProperty(clone, prop, desc)
+      }
+    }
+
+    return clone
+  }
+  // codebeat:enable[ABC,BLOCK_NESTING]
+
+  return _clone
+}
+
+
 /**
- * Deep clone of enumerable properties, faster than exactClone.
+ * Deep clone of enumerable properties.
  *
  * @param {object} obj Any object
  * @returns {object} The clone.
  * @private
  */
-const looseClone = function<T> (obj: T): T {
-
-  // Test for null, undefined, primitive, NaN, Symbol, or function value
-  if (obj !== Object(obj) || typeof obj == 'function') {
-    return obj
-  }
-
-  // Get a new object of the same type and the properties of the source
-  const clone = createObject(obj)
-  const props = Object.keys(obj)
-
-  for (let i = 0; i < props.length; i++) {
-    const prop = props[i]
-    const desc = Object.getOwnPropertyDescriptor(obj, prop)!
-
-    if (desc.writable || !_hasOwnProperty.call(clone, prop)) {
-      clone[prop] = looseClone((obj as any)[prop])
-    }
-  }
-
-  return clone
-}
+const looseClone = cloneFac(getEnumKeys)
 
 /**
- * This is slow, but useful for exact duplication.
+ * Deep clone of all the properties, including the non-enumerable ones.
  *
- * @template T
- * @param {T} obj Any object or value
- * @returns {T} The clone.
+ * @param {object} obj Any object or value
+ * @returns {object} The clone.
  * @private
  */
-// codebeat:disable[ABC,BLOCK_NESTING]
-const exactClone = function <T> (obj: T): T {
-
-  // Test for null, undefined, primitive, NaN, Symbol, or function value
-  if (obj !== Object(obj) || typeof obj == 'function') {
-    return obj
-  }
-
-  // Get a new object of the same type and the properties of the source
-  const clone = createObject(obj)
-  const props = Object.getOwnPropertyNames(obj)
-
-  for (let i = 0; i < props.length; i++) {
-    const prop = props[i]
-    const desc = Object.getOwnPropertyDescriptor(obj, prop)!
-
-    // Avoid assignment if the prop is readonly and the clone already has it
-    if (desc.writable || !_hasOwnProperty.call(clone, prop)) {
-
-      // NOTE: `value` must be excluded for setter/getter
-      if (desc.value !== undefined) {
-        desc.value = exactClone((obj as any)[prop])
-      }
-
-      Object.defineProperty(clone, prop, desc)
-    }
-  }
-
-  return clone
-}
-// codebeat:enable[ABC,BLOCK_NESTING]
+const exactClone = cloneFac(getAllKeys)
 
 /**
  * Performs a deep cloning of an object own properties, preserving its
