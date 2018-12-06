@@ -1,6 +1,7 @@
 # @jsbits/get-package-version
 
 [![License][license-badge]](LICENSE)
+[![AppVeyor Test][appveyor-badge]][appveyor-url]
 [![Travis Test][travis-badge]][travis-url]
 [![Codebeat][codebeat-badge]][codebeat-url]
 [![Coverage][codecov-badge]][codecov-url]
@@ -72,6 +73,8 @@ Please see the [Distribution Formats][jsbits-formats] in the JSBits README to kn
 [license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
 [npm-badge]:      https://img.shields.io/npm/v/@jsbits/get-package-version.svg
 [npm-url]:        https://www.npmjs.com/package/@jsbits/get-package-version
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
+[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
 [travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
 [codebeat-badge]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173

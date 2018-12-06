@@ -3,6 +3,7 @@
 Public library of professional high quality functions for JavaScript and TypeScript.
 
 [![License][license-badge]][license-url]
+[![AppVeyor Test][appveyor-badge]][appveyor-url]
 [![Travis Test][travis-badge]][travis-url]
 [![Codebeat][codebeat-badge]][codebeat-url]
 [![Coverage][codecov-badge]][codecov-url]
@@ -148,6 +149,8 @@ Special thanks to [BrowserStack](https://www.browserstack.com) for their support
 <!-- Badges and Refs (badges for the branch 'master') -->
 [license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
 [license-url]:    https://github.com/aMarCruz/jsbits/blob/master/LICENSE
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
+[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
 [travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
 [codebeat-badge]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
