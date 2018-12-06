@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 - Support for Symbol property names.
 - Support for Error, Set, Map, and other ES6/ES7 types.
-- Copy by reference unsupported types.
+- Argument is copied as an object without prototype.
+- Unsupported types are copied by reference.
 - Enhance performance in some internal operations.
 
 ### Fixed

@@ -15,6 +15,7 @@ const enum ObjType {
   DataView,
   MapOrSet,
   Error,
+  Arguments,
   AsIs,
 }
 
@@ -43,6 +44,7 @@ const clonable: { [k: string]: ObjType } = {
   Error: ObjType.Error,
   Map: ObjType.MapOrSet,
   Set: ObjType.MapOrSet,
+  Arguments: ObjType.Arguments,
   Atomics: ObjType.AsIs,
   JSON: ObjType.AsIs,
   Math: ObjType.AsIs,
@@ -76,20 +78,10 @@ const _ownKeys = typeof Reflect === 'object' &&
   typeof Reflect.ownKeys === 'function' && Reflect.ownKeys
 
 /**
- * Creates a function to filter out non-enumerable keys.
- *
- * @returns {function} filter
- * @private
- */
-const getEnumFilter = () => {
-  const _isEnum = _OP.propertyIsEnumerable
-  return function (this: {}, sym: symbol) {
-    return _isEnum.call(this, sym)
-  }
-}
-
-/**
  * Creates a function to get enumerable symbol names of an object.
+ *
+ * The array is returned as string[] because the lack of full typings
+ * for Symbol keys in TS v3
  *
  * @param {boolean} exact All keys?
  * @returns {Function} Extractor
@@ -109,19 +101,22 @@ const getKeyGetter = function (exact: boolean) {
   // All the keys, including the non-enumerable ones
   // istanbul ignore if: until we can test IE11
   if (exact) {
-    return (obj: any) => {
-      const objkeys = _keys(obj) as Array<string | symbol>
-      const symbols = _getSymbols(obj)
-      return symbols.length ? objkeys.concat(symbols) : objkeys
-    }
+    return (obj: any) => _keys(obj).concat(_getSymbols(obj) as any)
   }
 
   // Only enumerable keys and symbols
-  const _filter = getEnumFilter()
+  const _isEnum = _OP.propertyIsEnumerable
   return (obj: any) => {
-    const objkeys = _keys(obj) as Array<string | symbol>
+    const objkeys = _keys(obj) as any[]
     const symbols = _getSymbols(obj)
-    return symbols.length ? objkeys.concat(symbols.filter(_filter, obj)) : objkeys
+
+    for (let i = 0; i < symbols.length; i++) {
+      if (_isEnum.call(obj, symbols[i])) {
+        objkeys.push(symbols[i])
+      }
+    }
+
+    return objkeys as string[]
   }
 }
 
@@ -135,8 +130,7 @@ const getKeyGetter = function (exact: boolean) {
 const getKeysFac = function (exact: boolean) {
 
   // Avoid creating multiple anonymous functions
-  const _re = /\D/
-  const _filtIdx = (prop: string | symbol) => _re.test(prop as any) && prop !== 'length'
+  const _filtIdx = (prop: any) => prop !== '0' && (prop | 0) <= 0 && prop !== 'length'
   const _getKeys = exact && _ownKeys || getKeyGetter(exact)
 
   return (obj: {}, type: string) => {
@@ -185,8 +179,16 @@ const cloneError = (src: Error) => {
   })
 }
 
+const cloneArguments = (src: any[]) => {
+  const args = Object.create(null)
+  return Object.defineProperty(args, 'length', {
+    value: src.length, configurable: true, writable: true,
+  })
+}
+
 const cloneFn: { [k: number]: (obj: any, fn: CloneFn, _?: string) => any } = {
   [ObjType.AsIs]: (obj: any) => obj,
+  [ObjType.Arguments]: cloneArguments,
   [ObjType.ArrayBuffer]: (obj: any) => obj.slice(0),
   [ObjType.DataView]: cloneDataView,
   [ObjType.Error]: cloneError,
@@ -234,7 +236,7 @@ const cloneFac = function (getKeys: GetKeysFn) {
   const _clone = function _clone<T> (obj: any): T { // -eslint-disable-line max-statements
 
     // Filter out null, undefined, NaN, primitive values, and functions
-    if (obj !== Object(obj) || typeof obj === 'function') {
+    if (!obj || typeof obj !== 'object') {
       return obj
     }
 

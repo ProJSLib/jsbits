@@ -3,6 +3,7 @@
 
 import expect = require('expect.js')
 import deepClone = require('..')
+//import deepClone = require('lodash.clonedeep')
 
 declare const Atomics: any
 
@@ -11,6 +12,7 @@ const itif = function (condition: any, msg: string, fn?: () => any) {
   (condition ? it : it.skip)(msg, fn)
 }
 
+const hasTypeds = typeof Uint8Array === 'function'
 const hasSymbol = typeof Symbol === 'function'
 const hasMap = typeof Map === 'function'
 const hasSet = typeof Set === 'function'
@@ -22,6 +24,7 @@ const is = Object.is || function (x: any, y: any) {
     : (x !== x && y !== y)   // eslint-disable-line no-self-compare
 }
 const stringify = JSON.stringify
+const toStrTag = Object.prototype.toString
 
 const builtIns = [{}, [], new Boolean(), new String('s'), new Number(1), new Date(), /./g, NaN, undefined]
 // istanbul ignore else
@@ -137,26 +140,6 @@ describe('deepClone', function () {
     expect('' + clone).to.be('' + value)
   })
 
-  itif(hasSymbol, 'must copy Symbol() property names by reference', function () {
-    const symbl = Symbol()
-    const value = { [symbl]: 'a' }
-    const clone = deepClone(value)
-
-    expect(clone).to.be.an(Object)
-    expect(clone).not.to.be(value)
-    expect(clone).to.have.property(symbl as any, 'a')
-  })
-
-  itif(hasSymbol, 'must copy Symbol() property values by reference', function () {
-    const symbl = Symbol()
-    const value = { a: symbl }
-    const clone = deepClone(value)
-
-    expect(clone).to.be.an(Object)
-    expect(clone).not.to.be(value)
-    expect(clone.a).to.be(symbl)
-  })
-
   it('works with Arrays', function () {
     const value = [null, undefined, false, '', 1]
     const clone = deepClone(value)
@@ -191,6 +174,62 @@ describe('deepClone', function () {
     expect(stringify(clone)).to.be(stringify(value))
   })
 
+  it('clone arguments as an object w/prototype', function () {
+    // @ts-ignore
+    const value = (function (a, b, c) { return arguments })('a', new Date())
+    const clone = deepClone(value)
+
+    expect(clone).not.have.property('prototype')
+    expect(clone).to.have.property('length', value.length)
+    expect(stringify(clone)).to.be(stringify(value))
+    expect(clone[0]).to.be(value[0])
+    expect(clone[1]).to.eql(value[1])
+    expect(clone[2]).to.be(undefined)
+  })
+
+  itif(hasSymbol, 'must copy Symbol() property names by reference', function () {
+    const symb1 = Symbol()
+    const symb2 = Symbol()
+    const value = { [symb1]: 'a' }
+    Object.defineProperty(value, symb2, { value: 'hidden', configurable: true })
+
+    const clone = deepClone(value)
+    expect(clone).to.be.an(Object)
+    expect(clone).not.to.be(value)
+    expect(clone).to.have.property(symb1 as any, 'a')
+    expect(clone).not.have.property(symb2 as any)
+  })
+
+  itif(hasSymbol, 'must copy Symbol() property values by reference', function () {
+    const symbl = Symbol()
+    const value = { a: symbl }
+    const clone = deepClone(value)
+
+    expect(clone).to.be.an(Object)
+    expect(clone).not.to.be(value)
+    expect(clone).to.have.property('a', symbl)
+  })
+
+  itif(hasTypeds, 'must clone TypedArrays objects', function () {
+    const values = [
+      Uint8Array.of(1, 2, 3),
+      Uint16Array.of(1, 2, 3),
+      Uint32Array.of(1, 2, 3),
+      Float32Array.of(1.0, 2.0, 3.0),
+      Float64Array.of(1.0, 2.0, 3.0),
+    ]
+
+    values.forEach((value) => {
+      const clone = deepClone(value)
+      expect(toStrTag.call(clone)).to.be(toStrTag.call(value))
+      expect(clone).not.to.be(value)
+      expect(clone).to.have.property('length', value.length)
+      expect(clone).to.have.property('byteLength', value.byteLength)
+      expect(clone).to.have.property('byteOffset', value.byteOffset)
+      expect(String(clone)).to.be(String(value))
+    })
+  })
+
   itif(hasMap, 'must clone Map objects', function () {
     const value = new Map()
     value.set('foo', 'bar')
@@ -210,12 +249,11 @@ describe('deepClone', function () {
     expect(clone).to.be.a(Map)
     expect(clone).to.have.property('size', value.size)
 
-    const _toStr = Object.prototype.toString
     let ix = 0
     clone.forEach((v, k) => {
       const k2 = builtIns[ix++]
       expect(typeof k).to.be(typeof k2)
-      expect(_toStr.call(k)).to.be(_toStr.call(k2))
+      expect(toStrTag.call(k)).to.be(toStrTag.call(k2))
       expect(v).to.be(value.get(k2))
     })
   })
@@ -239,12 +277,11 @@ describe('deepClone', function () {
     expect(clone).to.be.a(Set)
     expect(clone).to.have.property('size', value.size)
 
-    const _toStr = Object.prototype.toString
     let ix = 0
     clone.forEach((v) => {
       const v2 = builtIns[ix++]
       expect(typeof v).to.be(typeof v2)
-      expect(_toStr.call(v)).to.be(_toStr.call(v2))
+      expect(toStrTag.call(v)).to.be(toStrTag.call(v2))
       expect(String(v)).to.be(String(v2))
     })
   })
@@ -263,7 +300,6 @@ describe('deepClone', function () {
   })
 
   it('can duplicate class instances with zero-parameters Ctors', function () {
-    const toStr = Object.prototype.toString
     const fn: any = function (this: any) {
       this.foo = 'foo'
       this.toString = () => `Foo("${this.foo}")`
@@ -276,7 +312,7 @@ describe('deepClone', function () {
 
     expect(clone).not.to.be(value)
     expect(clone).to.eql(value)
-    expect(toStr.call(clone)).to.eql(toStr.call(value))
+    expect(toStrTag.call(clone)).to.eql(toStrTag.call(value))
     expect(clone.toString()).to.eql(value.toString())
     expect(clone.toJSON()).to.eql(value.toJSON())
   })
@@ -547,6 +583,24 @@ describe('deepClone with the `exact` flag must...', function () {
     expect(Object.getOwnPropertyNames(clone) + '').to.equal('re')
   })
 
+  it('clone arguments as an object w/prototype', function () {
+    // @ts-ignore
+    const value = (function (a, b, c) { return arguments })('a', new Date())
+    debugger // eslint-disable-line
+    const clone = deepClone(value, true)
+
+    expect(clone).not.have.property('prototype')
+    expect(clone).to.have.property('length', value.length)
+    expect(stringify(clone)).to.be(stringify(value))
+    expect(clone[0]).to.be(value[0])
+    expect(clone[1]).to.eql(value[1])
+    expect(clone[2]).to.be(undefined)
+    // istanbul ignore else
+    if (hasSymbol) {
+      expect(clone).to.have.property(Symbol.iterator as any)
+    }
+  })
+
   it('must clone Error objects', function () {
     const errors = [
       EvalError('eval!'),
@@ -638,6 +692,20 @@ describe('deepClone with the `exact` flag must...', function () {
       const v2 = value.getInt16(i)
       expect(v1).to.be(v2)
     }
+  })
+
+  itif(hasTypeds, 'must clone TypedArrays objects', function () {
+    const value = Uint8Array.of(1, 2, 3)
+    defPropRo(value, '_foo', 'Foo')
+
+    const clone = deepClone(value, true)
+    expect(clone).to.be.a(Uint8Array)
+    expect(clone).not.to.be(value)
+    expect(clone).to.have.property('length', value.length)
+    expect(clone).to.have.property('byteLength', value.byteLength)
+    expect(clone).to.have.property('byteOffset', value.byteOffset)
+    expect(clone).to.have.property('_foo', (value as any)._foo)
+    expect(String(clone)).to.be(String(value))
   })
 
   it('must preserve the attributes of the properties', function () {

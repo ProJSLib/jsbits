@@ -134,7 +134,12 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 
 &copy; 2018 Alberto Martínez. All rights reserved.
 
+### Thanks
+
+Special thanks to [BrowserStack](https://www.browserstack.com) for their support.
+
 ---
+
 [![Codacy][codacy-badge]][codacy-url]
 [![Codacy coverage][codacyc-badge]][codacyc-url]
 [![Code Climate][climate-badge]][climate-url]
