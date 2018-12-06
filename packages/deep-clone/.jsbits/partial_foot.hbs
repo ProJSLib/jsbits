@@ -1,0 +1,24 @@
+## Known Issues
+
+This types are copied by reference:
+
+- Function
+- AsyncFunction
+- Getters and Setters
+- GeneratorFunction
+- Iterators
+- Symbol (primitive, unique value)
+- SharedArrayBuffer (ES2017, has a shered data block)
+- Atomics object (ES2017)
+- JSON object
+- Math object
+- WeakMap
+- WeakSet
+- XMLHttpRequest
+
+Untested types:
+
+- Workers
+- WebAssembly
+
+The [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) object and classes are cloned as generic Objects.

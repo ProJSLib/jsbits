@@ -36,7 +36,7 @@ in the second parameter.
 
 Both modes retain all the attributes of the copied properties (enumerable,
 configurable, writable) and correctly transfer the `get` and/or `set`
-methods, although these, like the properties with function-type values,
+methods, although these, like the other function-type values,
 _are copied by reference_.
 
 Try to limit the usage of this function to POJOs, as this function does not
@@ -142,6 +142,31 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 - [Babel](https://babeljs.io/) and [TypeScript](www.typescriptlang.org/), through ES Module Interop.
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
+
+## Known Issues
+
+This types are copied by reference:
+
+- Function
+- AsyncFunction
+- Getters and Setters
+- GeneratorFunction
+- Iterators
+- Symbol (primitive, unique value)
+- SharedArrayBuffer (ES2017, has a shered data block)
+- Atomics object (ES2017)
+- JSON object
+- Math object
+- WeakMap
+- WeakSet
+- XMLHttpRequest
+
+Untested types:
+
+- Workers
+- WebAssembly
+
+The [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) object and classes are cloned as generic Objects.
 
 ---
 [![Codacy][codacy-badge]][codacy-url]

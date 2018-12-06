@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 - Support for Symbol property names.
+- Support for Error, Set, Map, and other ES6/ES7 types.
+- Copy by reference unsupported types.
+- Enhance performance in some internal operations.
 
 ### Fixed
 

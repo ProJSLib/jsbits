@@ -38,7 +38,7 @@ module.exports = {
     'arrow-spacing': ON,
     'block-scoped-var': ON,
     'block-spacing': ERROR,
-    'brace-style': [ON, '1tbs'],
+    'brace-style': [ON, '1tbs', { allowSingleLine: YES }],
     'comma-dangle': [ON, 'always-multiline'],
     'comma-spacing': ERROR,
     'comma-style': [ON, 'last'],
