@@ -6,6 +6,7 @@ import deepClone = require('..')
 //import deepClone = require('lodash.clonedeep')
 
 declare const Atomics: any
+declare const XMLHttpRequest: any
 
 const itif = function (condition: any, msg: string, fn?: () => any) {
   // istanbul ignore next

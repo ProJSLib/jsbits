@@ -24,6 +24,7 @@
   "scripts": {
     "test": "nyc mocha packages/*/test/*.spec.ts",
     "pretest": "yarn lint && yarn build:cjs",
+    "test-av": "npm run-script build:cjs && mocha packages/*/test/*.spec.ts",
     "lint": "eslint --quiet --report-unused-disable-directives --ext js,ts scripts packages",
     "clean": "rimraf './packages/*/*.+(js|mjs|map|d.ts)' './packages/*/+(esm|umd)' ./packages/*/.rpt2_cache",
     "build:cjs": "tsc && node ./scripts/build-wrap.js",

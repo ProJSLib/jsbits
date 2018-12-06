@@ -6,6 +6,7 @@
 
 - Add markdownlint rules in .markdownlint.json
 - benchmark package, to test performance.
+- Add AppVeyor CI test.
 
 ### Fixed
 

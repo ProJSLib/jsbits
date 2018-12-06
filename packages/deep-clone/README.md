@@ -161,6 +161,8 @@ This types are copied by reference:
 - WeakSet
 - XMLHttpRequest
 
+`arguments` objects are cloned as objects without prototype.
+
 Untested types:
 
 - Workers
