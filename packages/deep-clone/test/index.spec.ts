@@ -287,6 +287,17 @@ describe('deepClone', function () {
     })
   })
 
+  itif(typeof Buffer === 'function', 'clone node\'s Buffer objects', function () {
+    const src = Uint8Array.from([61, 62, 63]).buffer
+    // istanbul ignore next
+    const value = Buffer.alloc ? Buffer.from(src) : new Buffer(src)
+    const clone = deepClone(value)
+
+    expect(clone).to.be.a(Buffer)
+    expect(clone).not.to.be(value)
+    expect(value.equals(clone)).to.be(true)
+  })
+
   it('in loosy mode, only the enumerable properties are duplicated', function () {
     const value = {} as any
     Object.defineProperties(value, {
@@ -377,7 +388,6 @@ describe('deepClone', function () {
     expect(descBar).to.have.property('writable', true)
   })
 
-
   itif(typeof ArrayBuffer !== 'undefined', 'must clone ArrayBuffer', function () {
     const value = new ArrayBuffer(32)
     const clone = deepClone(value)
@@ -422,10 +432,6 @@ describe('deepClone', function () {
   })
 
   it('cloning getter and setters works accesing props from its own object.', function () {
-    //
-    // This is an interesting case: the var `_foo` in closure is not cloned,
-    // of course, but I don't know how to duplicate (I think there's no way).
-    //
     const value = (function () {
       return Object.defineProperties({}, {
         _foo: {
@@ -587,7 +593,6 @@ describe('deepClone with the `exact` flag must...', function () {
   it('clone arguments as an object w/prototype', function () {
     // @ts-ignore
     const value = (function (a, b, c) { return arguments })('a', new Date())
-    debugger // eslint-disable-line
     const clone = deepClone(value, true)
 
     expect(clone).not.have.property('prototype')

@@ -5,6 +5,18 @@
 type CloneFn = <T> (obj: T) => T
 type GetKeysFn = (obj: any, type: string) => Array<string | symbol>
 
+const _nodejs = (function () {
+  const g = typeof global === 'object' && global
+  const m = g && g.process &&
+    typeof g.Buffer === 'function' && /^v?(\d+)/.exec(g.process.version)
+  return (m && m[1] as any) | 0
+})()
+
+const _OP = Object.prototype
+const _toString = _OP.toString
+const _ownKeys = typeof Reflect === 'object' &&
+  typeof Reflect.ownKeys === 'function' && Reflect.ownKeys
+
 /**
  * Cloning method of various types.
  */
@@ -67,15 +79,6 @@ const arrayLike = [
   'Uint16Array',
   'Uint32Array',
 ]
-
-/*
-  Want support for edge cases?
-  See https://github.com/dankogai/js-object-clone/blob/master/object-clone.js
-*/
-const _OP = Object.prototype
-const _toString = _OP.toString
-const _ownKeys = typeof Reflect === 'object' &&
-  typeof Reflect.ownKeys === 'function' && Reflect.ownKeys
 
 /**
  * Creates a function to get enumerable symbol names of an object.
@@ -179,6 +182,13 @@ const cloneError = (src: Error) => {
   })
 }
 
+/**
+ * Copies arguments to an object without prototype - Adds the length property.
+ *
+ * @param {Arguments} src arguments pseudo-array
+ * @returns {object} -
+ * @private
+ */
 const cloneArguments = (src: any[]) => {
   const args = Object.create(null)
   return Object.defineProperty(args, 'length', {
@@ -186,9 +196,13 @@ const cloneArguments = (src: any[]) => {
   })
 }
 
+// Faster array cloning
+const cloneArray = (src: any, fn: CloneFn) => src.map(fn)
+
 const cloneFn: { [k: number]: (obj: any, fn: CloneFn, _?: string) => any } = {
   [ObjType.AsIs]: (obj: any) => obj,
   [ObjType.Arguments]: cloneArguments,
+  [ObjType.Array]: cloneArray,
   [ObjType.ArrayBuffer]: (obj: any) => obj.slice(0),
   [ObjType.DataView]: cloneDataView,
   [ObjType.Error]: cloneError,
@@ -208,11 +222,9 @@ const createObject = (obj: any, type: string, fn: CloneFn) => {
   const cloneType = clonable[type]
 
   if (cloneType === ObjType.Simple) {
-    return new obj.constructor(obj.valueOf())
-  }
-
-  if (cloneType === ObjType.Array) {
-    return obj.map(fn)  // Faster array cloning
+    return obj.slice && _nodejs && Buffer.isBuffer(obj)
+      ? obj.slice(0)
+      : new obj.constructor(obj.valueOf())
   }
 
   if (cloneFn[cloneType]) {
@@ -222,6 +234,27 @@ const createObject = (obj: any, type: string, fn: CloneFn) => {
   return type.lastIndexOf(' Iterator', type.length - 9) > -1
     ? obj : Object.create(Object.getPrototypeOf(obj))
 }
+
+/**
+ * Get the object type, taking care about node <6 returning 'Object' for
+ * Promise.
+ */
+const getObjectType = (function () {
+
+  const _getTag = (obj: object) => _toString.call(obj).slice(8, -1)
+
+  // istanbul ignore else
+  if (!_nodejs || _nodejs >= 5) {
+    return _getTag
+  }
+
+  // istanbul ignore next
+  return (obj: object) => {
+    const tag = _getTag(obj)
+    return tag === 'Object' && obj.constructor && obj.constructor.name === 'Promise'
+      ? 'Promise' : tag
+  }
+})()
 
 /**
  * Factory to create a "clone" function for loosy or exact mode.
@@ -241,7 +274,7 @@ const cloneFac = function (getKeys: GetKeysFn) {
     }
 
     // The type also allows optimize the getKeys function.
-    const type = _toString.call(obj).slice(8, -1)
+    const type = getObjectType(obj)
 
     // Get a new object of the same type and the properties of the source
     const clone = createObject(obj, type, _clone)
