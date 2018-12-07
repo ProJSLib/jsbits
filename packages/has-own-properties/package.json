@@ -1,6 +1,6 @@
 {
   "name": "@jsbits/has-own-properties",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.",
   "license": "BSD-2-Clause",
   "main": "./index.js",

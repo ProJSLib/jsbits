@@ -1,6 +1,6 @@
 {
   "name": "@jsbits/get-package-version",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get the version of the package.json file found in the given directory or in one of its parents.",
   "license": "BSD-2-Clause",
   "main": "./index.js",

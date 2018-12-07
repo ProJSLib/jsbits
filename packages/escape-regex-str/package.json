@@ -1,6 +1,6 @@
 {
   "name": "@jsbits/escape-regex-str",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Escapes special characters in a string, for matching substrings with a RegExp instance.",
   "license": "BSD-2-Clause",
   "main": "./index.js",

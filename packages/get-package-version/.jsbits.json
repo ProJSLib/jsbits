@@ -1,5 +1,5 @@
 {
-  "_VERSION": "1.0.1",
+  "_VERSION": "1.0.2",
   "_DESCRIPTION": "Get the version of the package.json file found in the given directory or in one of its parents.",
   "_SINCE": "1.0.0",
   "_TARGET": "node",
