@@ -34,11 +34,12 @@
     "typescript": "~3.2.1"
   },
   "keywords": [
-    "es6",
     "javascript",
     "typescript",
+    "es6",
     "object",
-    "own properties",
+    "own",
+    "properties",
     "property",
     "test",
     "detect"

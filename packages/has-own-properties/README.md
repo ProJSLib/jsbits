@@ -116,7 +116,20 @@ All the [JSBits][jsbits-url] functions works in _strict mode_ and are compatible
 
 Please see the [Distribution Formats][jsbits-formats] in the JSBits README to know about all the variants.
 
+## Support my Work
+
+I'm a full-stack developer with more than 20 year of experience and I try to share most of my work for free and help others, but this takes a significant amount of time and effort so, if you like my work, please consider...
+
+<!-- markdownlint-disable MD033 -->
+[<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]
+<!-- markdownlint-enable MD033 -->
+
+Of course, feedback, PRs, and stars are also welcome 🙃
+
+Thanks for your support!
+
 ---
+
 [![Codacy][codacy-badge]][codacy-url]
 [![Codacy coverage][codacyc-badge]][codacyc-url]
 [![Code Climate][climate-badge]][climate-url]
@@ -145,3 +158,4 @@ Please see the [Distribution Formats][jsbits-formats] in the JSBits README to kn
 [climatec-url]:   https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
 [jsbits-url]:     https://github.com/ProJSLib/jsbits
 [jsbits-formats]: https://github.com/ProJSLib/jsbits#distribution-formats
+[kofi-url]:       https://ko-fi.com/C0C7LF7I
