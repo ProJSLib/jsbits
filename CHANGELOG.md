@@ -1,6 +1,6 @@
 # Changelog for @jsbits
 
-## \[Unreleased]
+## \[1.1.2] - 2018-12-06
 
 ### Added
 
