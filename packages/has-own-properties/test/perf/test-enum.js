@@ -39,7 +39,7 @@ if (test2(obj0) || !test2(obj1) || !test2(obj2) || !test2(arr0)) {
   throw new Error('getOwnKeys2 wrong.')
 }
 
-function testIt (obj) {
+const testIt = function (obj) {
   const suite = new Benchmark.Suite()
   suite
     .add('getOwnKeys1', () => test1(obj))

@@ -1,7 +1,7 @@
 # Send coverage report from node 6 builds of any branch
 
 CURBUILD = "$(TRAVIS_NODE_VERSION)"
-REQBUILD = "6.2.2"
+REQBUILD = "6.14.0"
 
 setup_cover:
 ifeq ($(CURBUILD),$(REQBUILD))

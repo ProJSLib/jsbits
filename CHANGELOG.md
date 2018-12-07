@@ -7,6 +7,7 @@
 - Add markdownlint rules in .markdownlint.json
 - benchmark package, to test performance.
 - Add AppVeyor CI test.
+- Updated devDependencies, build requeriments is node 6.14
 
 ### Fixed
 
