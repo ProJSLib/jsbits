@@ -1,6 +1,6 @@
 {
   "_VERSION": "1.1.0",
-  "_DESCRIPTION": "Performs a deep cloning of an object own properties, with loosy or exact behavior.",
+  "_DESCRIPTION": "Performs a deep cloning of an object own properties and symbols, with loosy or exact behavior.",
   "_SINCE": "1.0.0",
   "_GROUPS": [
     "object"

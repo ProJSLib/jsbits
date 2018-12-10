@@ -36,7 +36,7 @@ v1.1.1 &ndash; Group: date &ndash; Author: @aMarCruz
 
 ### [deepClone](packages/deep-clone/README.md)
 
-Performs a deep cloning of an object own properties, with loosy or exact behavior.
+Performs a deep cloning of an object own properties and symbols, with loosy or exact behavior.
 
 v1.1.0 &ndash; Group: object &ndash; Author: @aMarCruz
 

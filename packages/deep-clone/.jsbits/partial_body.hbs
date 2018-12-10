@@ -1,6 +1,6 @@
 ### About getter and setters
 
-Cloning of getters and setters work as expected, they are duplicated as any other property. However, there' cases where cloning does not work.
+Cloning of getters and setters work as expected, they are duplicated _by reference_. However, there' cases where cloning does not work.
 
 Observe this fragment:
 
@@ -14,8 +14,9 @@ const createObj = function () {
   })
 }
 
-// This creates an object with get/set using the var _foo in its closure
+// This creates an object with a property `foo` with accessors that use the var `_foo` of its closure.
 const obj = createObj()
+// This will clone the object and the property `foo` with its accessors.
 const clone = deepClone(obj)
 
 // Looks like this works...
@@ -26,11 +27,12 @@ console.log(clone.foo)          // ⇒ 'BAZ'
 console.log(obj.foo)            // ⇒ 'BAZ' ...ups!
 ```
 
-This is obvious if you look at the code of deepClone, getters and setters are copied _the same as the functions_ so its closure is the same as the original object.
+This is obvious if you look at the code of deepClone, getters and setters are copied but its closure is the same as the original object.
 
 To date, I haven't found any way to solve this issue ...anyone?
 
-A workaround is to keep a non-enumerable property in the object:
+A workaround is to keep the "hidden" variable in the object.
+In this case, we move `_foo` to inside the object:
 
 ```ts
 const createObj = function () {

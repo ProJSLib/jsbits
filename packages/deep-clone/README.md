@@ -9,7 +9,7 @@
 
 Part of the [JSBits][jsbits-url] suite.
 
-Performs a deep cloning of an object own properties, with loosy or exact behavior.
+Performs a deep cloning of an object own properties and symbols, with loosy or exact behavior.
 
 ## Install
 
@@ -26,14 +26,13 @@ yarn add @jsbits/deep-clone
 
 ## `deepClone(value, [exact])` ⇒ `T` 
 
-Performs a deep cloning of an object own properties, preserving its
-prototype.
+Performs a deep cloning of an object own properties and symbols, preserving
+its prototype.
 
 By default `cloneObject` works in "loosy mode", where it clones only
-the _enumerable_ properties. Any other properties are ignored.
+the object _enumerable_ properties and symbols.
 
-To enable the "exact mode" and clone all the properties, pass `true`
-in the second parameter.
+To enable the "exact mode" and clone all, pass `true` in the second parameter.
 
 Both modes retain all the attributes of the copied properties (enumerable,
 configurable, writable) and correctly transfer the `get` and/or `set`
@@ -42,7 +41,7 @@ _are copied by reference_.
 
 Try to limit the usage of this function to POJOs, as this function does not
 work for objects with constructor that requires parameters (other than
-some JS own Objects), nor objects with recursive references.
+the most JS built-in Objects), nor objects with recursive references.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -60,17 +59,39 @@ Author/Maintainer: @aMarCruz<br>
 ```ts
 import deepClone from '@jsbits/deep-clone'
 
-const objct = { foo: 1, bar: 'bar', baz: { date: new Date() } }
-const clone = deepClone(objct)
+let obj = { foo: 1, bar: 'bar', baz: { date: new Date() } }
+let clone = deepClone(obj)
 
 console.log('Success?',
-  clone.baz.date instanceof Date && clone.baz.date !== objct.baz.date)
-// ⇒ Seccess? true
+  clone.baz.date instanceof Date && clone.baz.date !== obj.baz.date)
+// ⇒ Success? true
+
+/*
+  Using the additional parameter
+*/
+
+let baz = Symbol()
+obj = {
+  foo: 'Foo',
+  arr: [{ bar: 'Bar' }],
+  [baz]: 'Baz',
+}
+
+Object.defineProperty(obj, 'abc', {
+  value: 'xyz',
+  enumerable: false,
+})
+
+clone = deepClone(obj, true)
+
+console.log(JSON.stringify(clone))  // ⇒ '{"foo":"Foo","arr":[{"bar":"Bar"}]}'
+console.log(clone[baz])             // ⇒ 'Baz'
+console.log(clone.abc)              // ⇒ 'xyz
 ```
 
 ### About getter and setters
 
-Cloning of getters and setters work as expected, they are duplicated as any other property. However, there' cases where cloning does not work.
+Cloning of getters and setters work as expected, they are duplicated _by reference_. However, there' cases where cloning does not work.
 
 Observe this fragment:
 
@@ -84,8 +105,9 @@ const createObj = function () {
   })
 }
 
-// This creates an object with get/set using the var _foo in its closure
+// This creates an object with a property `foo` with accessors that use the var `_foo` of its closure.
 const obj = createObj()
+// This will clone the object and the property `foo` with its accessors.
 const clone = deepClone(obj)
 
 // Looks like this works...
@@ -96,11 +118,12 @@ console.log(clone.foo)          // ⇒ 'BAZ'
 console.log(obj.foo)            // ⇒ 'BAZ' ...ups!
 ```
 
-This is obvious if you look at the code of deepClone, getters and setters are copied _the same as the functions_ so its closure is the same as the original object.
+This is obvious if you look at the code of deepClone, getters and setters are copied but its closure is the same as the original object.
 
 To date, I haven't found any way to solve this issue ...anyone?
 
-A workaround is to keep a non-enumerable property in the object:
+A workaround is to keep the "hidden" variable in the object.
+In this case, we move `_foo` to inside the object:
 
 ```ts
 const createObj = function () {

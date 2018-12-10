@@ -319,14 +319,13 @@ const looseClone = cloneFac(getKeysFac(false))
 const exactClone = cloneFac(getKeysFac(true))
 
 /**
- * Performs a deep cloning of an object own properties, preserving its
- * prototype.
+ * Performs a deep cloning of an object own properties and symbols, preserving
+ * its prototype.
  *
  * By default `cloneObject` works in "loosy mode", where it clones only
- * the _enumerable_ properties. Any other properties are ignored.
+ * the object _enumerable_ properties and symbols.
  *
- * To enable the "exact mode" and clone all the properties, pass `true`
- * in the second parameter.
+ * To enable the "exact mode" and clone all, pass `true` in the second parameter.
  *
  * Both modes retain all the attributes of the copied properties (enumerable,
  * configurable, writable) and correctly transfer the `get` and/or `set`
@@ -335,7 +334,7 @@ const exactClone = cloneFac(getKeysFac(true))
  *
  * Try to limit the usage of this function to POJOs, as this function does not
  * work for objects with constructor that requires parameters (other than
- * some JS own Objects), nor objects with recursive references.
+ * the most JS built-in Objects), nor objects with recursive references.
  *
  * @template T
  * @param {T} value Value to clone, mostly an object or array.
