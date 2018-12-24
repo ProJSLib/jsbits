@@ -338,7 +338,7 @@ const exactClone = cloneFac(getKeysFac(true))
  *
  * @template T
  * @param {T} value Value to clone, mostly an object or array.
- * @param {boolean} [exact=false] If `true`, duplicate the attributes of the property descriptors
+ * @param {boolean} [exact=false] If `true`, also clone the non-enumerable properties
  * @returns {T} The cloned object or value.
  * @since 1.0.0
  */

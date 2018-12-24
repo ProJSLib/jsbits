@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Fixed
 
 - Mention to symbol in description and example.
+- Description of the parameter "exact".
 
 ## \[1.1.0] - 2018-12-06
 

@@ -47,7 +47,7 @@ the most JS built-in Objects), nor objects with recursive references.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | `T` |  | Value to clone, mostly an object or array. |
-| \[exact] | `boolean` | `false` | If `true`, duplicate the attributes of the property descriptors |
+| \[exact] | `boolean` | `false` | If `true`, also clone the non-enumerable properties |
 
 **Returns**: `T` - The cloned object or value.  
 
