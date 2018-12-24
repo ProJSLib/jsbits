@@ -97,9 +97,9 @@ BTW, the last `import` in the example is also used by node.js with [ES Modules](
 
 ### About the jsbits object
 
-This UMD version pointed by the "browser" field works with AMD and CJS module systems but, if no one is detected, it adds the function in the `jQuery.jsbits` namespace, if this already exists, or in the global `jsbits` object (i.e. `window.jsbits`).
+This UMD version, pointed by the "browser" field, works with AMD and CJS module systems but if no one is detected, it adds the function in the `jQuery.jsbits` namespace, if this already exists, or in the global `jsbits` object (i.e. `window.jsbits`).
 
-If you dont need AMD/CJS support, you can load the functions from its index.b.min.js file.
+If you dont need AMD/CJS support, you can load the functions from the index.b.min.js file.
 
 The following example allows loading @jsbits functions in jQuery:
 
@@ -148,7 +148,7 @@ Special thanks to [BrowserStack](https://www.browserstack.com) for their support
 
 <!-- Badges and Refs (badges for the branch 'master') -->
 [license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
-[license-url]:    https://github.com/aMarCruz/jsbits/blob/master/LICENSE
+[license-url]:    https://github.com/ProJSLib/jsbits/blob/master/LICENSE
 [appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
 [travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master

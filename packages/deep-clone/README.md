@@ -5,6 +5,7 @@
 [![Travis Test][travis-badge]][travis-url]
 [![Codebeat][codebeat-badge]][codebeat-url]
 [![Coverage][codecov-badge]][codecov-url]
+[![Bundle size][bundle-badge]][bundle-url]
 [![npm Version][npm-badge]][npm-url]
 
 Part of the [JSBits][jsbits-url] suite.
@@ -218,6 +219,8 @@ Thanks for your support!
 [license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
 [npm-badge]:      https://img.shields.io/npm/v/@jsbits/deep-clone.svg
 [npm-url]:        https://www.npmjs.com/package/@jsbits/deep-clone
+[bundle-badge]:   https://badgen.net/bundlephobia/min/@jsbits/deep-clone
+[bundle-url]:     https://bundlephobia.com/result?p=@jsbits/deep-clone
 [appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
 [travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master

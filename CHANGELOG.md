@@ -1,5 +1,11 @@
 # Changelog for @jsbits
 
+## \[Unreleased]
+
+### Added
+
+- Badge for bundle size in the Readme of subrepos.
+
 ## \[1.1.2] - 2018-12-06
 
 ### Added
