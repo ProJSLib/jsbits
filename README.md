@@ -136,7 +136,7 @@ Thanks for your support!
 
 Special thanks to [BrowserStack][11] for their excellent service.
 
-[![BrowserStack logo](assets/Browserstack-logo.svg)][11]
+[<img src="assets/Browserstack-logo.png" width="200" title="BrowserStack logo" />][11]
 
 ## License
 
