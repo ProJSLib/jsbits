@@ -50,7 +50,7 @@ $${D.PLACEHOLDER}
  * @param {string} objName Object name to add into the global jsbits
  */
 const zipWrapper = (pkgJson, objName) => `
-${getBanner(pkgJson, 'Browser')}
+${getBanner(pkgJson, 'UMD')}
 ;(function(root, factory) {
   (${JSLIB_GLOBAL}).${objName} = factory()
 })(typeof self !== 'undefined' ? self : this, function () {

@@ -1,6 +1,6 @@
-# Changelog for $_PACKAGE
+# Changelog of $_PACKAGE
 
-See the [changelog of JSLib]($_HOMEPAGE/blob/master/CHANGELOG.md)
+For global changes, see the [changelog of jsbits]($_HOMEPAGE/blob/master/CHANGELOG.md)
 
 ## \[$_VERSION] - Unreleased
 

@@ -1,13 +1,13 @@
 # JSBits
 
-[![License][license-badge]][license-url]
+_Public library of professional high-quality functions for JavaScript and TypeScript._
+
+[![License][license-badge]](LICENSE)
 [![AppVeyor test][appveyor-badge]][appveyor-url]
 [![Travis test][travis-badge]][travis-url]
 [![coverage][codecov-badge]][codecov-url]
-[![Codacy][codacy-badge]][codacy-url]
-[![Code Climate][climate-badge]][climate-url]
-
-Public library of professional high quality functions for JavaScript and TypeScript.
+[![code quality][codacy-badge]][codacy-url]
+[![maintainability][climate-badge]][climate-url]
 
 The functions of JSBits are written in TypeScript 3 and meet stringent quality requirements.<br>They were designed to be efficient and robust, work in _strict mode_ and are tested with 100% coverage.
 
@@ -29,19 +29,19 @@ _**NOTE:** This work is in its infancy, I will be adding more functions as my ti
 
 ### [addMonths](packages/add-months/README.md)
 
-Adds or sustract X months to any JavaScript Date, local or UTC.
+Adds or subtracts N months to any JavaScript Date, local or UTC.
 
-v1.1.1 &ndash; Group: date &ndash; Author: aMarCruz
+v1.1.2 &ndash; Group: date &ndash; Author: aMarCruz
 
 ### [deepClone](packages/deep-clone/README.md)
 
 Performs a deep cloning of an object own properties and symbols, with loosy or exact behavior.
 
-v1.1.0 &ndash; Group: object &ndash; Author: aMarCruz
+v1.1.1 &ndash; Group: object &ndash; Author: aMarCruz
 
 ### [easterDay](packages/easter-day/README.md)
 
-Calculates the local date of the Easter day for years up to 9999
+Calculates the local date of the Easter day for years up to 9999.
 
 v1.0.0 &ndash; Group: date &ndash; Author: aMarCruz
 
@@ -49,7 +49,7 @@ v1.0.0 &ndash; Group: date &ndash; Author: aMarCruz
 
 Escapes special characters in a string, for matching substrings with a RegExp instance.
 
-v1.0.2 &ndash; Group: dev &ndash; Author: aMarCruz
+v1.0.3 &ndash; Group: dev &ndash; Author: aMarCruz
 
 ### [getPackageVersion](packages/get-package-version/README.md)
 
@@ -57,13 +57,13 @@ _NodeJS only_.
 
 Get the version of the package.json file found in the given directory or in one of its parents.
 
-v1.0.2 &ndash; Group: dev &ndash; Author: aMarCruz
+v1.0.3 &ndash; Group: dev &ndash; Author: aMarCruz
 
 ### [hasOwnProperties](packages/has-own-properties/README.md)
 
 Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.
 
-v1.1.0 &ndash; Group: object &ndash; Author: aMarCruz
+v1.1.1 &ndash; Group: object &ndash; Author: aMarCruz
 
 <!--END_FUNCTION_LIST-->
 
@@ -106,11 +106,11 @@ This UMD version, pointed by the "browser" field, works with AMD and CJS module 
 
 If you dont need AMD/CJS support, you can load the functions from the index.b.min.js file.
 
-The following example allows loading @jsbits functions in jQuery:
+The following example loads `$.jsbits.addMonths` in the browser:
 
 ```html
 <script>$.jsbits = {};</script>
-<script src="add-months/index.b.min.js"></script>
+<script src="https://unpkg.com/@jsbits/add-months/index.b.min.js"></script>
 ```
 
 ## TODO
@@ -126,9 +126,7 @@ In addition to increasing the number of functions...
 
 I'm a full-stack developer with more than 20 year of experience and I try to share most of my work for free and help others, but this takes a significant amount of time and effort so, if you like my work, please consider...
 
-<!-- markdownlint-disable MD033 -->
-[<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]<br>
-<!-- markdownlint-enable MD033 -->
+[<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]
 
 Of course, feedback, PRs, and stars are also welcome 🙃
 
@@ -136,27 +134,28 @@ Thanks for your support!
 
 ### Thanks
 
-Special thanks to [BrowserStack](https://www.browserstack.com) for their excellent service.
+Special thanks to [BrowserStack][11] for their excellent service.
+
+[![BrowserStack logo](assets/Browserstack-logo.svg)][11]
 
 ## License
 
-The [BSD 2-Clause](LICENSE) "Simplified" License.
+The [MIT](LICENSE) License.
 
-&copy; 2018 Alberto Martínez. All rights reserved.
+&copy; 2018-2019 Alberto Martínez
 
 <!-- Badges and Refs (badges for the branch 'master') -->
-[license-badge]:  https://img.shields.io/badge/license-BSD--2--Clause-blue.svg
-[license-url]:    https://github.com/ProJSLib/jsbits/blob/master/LICENSE
-[appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
-[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
+[license-badge]:  https://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[appveyor-badge]: https://img.shields.io/appveyor/ci/aMarCruz/jsbits/master.svg?label=appveyor
+[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits/branch/master
 [travis-badge]:   https://img.shields.io/travis/ProJSLib/jsbits/master.svg?label=travis
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
-[codecov-badge]:  https://img.shields.io/codecov/c/github/ProJSLib/jsbits.svg
-[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits
-[climate-badge]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/maintainability
-[climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits/maintainability
+[codecov-badge]:  https://img.shields.io/codecov/c/github/ProJSLib/jsbits/master.svg
+[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits/branch/master
 [codacy-badge]:   https://img.shields.io/codacy/grade/b9374fca91d64b75aafac26682df8fd0/master.svg
 [codacy-url]:     https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProJSLib/jsbits&amp;utm_campaign=Badge_Grade
+[climate-badge]:  https://img.shields.io/codeclimate/maintainability/ProJSLib/jsbits.svg
+[climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits/maintainability
 [kofi-url]:       https://ko-fi.com/C0C7LF7I
 [1]: https://github.com/defunctzombie/package-browser-field-spec
 [2]: https://github.com/rollup/rollup/wiki/pkg.module
@@ -168,3 +167,4 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 [8]: webpack.js.org/
 [9]: typescriptlang.org/
 [10]: https://jquery.com/
+[11]: https://www.browserstack.com

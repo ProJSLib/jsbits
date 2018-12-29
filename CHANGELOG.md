@@ -1,14 +1,22 @@
 # Changelog for @jsbits
 
+The format of this document is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
 ## \[Unreleased]
 
 ### Added
 
 - `easterDay` function, to calculate Easter day dates.
 - Badge for bundle size in the Readme of subrepos.
+- BrowserStack image.
 
 ### Changed
 
+- Replace the BSD license with the MIT license.
+- Bumb new versions in the suprepos.
+- Update Readme to reflect the global changes.
+- Update hading of Changelogs.
+- Update markdownlint config.
 - Update devDependencies
   - Keep Rollup v6.8, not all its plugins are prepared for v1
   - revised jscc templates for current jscc API style.

@@ -34,6 +34,11 @@ exports.arrayJoin = (arr) => (arr && arr.length ? arr.join(', ') : null)
 exports['or?'] = (v1, v2) => (v1 || v2 || null)
 
 /**
+ * Returns true both values are exactly equals.
+ */
+exports['eq?'] = (v1, v2) => (v1 === v2)
+
+/**
  * Format 'Author/Maintainer' or 'Author, Maintainer'
  */
 exports.authorAndMaintainer = (author, values) => {

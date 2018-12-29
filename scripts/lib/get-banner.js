@@ -13,10 +13,9 @@ const LICENSE = require('../defaults').LICENSE
  */
 module.exports = (pkg, format, target) => `/*
   ${pkg.name}
-
-  @version ${pkg.version} ${format.toUpperCase()}/${target ? target.toUpperCase() : 'ES5'}
-  @license ${LICENSE} (c) 2018 Alberto Martínez
   @author ${pkg.author}
+  @version ${pkg.version} ${format.toUpperCase()}+${target ? target.toUpperCase() : 'ES5'}
+  @license ${LICENSE}
 */
 /* eslint-disable */
 `

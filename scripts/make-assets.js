@@ -40,7 +40,7 @@ const makeAssets = (srcPath, values) => {
 
   return updatePackage(srcPath, options)
     .then(() => updateReadme(srcPath, options))
-    .then(() => updateFiles(srcPath, options))
+    .then(() => updateFiles(srcPath))
     .then(_done)
 }
 

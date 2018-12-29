@@ -1,42 +1,32 @@
 # @jsbits/add-months
 
+_Part of the [JSBits][jsbits-url] suite._
+
 [![License][license-badge]](LICENSE)
+[![npm Version][npm-badge]][npm-url]
+[![minified size][size-badge]][size-url]<br>
 [![AppVeyor Test][appveyor-badge]][appveyor-url]
 [![Travis Test][travis-badge]][travis-url]
-[![Codebeat][codebeat-badge]][codebeat-url]
-[![Coverage][codecov-badge]][codecov-url]
-[![Bundle size][bundle-badge]][bundle-url]
-[![npm Version][npm-badge]][npm-url]
+[![coverage][codecov-badge]][codecov-url]
+[![code quality][codacy-badge]][codacy-url]
+[![maintainability][climate-badge]][climate-url]
 
-Part of the [JSBits][jsbits-url] suite.
-
-Adds or sustract X months to any JavaScript Date, local or UTC.
-
-## WARNING
-
-v1.1.0 has **_breaking changes_**.
-
-- Now, `addMonths` only works with values type Date and number, with other types it returns an invalid date.
-- The API of the `Date.prototype.addMonth` method has been changed to make it more consistent with the other methods of the `Date` object.
-
-For this time, due to the fact that v1.0.0 did not have enough diffusion, the major version remained unchanged.
-
-By the way: Avoid creating dates with strings, it is inconsistent.
-
-From [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) at MDN:
-
-> Note: parsing of date strings with the `Date` constructor (and `Date.parse`, they are equivalent) is strongly discouraged due to browser differences and inconsistencies. Support for [RFC 2822](http://tools.ietf.org/html/rfc2822#page-14) format strings is by convention only. Support for [ISO 8601](http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15) formats differs in that date-only strings (e.g. "1970-01-01") are treated as UTC, not local.
-
-Even node 6 has issues with this. _Do not use it_ except with the full UTC ISO-8601 format (ending with 'Z').
-
-\* See the helper on the [example](#example) for a workaround.
+Adds or subtracts N months to any JavaScript Date, local or UTC.
 
 ## Install
+
+For NodeJS and JS bundlers:
 
 ```bash
 npm i @jsbits/add-months
 # or
 yarn add @jsbits/add-months
+```
+
+or load `addMonths` in the browser:
+
+```html
+<script src="https://unpkg.com/@jsbits/add-months/index.b.min.js"></script>
 ```
 
 ### Targets
@@ -49,17 +39,17 @@ yarn add @jsbits/add-months
 Returns a date occurring `count` months after `startdate` or, if `count` is
 negative, the date occurring `count` months before `startdate`.
 
-- If startdate is not a Date, string, or number that can be converted to a
+- If `startdate` is not a Date or number that can be converted to a
    valid date, returns a new Date instance with an invalid date.
 
-- If count is evaluated as zero, returns a new Date instance with the
-   the same value as startdate.
+- If `count` is evaluated as zero, returns a new Date instance with the
+   the same value as `startdate`.
 
 - If there is an overflow in the day, the date is adjusted to the last
    valid day of the expected month.
 
 The third parameter is optional and indicates if the date is UTC. It is
-necessary to differentiate UTC dates from locals to avoid errors due to the
+necessary to differentiate UTC dates from locals and avoid errors due to the
 [Daylight Saving Time](https://en.wikipedia.org/wiki/Daylight_saving_time)
 (DST).
 
@@ -68,7 +58,7 @@ This function does not change the original date.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | startdate | `Date` \| `number` |  | A value parseable as a JavaScript Date |
-| count | `number` |  | Number of months to add or substract |
+| count | `number` |  | Number of months to add or subtract |
 | \[asUTC] | `boolean` | `false` | If `true`, handle the date as UTC |
 
 **Returns**: `Date` - A new, adjusted Date instance.  
@@ -113,15 +103,22 @@ addMonths(false, 1)  // ⇒ NaN
 
 ### Date.prototype.addMonths
 
-If you prefer, you can inject this function into the `Date.prototype` by requiring 'proto' or by loading the IIFE from 'add-months/proto.js' in your browser.
+If you prefer, you can inject addMonths into the `Date.prototype` by requiring 'proto' or by loading the IIFE from 'proto.js' in the browser:
 
-In Date.prototype the function is exposed in separate methods: `addMonths` for local dates, and `addUTCMonths` for UTC dates, so the `asUTC` flag is not required.
+```html
+<script src="https://unpkg.com/@jsbits/add-months/proto.js"></script>
+```
 
-Also, its behavior changes to that of a setter. That is, the value of the date on which these methods operate _is changed_.
+The new functionality is exposed in separate methods, with an API similar to other methods of the `Date` object:
 
-Although you can use `Date.prototype.addMonth.call()`, its use with a type different than Date generates a TypeError.
+- `addMonths` for local dates
+- `addUTCMonths` for UTC dates
 
-The return value of both methods is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date, or `NaN` if the date is invalid.
+Both methods receive the number of months to add or subtract and **update the value of the object directly**.
+
+The returned value is the number of milliseconds between 1 January 1970 00:00:00 UTC and the updated date, or `NaN` if the date is invalid. The `asUTC` flag is not necessary.
+
+Using `Date.prototype.addMonths.call` with other type than `Date` generates a TypeError.
 
 This example shows the behavior of both methods using the same date instance:
 
@@ -134,15 +131,15 @@ const showLoc = (dt) => console.log('' + dt)
 const showUTC = (dt) => console.log(dt.toJSON())
 const showRes = (dt) => console.log(dt)
 
-const date = new Date(2018, 0, 30, 20, 0, 0)
+const date = new Date(2019, 0, 30, 20, 0, 0)
 
-showLoc(date)                   // ⇒ Tue Jan 30 2018 20:00:00 GMT-0600 (CST)
-showRes(date.addMonths(1))      // ⇒ 1519869600000
-showLoc(date)                   // ⇒ Wed Feb 28 2018 20:00:00 GMT-0600 (CST)
+showLoc(date)                   // ⇒ Wed Jan 30 2019 20:00:00 GMT-0600 (CST)
+showRes(date.addMonths(1))      // ⇒ 1551405600000
+showLoc(date)                   // ⇒ Thu Feb 28 2019 20:00:00 GMT-0600 (CST)
 
-showUTC(date)                   // ⇒ 2018-03-01T02:00:00.000Z
-showRes(date.addUTCMonths(1))   // ⇒ 1522548000000
-showUTC(date)                   // ⇒ 2018-04-01T02:00:00.000Z
+showUTC(date)                   // ⇒ 2019-03-01T02:00:00.000Z
+showRes(date.addUTCMonths(1))   // ⇒ 1554084000000
+showUTC(date)                   // ⇒ 2019-04-01T02:00:00.000Z
 ```
 
 ### Note about DST
@@ -156,14 +153,24 @@ const origin = new Date('2018-01-20T16:00:00')  // ⇒ 2018-01-20 16:00 GMT-0600
 const result = addMonths(origin, 6)             // ⇒ 2018-07-20 16:00 GMT-0500
 ```
 
-However, the UTC time which has no offset does change:
+The same dates in UTC, which has no time offset, show the change:
 
 ```ts
 console.log(origin.toISOString())   // ⇒ 2018-01-20T22:00:00.000Z
 console.log(result.toISOString())   // ⇒ 2018-07-20T21:00:00.000Z
 ```
 
-The same happens if you apply a `setMonth(6)` to that date, which is correct and generally expected, but keep it in mind if you handle UTC dates based on local dates.
+The same happens if you apply a `setMonth(6)` to that date, which is correct and generally expected, just keep it in mind if you handle UTC dates based on local dates.
+
+### Date from String
+
+Avoid creating dates with strings, it is inconsistent.
+
+From [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) at MDN:
+
+> Note: parsing of date strings with the `Date` constructor (and `Date.parse`, they are equivalent) is strongly discouraged due to browser differences and inconsistencies. Support for [RFC 2822](http://tools.ietf.org/html/rfc2822#page-14) format strings is by convention only. Support for [ISO 8601](http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15) formats differs in that date-only strings (e.g. "1970-01-01") are treated as UTC, not local.
+
+Even node 6 has problems with this. _Do not use it_ except with the UTC ISO-8601 format.
 
 ## Imports
 
@@ -181,44 +188,33 @@ Please see the [Distribution Formats][jsbits-formats] in the JSBits README to kn
 
 I'm a full-stack developer with more than 20 year of experience and I try to share most of my work for free and help others, but this takes a significant amount of time and effort so, if you like my work, please consider...
 
-<!-- markdownlint-disable MD033 -->
 [<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]
-<!-- markdownlint-enable MD033 -->
 
 Of course, feedback, PRs, and stars are also welcome 🙃
 
 Thanks for your support!
 
----
+## License
 
-[![Codacy][codacy-badge]][codacy-url]
-[![Codacy coverage][codacyc-badge]][codacyc-url]
-[![Code Climate][climate-badge]][climate-url]
-[![Code Climate coverage][climatec-badge]][climatec-url]
+The [MIT](LICENSE) License.
 
-&copy; 2018 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)
+&copy; 2018-2019 Alberto Martínez &ndash; Readme powered by [jscc](https://github.com/aMarCruz/jscc) and [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)
 
-[license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
+[license-badge]:  https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [npm-badge]:      https://img.shields.io/npm/v/@jsbits/add-months.svg
 [npm-url]:        https://www.npmjs.com/package/@jsbits/add-months
-[bundle-badge]:   https://badgen.net/bundlephobia/min/@jsbits/add-months
-[bundle-url]:     https://bundlephobia.com/result?p=@jsbits/add-months
-[appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
-[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
-[travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master
+[appveyor-badge]: https://img.shields.io/appveyor/ci/aMarCruz/jsbits/master.svg?label=appveyor
+[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits/branch/master
+[travis-badge]:   https://img.shields.io/travis/ProJSLib/jsbits/master.svg?label=travis
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
-[codebeat-badge]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
-[codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
-[codacy-badge]:   https://api.codacy.com/project/badge/Grade/0d842f1b749340ec90277fb3b2da4e86
+[codecov-badge]:  https://img.shields.io/codecov/c/github/ProJSLib/jsbits/master.svg
+[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits/branch/master
+[codacy-badge]:   https://img.shields.io/codacy/grade/b9374fca91d64b75aafac26682df8fd0/master.svg
 [codacy-url]:     https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProJSLib/jsbits&amp;utm_campaign=Badge_Grade
-[codacyc-badge]:  https://api.codacy.com/project/badge/Coverage/0d842f1b749340ec90277fb3b2da4e86
-[codacyc-url]:    https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&utm_medium=referral&utm_content=ProJSLib/jsbits&utm_campaign=Badge_Coverage
-[codecov-badge]:  https://codecov.io/gh/ProJSLib/jsbits/branch/master/graph/badge.svg
-[codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits
-[climate-badge]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/maintainability
+[climate-badge]:  https://img.shields.io/codeclimate/maintainability/ProJSLib/jsbits.svg
 [climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits/maintainability
-[climatec-badge]: https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
-[climatec-url]:   https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
+[size-badge]:     https://img.shields.io/bundlephobia/min/@jsbits/add-months.svg
+[size-url]:       https://bundlephobia.com/result?p=@jsbits/add-months
 [jsbits-url]:     https://github.com/ProJSLib/jsbits
 [jsbits-formats]: https://github.com/ProJSLib/jsbits#distribution-formats
 [kofi-url]:       https://ko-fi.com/C0C7LF7I

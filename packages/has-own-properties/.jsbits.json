@@ -1,5 +1,5 @@
 {
-  "_VERSION": "1.1.0",
+  "_VERSION": "1.1.1",
   "_DESCRIPTION": "Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.",
   "_SINCE": "1.1.0",
   "_GROUPS": ["object"],

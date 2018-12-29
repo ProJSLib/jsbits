@@ -1,6 +1,18 @@
-# Changelog for @jsbits/add-months
+# Changelog of @jsbits/add-months
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+For global changes, see the [changelog of jsbits](https://github.com/ProJSLib/jsbits/blob/master/CHANGELOG.md)
+
+## \[1.1.2] - 2018-12-29
+
+### Changed
+
+- Replace BSD-2 with the MIT license.
+- Remove warning from the Readme.
+- Update badges.
+
+### Fixed
+
+- Minor errors in the Readme
 
 ## \[1.1.1] - 2018-12-06
 

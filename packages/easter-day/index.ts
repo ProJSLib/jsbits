@@ -5,13 +5,13 @@
  *
  * Easter always falls on a Sunday between March 22 and April 25, inclusive.
  *
+ * _**NOTE:**_
+ *
+ * _The result for years less than 1583 could be inaccurate._
+ *
  * This is a good algorithm, but calculating the Easter is not an exact
  * science or something concensed, so expect discrepancies with other
  * implementations.
- *
- * _**Note:**_
- *
- * _The result for years less than 1583 could be inaccurate._
  *
  * @see https://orthodoxwiki.org/Paschalion
  *

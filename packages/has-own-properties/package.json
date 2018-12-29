@@ -1,8 +1,8 @@
 {
   "name": "@jsbits/has-own-properties",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "main": "./index.js",
   "module": "esm/index.js",
   "es2015": "index.mjs",

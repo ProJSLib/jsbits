@@ -1,8 +1,8 @@
 {
   "name": "@jsbits/get-package-version",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get the version of the package.json file found in the given directory or in one of its parents.",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "main": "./index.js",
   "module": "esm/index.js",
   "es2015": "index.mjs",

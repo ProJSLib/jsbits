@@ -1,8 +1,8 @@
 {
   "name": "@jsbits/easter-day",
   "version": "1.0.0",
-  "description": "Calculates the local date of the Easter day for years up to 9999",
-  "license": "BSD-2-Clause",
+  "description": "Calculates the local date of the Easter day for years up to 9999.",
+  "license": "MIT",
   "main": "./index.js",
   "module": "esm/index.js",
   "es2015": "index.mjs",
@@ -32,5 +32,17 @@
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
     "typescript": "~3.2.2"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "es6",
+    "easter",
+    "pascha",
+    "resurrection",
+    "sunday",
+    "passion",
+    "holy",
+    "week"
+  ]
 }

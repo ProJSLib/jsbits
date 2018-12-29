@@ -1,6 +1,6 @@
 {
-  "_VERSION": "1.1.1",
-  "_DESCRIPTION": "Adds or sustract X months to any JavaScript Date, local or UTC.",
+  "_VERSION": "1.1.2",
+  "_DESCRIPTION": "Adds or subtracts N months to any JavaScript Date, local or UTC.",
   "_SINCE": "1.0.0",
   "_GROUPS": [
     "date"
