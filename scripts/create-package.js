@@ -101,7 +101,7 @@ describe('${funcName}', function () {
 
 })
 `
-  fse.writeFileSync(path.join(fpath, 'test', 'index.spec.js'), str)
+  fse.writeFileSync(path.join(fpath, 'test', 'index.spec.ts'), str)
 }
 
 /**

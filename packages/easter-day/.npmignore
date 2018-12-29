@@ -1,0 +1,8 @@
+*.bak
+*.log
+*.tgz
+.gitrepo
+.jsbits*
+.rpt2_cache
+test/
+yarn.lock

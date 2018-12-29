@@ -4,6 +4,7 @@
 
 ### Added
 
+- `easterDay` function, to calculate Easter day dates.
 - Badge for bundle size in the Readme of subrepos.
 
 ### Changed

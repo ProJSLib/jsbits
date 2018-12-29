@@ -31,19 +31,25 @@ _**NOTE:** This work is in its infancy, I will be adding more functions as my ti
 
 Adds or sustract X months to any JavaScript Date, local or UTC.
 
-v1.1.1 &ndash; Group: date &ndash; Author: @aMarCruz
+v1.1.1 &ndash; Group: date &ndash; Author: aMarCruz
 
 ### [deepClone](packages/deep-clone/README.md)
 
 Performs a deep cloning of an object own properties and symbols, with loosy or exact behavior.
 
-v1.1.0 &ndash; Group: object &ndash; Author: @aMarCruz
+v1.1.0 &ndash; Group: object &ndash; Author: aMarCruz
+
+### [easterDay](packages/easter-day/README.md)
+
+Calculates the local date of the Easter day for years up to 9999
+
+v1.0.0 &ndash; Group: date &ndash; Author: aMarCruz
 
 ### [escapeRegexStr](packages/escape-regex-str/README.md)
 
 Escapes special characters in a string, for matching substrings with a RegExp instance.
 
-v1.0.2 &ndash; Group: dev &ndash; Author: @aMarCruz
+v1.0.2 &ndash; Group: dev &ndash; Author: aMarCruz
 
 ### [getPackageVersion](packages/get-package-version/README.md)
 
@@ -51,13 +57,13 @@ _NodeJS only_.
 
 Get the version of the package.json file found in the given directory or in one of its parents.
 
-v1.0.2 &ndash; Group: dev &ndash; Author: @aMarCruz
+v1.0.2 &ndash; Group: dev &ndash; Author: aMarCruz
 
 ### [hasOwnProperties](packages/has-own-properties/README.md)
 
 Determines whether an object has own properties or symbols, including (optionally) the non-enumerable ones.
 
-v1.1.0 &ndash; Group: object &ndash; Author: @aMarCruz
+v1.1.0 &ndash; Group: object &ndash; Author: aMarCruz
 
 <!--END_FUNCTION_LIST-->
 
