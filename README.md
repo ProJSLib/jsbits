@@ -1,16 +1,15 @@
-# JSBits (WIP)
+# JSBits
+
+[![License][license-badge]][license-url]
+[![AppVeyor test][appveyor-badge]][appveyor-url]
+[![Travis test][travis-badge]][travis-url]
+[![coverage][codecov-badge]][codecov-url]
+[![Codacy][codacy-badge]][codacy-url]
+[![Code Climate][climate-badge]][climate-url]
 
 Public library of professional high quality functions for JavaScript and TypeScript.
 
-[![License][license-badge]][license-url]
-[![AppVeyor Test][appveyor-badge]][appveyor-url]
-[![Travis Test][travis-badge]][travis-url]
-[![Codebeat][codebeat-badge]][codebeat-url]
-[![Coverage][codecov-badge]][codecov-url]
-
-The functions of JSBits are written in TypeScript 3 and meet stringent quality requirements.
-
-They were designed to be efficient and robust, work in _strict mode_ and are tested with 100% coverage.
+The functions of JSBits are written in TypeScript 3 and meet stringent quality requirements.<br>They were designed to be efficient and robust, work in _strict mode_ and are tested with 100% coverage.
 
 Most of the functions are pure, isomorphic, and do not have external dependencies, except for a few that, due to their purpose, only run on node.js and use its native library.
 
@@ -122,12 +121,16 @@ In addition to increasing the number of functions...
 I'm a full-stack developer with more than 20 year of experience and I try to share most of my work for free and help others, but this takes a significant amount of time and effort so, if you like my work, please consider...
 
 <!-- markdownlint-disable MD033 -->
-[<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]
+[<img src="https://amarcruz.github.io/images/kofi_blue.png" height="36" title="Support Me on Ko-fi" />][kofi-url]<br>
 <!-- markdownlint-enable MD033 -->
 
 Of course, feedback, PRs, and stars are also welcome 🙃
 
 Thanks for your support!
+
+### Thanks
+
+Special thanks to [BrowserStack](https://www.browserstack.com) for their excellent service.
 
 ## License
 
@@ -135,36 +138,19 @@ The [BSD 2-Clause](LICENSE) "Simplified" License.
 
 &copy; 2018 Alberto Martínez. All rights reserved.
 
-### Thanks
-
-Special thanks to [BrowserStack](https://www.browserstack.com) for their support.
-
----
-
-[![Codacy][codacy-badge]][codacy-url]
-[![Codacy coverage][codacyc-badge]][codacyc-url]
-[![Code Climate][climate-badge]][climate-url]
-[![Code Climate coverage][climatec-badge]][climatec-url]
-
 <!-- Badges and Refs (badges for the branch 'master') -->
-[license-badge]:  https://img.shields.io/badge/license-BSD%202--Clause-blue.svg
+[license-badge]:  https://img.shields.io/badge/license-BSD--2--Clause-blue.svg
 [license-url]:    https://github.com/ProJSLib/jsbits/blob/master/LICENSE
 [appveyor-badge]: https://ci.appveyor.com/api/projects/status/yh5018ej9u6fnau8?svg=true
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/jsbits
-[travis-badge]:   https://travis-ci.org/ProJSLib/jsbits.svg?branch=master
+[travis-badge]:   https://img.shields.io/travis/ProJSLib/jsbits/master.svg?label=travis
 [travis-url]:     https://travis-ci.org/ProJSLib/jsbits
-[codebeat-badge]: https://codebeat.co/badges/5b07ccc1-be43-41d8-aeaf-eee1913d4173
-[codebeat-url]:   https://codebeat.co/projects/github-com-projslib-jsbits-master
-[codecov-badge]:  https://codecov.io/gh/ProJSLib/jsbits/branch/master/graph/badge.svg
+[codecov-badge]:  https://img.shields.io/codecov/c/github/ProJSLib/jsbits.svg
 [codecov-url]:    https://codecov.io/gh/ProJSLib/jsbits
 [climate-badge]:  https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/maintainability
 [climate-url]:    https://codeclimate.com/github/ProJSLib/jsbits/maintainability
-[climatec-badge]: https://api.codeclimate.com/v1/badges/e991c05e8a92448d30f0/test_coverage
-[climatec-url]:   https://codeclimate.com/github/ProJSLib/jsbits/test_coverage
-[codacy-badge]:   https://api.codacy.com/project/badge/Grade/0d842f1b749340ec90277fb3b2da4e86
+[codacy-badge]:   https://img.shields.io/codacy/grade/b9374fca91d64b75aafac26682df8fd0/master.svg
 [codacy-url]:     https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProJSLib/jsbits&amp;utm_campaign=Badge_Grade
-[codacyc-badge]:  https://api.codacy.com/project/badge/Coverage/0d842f1b749340ec90277fb3b2da4e86
-[codacyc-url]:    https://www.codacy.com/app/ProJSLib/jsbits?utm_source=github.com&utm_medium=referral&utm_content=ProJSLib/jsbits&utm_campaign=Badge_Coverage
 [kofi-url]:       https://ko-fi.com/C0C7LF7I
 [1]: https://github.com/defunctzombie/package-browser-field-spec
 [2]: https://github.com/rollup/rollup/wiki/pkg.module

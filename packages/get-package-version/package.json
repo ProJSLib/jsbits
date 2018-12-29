@@ -12,7 +12,7 @@
   "engines": {
     "node": ">=4.2"
   },
-  "author": "@aMarCruz",
+  "author": "aMarCruz",
   "bugs": "https://github.com/ProJSLib/jsbits/issues",
   "homepage": "https://github.com/ProJSLib/jsbits",
   "repository": {

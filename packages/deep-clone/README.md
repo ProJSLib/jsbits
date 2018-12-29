@@ -53,7 +53,7 @@ the most JS built-in Objects), nor objects with recursive references.
 
 Since 1.0.0<br>
 Group: object<br>
-Author/Maintainer: @aMarCruz<br>
+Author/Maintainer: aMarCruz<br>
 
 ### Example
 

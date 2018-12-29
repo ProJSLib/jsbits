@@ -75,7 +75,7 @@ This function does not change the original date.
 
 Since 1.0.0<br>
 Group: date<br>
-Author/Maintainer: @aMarCruz<br>
+Author/Maintainer: aMarCruz<br>
 
 ### Example
 

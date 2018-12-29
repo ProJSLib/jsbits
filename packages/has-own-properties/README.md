@@ -52,7 +52,7 @@ _**NOTE:** Testing primitive types is allowed, but these always return
 
 Since 1.0.0<br>
 Group: object<br>
-Author/Maintainer: @aMarCruz<br>
+Author/Maintainer: aMarCruz<br>
 
 ### Example
 

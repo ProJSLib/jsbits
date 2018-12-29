@@ -10,7 +10,7 @@ module.exports = {
   /** Default version of node in package.json */
   NODE_VERSION: '4.2',
   /** Default author name in package.json */
-  AUTHOR_NAME: '@aMarCruz',
+  AUTHOR_NAME: 'aMarCruz',
   /** Default author email in package.json */
   AUTHOR_EMAIL: 'amarcruzgit-box@yahoo.com',
 

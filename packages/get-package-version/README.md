@@ -41,7 +41,7 @@ directory or in one of its parents.
 
 Since 1.0.0<br>
 Group: dev<br>
-Author/Maintainer: @aMarCruz<br>
+Author/Maintainer: aMarCruz<br>
 
 ### Example
 

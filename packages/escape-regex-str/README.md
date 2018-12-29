@@ -39,7 +39,7 @@ given string as a literal substring.
 
 Since 1.0.0<br>
 Group: dev<br>
-Author/Maintainer: @aMarCruz<br>
+Author/Maintainer: aMarCruz<br>
 
 ### Example
 

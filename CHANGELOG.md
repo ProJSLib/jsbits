@@ -13,6 +13,10 @@
   - revised jscc templates for current jscc API style.
   - minor changes to .gitignore
 
+### Removed
+
+- Codebeat badge and files.
+
 ## \[1.1.2] - 2018-12-06
 
 ### Added
