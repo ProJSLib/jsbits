@@ -1,7 +1,6 @@
 # Common git and npm ignored folders and files
 cov-int
 coverage
-coverage.*
 lib-cov
 node_modules
 package-lock.json
@@ -14,6 +13,7 @@ pids
 **/*.bak
 **/*.lcov
 **/*.log
+~*
 .nyc_output
 .rpt2_cache
 

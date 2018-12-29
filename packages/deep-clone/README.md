@@ -60,34 +60,42 @@ Author/Maintainer: @aMarCruz<br>
 ```ts
 import deepClone from '@jsbits/deep-clone'
 
-let obj = { foo: 1, bar: 'bar', baz: { date: new Date() } }
+let obj = {
+  foo: 1,
+  bar: 'bar',
+  baz: { date: new Date() },
+}
 let clone = deepClone(obj)
 
 console.log('Success?',
   clone.baz.date instanceof Date && clone.baz.date !== obj.baz.date)
-// ⇒ Success? true
+// ⇒ true
 
 /*
-  Using the additional parameter
+  Using Symbol() as property name and the additional parameter
+  to clone the non-enumerable property "abc".
 */
-
-let baz = Symbol()
+const baz = Symbol()
 obj = {
   foo: 'Foo',
   arr: [{ bar: 'Bar' }],
   [baz]: 'Baz',
 }
-
 Object.defineProperty(obj, 'abc', {
   value: 'xyz',
   enumerable: false,
 })
-
 clone = deepClone(obj, true)
 
 console.log(JSON.stringify(clone))  // ⇒ '{"foo":"Foo","arr":[{"bar":"Bar"}]}'
 console.log(clone[baz])             // ⇒ 'Baz'
-console.log(clone.abc)              // ⇒ 'xyz
+console.log(clone.abc)              // ⇒ 'xyz'
+
+console.dir(Object.getOwnPropertyDescriptor(clone, 'abc'))
+// ⇒ { value: 'xyz',
+//      writable: false,
+//      enumerable: false,
+//      configurable: false }
 ```
 
 ### About getter and setters
@@ -186,7 +194,7 @@ This types are copied by reference:
 - WeakSet
 - XMLHttpRequest
 
-`arguments` objects are cloned as objects without prototype.
+`arguments` object is cloned as an object without prototype.
 
 Untested types:
 

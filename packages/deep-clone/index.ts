@@ -1,6 +1,4 @@
-/// <reference lib="es2015.core" />
-/// <reference lib="es2015.collection" />
-/// <reference lib="es2015.reflect" />
+/// <reference lib="es2015" />
 
 type CloneFn = <T> (obj: T) => T
 type GetKeysFn = (obj: any, type: string) => Array<string | symbol>

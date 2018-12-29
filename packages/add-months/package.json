@@ -31,7 +31,7 @@
     "expect.js": "^0.3.1",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
-    "typescript": "~3.2.1"
+    "typescript": "~3.2.2"
   },
   "keywords": [
     "javascript",

@@ -15,14 +15,14 @@
   "engines": {
     "node": ">=$_NODE"
   },
-  //#set _TEMP JSON.stringify(_AUTHOR)
+  //#set _TEMP = JSON.stringify(_AUTHOR)
   "author": "$_AUTHOR",
 /*#if _MAINTAINER
-  //#set _TEMP JSON.stringify(_MAINTAINER)
+  //#set _TEMP = JSON.stringify(_MAINTAINER)
   "maintainers": [$_TEMP],
 //#endif */
 /*#if _CONTRIBUTORS
-  //#set _TEMP JSON.stringify(_CONTRIBUTORS)
+  //#set _TEMP = JSON.stringify(_CONTRIBUTORS)
   "contributors": $_TEMP,
 //#endif */
   "bugs": "$_HOMEPAGE/issues",
@@ -42,6 +42,6 @@
     "expect.js": "^0.3.1",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
-    "typescript": "~3.2.1"
+    "typescript": "~3.2.2"
   }
 }

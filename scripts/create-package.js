@@ -75,10 +75,10 @@ const jslibJson = (fpath, result) => {
  */
 const example = (fpath) => {
   const str =
-`//#set _F _REQUIRE(_PATH + '/index.js')
+`//#set _F = _REQUIRE(_PATH + '/index.js')
 import $_NAME from '$_PACKAGE'
 
-//#set _RESULT _F()
+//#set _RESULT = _F()
 $_NAME() // ⇒ $_RESULT
 `
   fse.writeFileSync(path.join(fpath, '.jsbits', 'example.js'), str)

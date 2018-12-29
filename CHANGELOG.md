@@ -6,6 +6,13 @@
 
 - Badge for bundle size in the Readme of subrepos.
 
+### Changed
+
+- Update devDependencies
+  - Keep Rollup v6.8, not all its plugins are prepared for v1
+  - revised jscc templates for current jscc API style.
+  - minor changes to .gitignore
+
 ## \[1.1.2] - 2018-12-06
 
 ### Added

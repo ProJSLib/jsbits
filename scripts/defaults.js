@@ -35,7 +35,7 @@ module.exports = {
 
   /** Default rollup-plugin-cleanup options */
   CLEANUP_CONF: {
-    comments: ['license', 'ts3s', 'srcmaps', /^\*\*[\s\S]+@(since|public)\b/],
+    comments: ['license', 'sources', /^\*\*[\s\S]+@(since|public)\b/],
     extensions: '.ts',
     exclude: '*.d.ts',
   },
