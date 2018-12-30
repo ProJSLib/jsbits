@@ -1,0 +1,16 @@
+---
+engines:
+ duplication:
+   enabled: true
+   exclude_paths:
+     - '**/.eslintrc.js'
+exclude_paths:
+  - '.nyc_output/**'
+  - '.rpt2_cache/**'
+  - '.vscode/**'
+  - 'assets/**'
+  - 'coverage/**'
+  - 'scripts/templates/**'
+  - '**/perf/**'
+  - '**/test/**/*'
+  - '*.min.js'

@@ -2,6 +2,12 @@
 
 The format of this document is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## \[Unreleased]
+
+### Added
+
+- Codacy exclussions
+
 ## \[1.1.3] - 2018-12-29
 
 ### Added
@@ -18,9 +24,9 @@ The format of this document is based on [Keep a Changelog](https://keepachangelo
 - Update hading of Changelogs.
 - Update markdownlint config.
 - Update devDependencies
-  - Keep Rollup v6.8, not all its plugins are prepared for v1
-  - revised jscc templates for current jscc API style.
-  - minor changes to .gitignore
+- Keep Rollup v6.8, not all its plugins are prepared for v1
+- revised jscc templates for current jscc API style.
+- minor changes to .gitignore
 
 ### Removed
 
