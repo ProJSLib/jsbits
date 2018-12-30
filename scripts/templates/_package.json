@@ -26,7 +26,8 @@
   "contributors": $_TEMP,
 //#endif */
   "bugs": "$_HOMEPAGE/issues",
-  "homepage": "$_HOMEPAGE",
+  //#set _TEMP = _PACKAGE.replace(_JSPREFIX, '')
+  "homepage": "$_HOMEPAGE/tree/master/packages$_TEMP",
   "repository": {
     "type": "git",
     "url": "$_HOMEPAGE.git"

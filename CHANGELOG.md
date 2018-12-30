@@ -8,6 +8,10 @@ The format of this document is based on [Keep a Changelog](https://keepachangelo
 
 - Codacy exclussions.
 
+### Changed
+
+- Makes homepage of package.json point to subrepo.
+
 ### Fixed
 
 - Linting errors.

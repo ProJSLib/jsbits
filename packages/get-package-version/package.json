@@ -14,7 +14,7 @@
   },
   "author": "aMarCruz",
   "bugs": "https://github.com/ProJSLib/jsbits/issues",
-  "homepage": "https://github.com/ProJSLib/jsbits",
+  "homepage": "https://github.com/ProJSLib/jsbits/tree/master/packages/get-package-version",
   "repository": {
     "type": "git",
     "url": "https://github.com/ProJSLib/jsbits.git"
