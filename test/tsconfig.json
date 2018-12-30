@@ -4,12 +4,12 @@
     "allowJs": false,
     "checkJs": false,
     "esModuleInterop": true,
-    "pretty": false,
+    "pretty": false
   },
   "include": [
-    "../packages/**/*.ts",
+    "../packages/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-  ],
+  ]
 }

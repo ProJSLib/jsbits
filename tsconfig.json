@@ -17,14 +17,14 @@
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "es5",
+    "target": "es5"
   },
   "include": [
-    "./packages/*/index.ts",
+    "./packages/*/index.ts"
   ],
   "exclude": [
     "**/.jsbits",
     "node_modules",
     "test"
-  ],
+  ]
 }

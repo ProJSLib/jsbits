@@ -1,5 +1,5 @@
 /*
-  From "A Perpetual Easter and Passover Calculator"
+  Adapted from "A Perpetual Easter and Passover Calculator"
   http://www.staff.science.uu.nl/~gent0113/easter/eastercalculator_main.htm
 */
 /* eslint-disable */
@@ -27,8 +27,8 @@ function greg_easter(year){
   var ep=gmod((11*a+8-b+d+Math.floor((8*b+13)/25)),30);
   var fmg
   if(ep <= 23) fmg=136-ep;                          // Easter full moon [days after -92 March]
-  if((ep == 24) || (ep == 25)) fmg=141;
-  if((ep == 25) && (gn > 11)) fmg=140;
+  if((ep === 24) || (ep === 25)) fmg=141;
+  if((ep === 25) && (gn > 11)) fmg=140;
   if(ep >= 26) fmg=166-ep;
   var dmg=114+h-7*m+l;                                  // Easter Sunday [days after -92 March]
   var fmmg=Math.floor(fmg/31);                          // month Easter full moon [March = 3; April = 4]

@@ -1,19 +1,17 @@
 /**
- * Calculates the local date for the Easter day, aka _Pascha_ or
- * _Resurrection Sunday_, based on Oudin's algorithm for years between 100
- * and 9999 in the Gregorian calendar.
+ * Calculates the local date of the Easter day –aka _Pascha_ or
+ * _Resurrection Sunday_– for years between 100 and 9999 in the
+ * Gregorian calendar, based on Oudin's algorithm.
  *
  * Easter always falls on a Sunday between March 22 and April 25, inclusive.
  *
- * _**NOTE:**_
- *
- * _The result for years less than 1583 could be inaccurate._
+ * **NOTE:** The result for years less than 1583 _could be inaccurate_.
  *
  * This is a good algorithm, but calculating the Easter is not an exact
- * science or something concensed, so expect discrepancies with other
- * implementations.
+ * science or something consensuated, so expect discrepancies with older
+ * or future implementations.
  *
- * @see https://orthodoxwiki.org/Paschalion
+ * @see [Paschalion at OrthodoxWiki](https://orthodoxwiki.org/Paschalion)
  *
  * @param {number} year Year for the desired date, between 100 and 9999
  * @returns {Date} Local date instance for the Easter day

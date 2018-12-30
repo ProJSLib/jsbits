@@ -6,7 +6,11 @@ The format of this document is based on [Keep a Changelog](https://keepachangelo
 
 ### Added
 
-- Codacy exclussions
+- Codacy exclussions.
+
+### Fixed
+
+- Linting errors.
 
 ## \[1.1.3] - 2018-12-29
 

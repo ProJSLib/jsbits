@@ -8,8 +8,8 @@
     "target": "es6"
   },
   "files": [
-    "dummy.ts",
+    "dummy.ts"
   ],
   "include": [
-  ],
+  ]
 }
