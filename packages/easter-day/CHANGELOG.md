@@ -7,6 +7,7 @@ For global changes, see the [changelog of jsbits](https://github.com/ProJSLib/js
 ### Changed
 
 - Update the description.
+- Micro-optimization.
 
 ### Fixed
 

@@ -1,3 +1,4 @@
+/* eslint max-statements:[2,15] */
 /**
  * Calculates the local date of the Easter day –aka _Pascha_ or
  * _Resurrection Sunday_– for years between 100 and 9999 in the
@@ -19,8 +20,9 @@
  */
 const easterDay = function _easterDay (year: number) {
 
-  // must be an integer in range
-  if ((year |= 0) < 100 || year > 9999) {
+  // must be an integer in the allowed range
+  year |= 0
+  if (year < 100 || year > 9999) {
     return new Date(NaN)
   }
 
@@ -30,9 +32,10 @@ const easterDay = function _easterDay (year: number) {
   const G = year % 19
 
   const H = (C - (C >> 2) - floor((8 * C + 13) / 25) + 19 * G + 15) % 30
-  const I = H - floor(H / 28) * (1 - floor(H / 28) * floor(29 / (H + 1)) * floor((21 - G) / 11))
-  const J = (year + (year >> 2) + I + 2 - C + (C >> 2)) % 7
-  const L = I - J
+  const I = floor(H / 28)
+  const J = H - I * (1 - I * floor(29 / (H + 1)) * floor((21 - G) / 11))
+  const K = (year + (year >> 2) + J + 2 - C + (C >> 2)) % 7
+  const L = J - K
 
   const m = 3 + floor((L + 40) / 44)
   const d = L + 28 - 31 * (m >> 2)
