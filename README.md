@@ -43,7 +43,7 @@ v1.1.1 &ndash; Group: object &ndash; Author: aMarCruz
 
 Calculates the local date of the Easter day for years up to 9999.
 
-v1.0.0 &ndash; Group: date &ndash; Author: aMarCruz
+v1.0.1 &ndash; Group: date &ndash; Author: aMarCruz
 
 ### [escapeRegexStr](packages/escape-regex-str/README.md)
 

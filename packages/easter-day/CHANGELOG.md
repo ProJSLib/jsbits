@@ -2,7 +2,7 @@
 
 For global changes, see the [changelog of jsbits](https://github.com/ProJSLib/jsbits/blob/master/CHANGELOG.md)
 
-## \[Unreleased]
+## \[1.0.1] - 2018-12-30
 
 ### Changed
 

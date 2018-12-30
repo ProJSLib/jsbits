@@ -1,6 +1,6 @@
 {
   "name": "@jsbits/easter-day",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculates the local date of the Easter day for years up to 9999.",
   "license": "MIT",
   "main": "./index.js",
