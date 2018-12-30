@@ -71,7 +71,6 @@ const licenseFromRoot = (destPath, fileName) => {
  */
 const updateFiles = (pkgPath) => {
   return Promise.all([
-    ensureIsUpdated(pkgPath, '.npmignore'),
     ensureIsUpdated(pkgPath, '.gitignore'),
     ensureIsUpdated(pkgPath, '.eslintrc.js'),
     ensureIsUpdated(pkgPath, 'tsconfig.json'),

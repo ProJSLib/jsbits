@@ -16,6 +16,10 @@ The format of this document is based on [Keep a Changelog](https://keepachangelo
 
 - Linting errors.
 
+### Removed
+
+- .npmignore of subrepos, now using pkg.files
+
 ## \[1.1.3] - 2018-12-29
 
 ### Added

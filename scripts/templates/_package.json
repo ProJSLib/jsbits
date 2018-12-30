@@ -12,6 +12,13 @@
 //#endif
   "source": "index.ts",
   "types": "index.d.ts",
+  "files": [
+    "index.*",
+    "proto.*",
+    "esm",
+    "umd",
+    "!index.ts"
+  ],
   "engines": {
     "node": ">=$_NODE"
   },

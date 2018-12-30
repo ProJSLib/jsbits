@@ -9,6 +9,13 @@
   "esnext": "index.mjs",
   "source": "index.ts",
   "types": "index.d.ts",
+  "files": [
+    "index.*",
+    "proto.*",
+    "esm",
+    "umd",
+    "!index.ts"
+  ],
   "engines": {
     "node": ">=4.2"
   },
